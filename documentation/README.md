@@ -52,7 +52,7 @@ Now, we need to run deployment_prod for production environment.
 
     bash deployment_prod.sh
 
-Now, we need to run deployment_staging for staging environment.
+Or for staging, we need to run deployment_staging for staging environment.
 
     bash deployment_staging.sh
 
