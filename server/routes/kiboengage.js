@@ -5,6 +5,7 @@ module.exports = function (app) {
   app.use('/api/v1/test', require('../api/v1/kiboengage/test'))
   app.use('/api/v1/automation_queue', require('./../api/v1/kiboengage/automation_queue'))
   app.use('/api/v1/autoposting', require('./../api/v1/kiboengage/autoposting'))
+  app.use('/api/v1/page_broadcast', require('./../api/v1/kiboengage/page_broadcast'))
 
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))

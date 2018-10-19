@@ -11,7 +11,7 @@ exports.validateCreatePayload = (body) => {
   let arrayOfKeys = Object.keys(body)
 
   arrayOfRequiredFields.forEach((field, index) => {
-    if (field !== arrayOfKeys[index]) {
+    if (!arrayOfKeys.includes(field)) {
       bool = false
     }
   })
