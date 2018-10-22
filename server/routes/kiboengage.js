@@ -13,6 +13,7 @@ module.exports = function (app) {
   app.use('/api/v1/surveys', require('./../api/v1/kiboengage/surveys'))
   app.use('/api/v1/sequence_messaging', require('./../api/v1/kiboengage/sequence_messaging'))
   app.use('/api/v1/sequence_subscribers', require('./../api/v1/kiboengage/sequence_subscribers'))
+  app.use('/api/v1/sequence_message_queue', require('./../api/v1/kiboengage/sequence_message_queue'))
 
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))
