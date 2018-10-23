@@ -10,6 +10,7 @@ module.exports = function (app) {
   app.use('/api/v1/page_survey', require('./../api/v1/kiboengage/page_survey'))
   app.use('/api/v1/pageadminsubscriptions', require('./../api/v1/kiboengage/pageadminsubscriptions'))
   app.use('/api/v1/polls', require('./../api/v1/kiboengage/polls'))
+  app.use('/api/v1/broadcasts', require('./../api/v1/kiboengage/broadcasts'))
 
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))
