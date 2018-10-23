@@ -3,23 +3,23 @@ This file will contain the functions for data layer.
 By separating it from controller, we are separating the concerns.
 Thus we can use it from other non express callers like cron etc
 */
-const LogicLayer = require('./broadcasts.logiclayer')
-const MongoInterface = require('./interface_mongo')
+const LogicLayer = require('./autoposting_messages.logiclayer')
+const MongoInterface = require('./autoposting_subscriber_messages_interface_mongo')
 const logger = require('../../../../components/logger')
-const TAG = '/api/v1/kiboengage/broadcasts/broadcasts.datalayer.js'
+const TAG = '/api/v1/kiboengage/autoposting_messages/autoposting_susbcriber_messages.datalayer.js'
 
 const util = require('util')
 
-exports.findAllBroadcastsObjects = () => {
+exports.findAllAutopostingSubscriberMessagesObjects = () => {
   return MongoInterface.find()
 }
 
-exports.createOneBroadcastObject = (body) => {
-  if (LogicLayer.validateCreatePayload(body)) return MongoInterface.create(body)
+exports.createOneAutopostingSubscriberMessageObject = (body) => {
+  if (LogicLayer.validateResponsePayload(body)) return MongoInterface.create(body)
   else return new Promise((resolve, reject) => { reject(new Error('Payload is not valid')) })
 }
 
-exports.updateBroadcast = (body) => {
+exports.updateAutopostingSubscriberMessage = (body) => {
   if (body.purpose) {
     let query = body.match
     let updated = body.updated
@@ -41,7 +41,7 @@ exports.updateBroadcast = (body) => {
   }
 }
 
-exports.findBroadcastUsingQuery = (body) => {
+exports.findAutopostingSubscriberMessagesUsingQuery = (body) => {
   if (body.purpose) {
     // If purpose found, then proceed
     if (body.purpose === 'aggregate') {
@@ -67,7 +67,7 @@ exports.findBroadcastUsingQuery = (body) => {
   }
 }
 
-exports.deleteBroadcast = (body) => {
+exports.deleteAutopostingSubscriberMessage = (body) => {
   if (body.purpose) {
     let query = body.match
     // If purpose found, then proceed
