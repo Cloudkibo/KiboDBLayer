@@ -1,13 +1,13 @@
 // Web layer of this API node
 const logger = require('../../../../components/logger')
-const DataLayer = require('./polls.datalayer')
-const TAG = '/api/v1/kiboengage/surveys/surveys.controller.js'
+const DataLayer = require('./response.datalayer')
+const TAG = '/api/v1/kiboengage/surveys/response.controller.js'
 
 const util = require('util')
 
 exports.index = function (req, res) {
   logger.serverLog(TAG, `Index endpoint is hit:`)
-  DataLayer.findAllPollsObjects()
+  DataLayer.findAllResponseObjects()
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
@@ -20,7 +20,7 @@ exports.index = function (req, res) {
 exports.create = function (req, res) {
   logger.serverLog(TAG, `Create endpoint is hit:`)
 
-  DataLayer.createOnePollObject(req.body)
+  DataLayer.createOneResponseObject(req.body)
     .then(createdObject => {
       res.status(200).json({status: 'success', payload: createdObject})
     })
@@ -33,7 +33,7 @@ exports.create = function (req, res) {
 exports.query = function (req, res) {
   logger.serverLog(TAG, `Query endpoint is hit:`)
 
-  DataLayer.findPollUsingQuery(req.body)
+  DataLayer.findResponseUsingQuery(req.body)
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
@@ -46,7 +46,7 @@ exports.query = function (req, res) {
 exports.update = function (req, res) {
   logger.serverLog(TAG, `Update endpoint is hit:`)
 
-  DataLayer.updatePoll(req.body)
+  DataLayer.updateResponse(req.body)
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
@@ -59,7 +59,7 @@ exports.update = function (req, res) {
 exports.delete = function (req, res) {
   logger.serverLog(TAG, `Delete endpoint is hit:`)
 
-  DataLayer.deletePoll(req.body)
+  DataLayer.deleteResponse(req.body)
     .then(result => {
       res.status(200).json({status: 'success', payload: result})
     })

@@ -10,6 +10,10 @@ module.exports = function (app) {
   app.use('/api/v1/page_survey', require('./../api/v1/kiboengage/page_survey'))
   app.use('/api/v1/pageadminsubscriptions', require('./../api/v1/kiboengage/pageadminsubscriptions'))
   app.use('/api/v1/polls', require('./../api/v1/kiboengage/polls'))
+  app.use('/api/v1/surveys', require('./../api/v1/kiboengage/surveys'))
+  app.use('/api/v1/sequence_messaging', require('./../api/v1/kiboengage/sequence_messaging'))
+  app.use('/api/v1/sequence_subscribers', require('./../api/v1/kiboengage/sequence_subscribers'))
+  app.use('/api/v1/sequence_message_queue', require('./../api/v1/kiboengage/sequence_message_queue'))
   app.use('/api/v1/broadcasts', require('./../api/v1/kiboengage/broadcasts'))
   app.use('/api/v1/autoposting_messages', require('./../api/v1/kiboengage/autoposting_messages'))
 
