@@ -3,6 +3,8 @@
 module.exports = function (app) {
   // API middlewares go here
   app.use('/api/v1/test', require('./../api/v1/kibochat/test'))
+  app.use('/api/v1/livechat', require('./../api/v1/kibochat/livechat'))
+  app.use('/api/v1/notifications', require('./../api/v1/kibochat/notifications'))
 
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))
