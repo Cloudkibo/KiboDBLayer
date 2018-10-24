@@ -16,6 +16,7 @@ module.exports = function (app) {
   app.use('/api/v1/sequence_message_queue', require('./../api/v1/kiboengage/sequence_message_queue'))
   app.use('/api/v1/broadcasts', require('./../api/v1/kiboengage/broadcasts'))
   app.use('/api/v1/autoposting_messages', require('./../api/v1/kiboengage/autoposting_messages'))
+  app.use('/api/v1/notifications', require('./../api/v1/kiboengage/notifications'))
 
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))
