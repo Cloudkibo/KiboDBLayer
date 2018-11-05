@@ -20,21 +20,21 @@ Every module has 5 endpoints. Their path structure, method, payload, and respons
     PATH: api/v1/{module_name}/query
     METHOD: POST
     PAYLOAD: create payload object
-    RESPONSE: array of found records
+    RESPONSE: Success / Failed
  
  #### To update record(s)
 
     PATH: api/v1/{module_name}/query
     METHOD: PUT
     PAYLOAD: **Update Payload (Defined at the bottom)
-    RESPONSE: array of found records
+    RESPONSE: Success / Failed
  
  #### To delete record(s)
 
     PATH: api/v1/{module_name}/query
     METHOD: DELETE
     PAYLOAD: ***Delete Payload (Defined at the bottom)
-    RESPONSE: array of found records
+    RESPONSE: Success / Failed
  
  ##### **Query Payload Structure
  
