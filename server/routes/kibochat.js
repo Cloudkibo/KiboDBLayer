@@ -17,9 +17,9 @@ module.exports = function (app) {
     res.status(404).send({url: `${req.originalUrl} not found`})
   })
 
-  app.route('/*').get((req, res) => {
-    res.redirect('/')
-  }).post((req, res) => {
-    res.redirect('/')
-  })
+  // app.route('/*').get((req, res) => {
+  //   res.redirect('/')
+  // }).post((req, res) => {
+  //   res.redirect('/')
+  // })
 }
