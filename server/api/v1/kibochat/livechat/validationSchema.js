@@ -30,7 +30,7 @@ exports.createPayload = {
       'type': 'string'
     },
     'status': {
-      'type': 'boolean'
+      'type': 'string'
     },
     'replied_by': {
       'type': 'string'
@@ -87,7 +87,7 @@ exports.queryPayload = {
           'type': 'string'
         },
         'status': {
-          'type': 'boolean'
+          'type': 'string'
         },
         'replied_by': {
           'type': 'string'
@@ -140,7 +140,7 @@ exports.updatePayload =
           'type': 'string'
         },
         'status': {
-          'type': 'boolean'
+          'type': 'string'
         },
         'replied_by': {
           'type': 'string'
