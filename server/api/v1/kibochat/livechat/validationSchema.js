@@ -33,7 +33,7 @@ exports.createPayload = {
       'type': 'string'
     },
     'replied_by': {
-      'type': 'string'
+      'type': 'object'
     },
     'payload': {
       'type': 'object'
