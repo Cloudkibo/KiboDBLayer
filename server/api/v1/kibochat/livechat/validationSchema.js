@@ -43,7 +43,6 @@ exports.createPayload = {
     }
   },
   'required': [
-    'format',
     'sender_id',
     'recipient_id',
     'sender_fb_id',
