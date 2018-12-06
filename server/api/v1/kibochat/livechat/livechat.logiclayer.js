@@ -33,7 +33,7 @@ exports.prepareMongoAggregateQuery = (body) => {
   let query = []
 
   if (body.match) {
-    if (!Object.keys(body.group).includes('session_id')) {
+    if (!Object.keys(body.match).includes('session_id')) {
       body.match.session_id = mongoose.Types.ObjectId(body.match.session_id)
     }
     query.push({$match: body.match})
