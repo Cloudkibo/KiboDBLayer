@@ -8,7 +8,6 @@ const mongoose = require('mongoose')
 exports.validateCreatePayload = (body) => {
   let bool = true
   let arrayOfRequiredFields = [
-    'format',
     'sender_id',
     'recipient_id',
     'sender_fb_id',
