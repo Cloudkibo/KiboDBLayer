@@ -36,7 +36,7 @@ exports.createPayload = {
       'type': 'string'
     },
     'payload': {
-      'type': 'array'
+      'type': 'object'
     },
     'url_meta': {
       'type': 'object'
