@@ -32,9 +32,6 @@ exports.createPayload = {
     'isSegmented': {
       'type': 'boolean'
     },
-    'fbMessageTag': {
-      'type': 'string'
-    },
     'segmentationPageIds': {
       'type': 'array',
       'items': [
@@ -93,15 +90,6 @@ exports.createPayload = {
     'payload',
     'title',
     'type',
-    'companyId',
-    'isSegmented',
-    'segmentationPageIds',
-    'segmentationLocale',
-    'segmentationGender',
-    'segmentationTags',
-    'isList',
-    'segmentationList',
-    'fbMessageTag',
     'userId',
     'companyId'
   ]
@@ -140,9 +128,6 @@ exports.queryPayload = {
         },
         'isSegmented': {
           'type': 'boolean'
-        },
-        'fbMessageTag': {
-          'type': 'string'
         },
         'segmentationPageIds': {
           'type': 'array',
@@ -242,9 +227,6 @@ exports.updatePayload =
         },
         'isSegmented': {
           'type': 'boolean'
-        },
-        'fbMessageTag': {
-          'type': 'string'
         },
         'segmentationPageIds': {
           'type': 'array',
