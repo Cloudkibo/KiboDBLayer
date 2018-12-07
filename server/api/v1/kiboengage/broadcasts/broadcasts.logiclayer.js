@@ -9,7 +9,6 @@ exports.validateCreatePayload = (body) => {
     'platform',
     'payload',
     'title',
-    'type',
     'userId',
     'companyId'
   ]

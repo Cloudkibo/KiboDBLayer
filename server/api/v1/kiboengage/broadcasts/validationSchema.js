@@ -14,9 +14,6 @@ exports.createPayload = {
     'payload': {
       'type': 'array'
     },
-    'type': {
-      'type': 'string'
-    },
     'title': {
       'type': 'string'
     },
@@ -89,7 +86,6 @@ exports.createPayload = {
     'platform',
     'payload',
     'title',
-    'type',
     'userId',
     'companyId'
   ]
@@ -110,9 +106,6 @@ exports.queryPayload = {
         },
         'payload': {
           'type': 'array'
-        },
-        'type': {
-          'type': 'string'
         },
         'title': {
           'type': 'string'
@@ -209,9 +202,6 @@ exports.updatePayload =
         },
         'payload': {
           'type': 'array'
-        },
-        'type': {
-          'type': 'string'
         },
         'title': {
           'type': 'string'
