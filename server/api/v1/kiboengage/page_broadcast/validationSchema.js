@@ -36,8 +36,7 @@ exports.createPayload = {
     'companyId',
     'subscriberId',
     'broadcastId',
-    'seen',
-    'clicked'
+    'seen'
   ]
 }
 
