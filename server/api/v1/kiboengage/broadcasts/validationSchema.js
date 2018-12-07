@@ -196,9 +196,6 @@ exports.queryPayload = {
         'companyId': {
           'type': 'string'
         },
-        'datetime': {
-          'type': 'date'
-        },
         'clicks': {
           'type': 'number'
         }
@@ -294,9 +291,6 @@ exports.updatePayload =
               'type': 'string'
             }
           ]
-        },
-        'datetime': {
-          'type': 'date'
         },
         'clicks': {
           'type': 'number'
