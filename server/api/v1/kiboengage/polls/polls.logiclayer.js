@@ -5,9 +5,7 @@ Thus we can use it from other non express callers like cron etc
 */
 exports.validateCreatePayload = (body) => {
   let bool = true
-  let arrayOfRequiredFields = ['userId', 'platform', 'companyId', 'statement', 'options', 'isSegmented',
-    'segmentationPageIds', 'segmentationLocale', 'segmentationGender', 'segmentationTimeZone', 'segmentationTags',
-    'isList', 'segmentationList', 'segmentationPoll', 'fbMessageTag']
+  let arrayOfRequiredFields = ['userId', 'platform', 'companyId', 'statement', 'options']
   let arrayOfKeys = Object.keys(body)
 
   arrayOfRequiredFields.forEach((field, index) => {

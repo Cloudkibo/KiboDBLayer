@@ -84,9 +84,6 @@ exports.createPayload = {
           'type': 'string'
         }
       ]
-    },
-    'fbMessageTag': {
-      'type': 'string'
     }
   },
   'required': [
@@ -94,17 +91,7 @@ exports.createPayload = {
     'statement',
     'options',
     'userId',
-    'companyId',
-    'isSegmented',
-    'segmentationPageIds',
-    'segmentationLocale',
-    'segmentationGender',
-    'segmentationTimeZone',
-    'segmentationTags',
-    'isList',
-    'segmentationList',
-    'segmentationPoll',
-    'fbMessageTag'
+    'companyId'
   ]
 }
 
@@ -194,9 +181,6 @@ exports.queryPayload = {
               'type': 'string'
             }
           ]
-        },
-        'fbMessageTag': {
-          'type': 'string'
         }
       }
     }
@@ -294,9 +278,6 @@ exports.updatePayload =
               'type': 'string'
             }
           ]
-        },
-        'fbMessageTag': {
-          'type': 'string'
         }
       }
     },
