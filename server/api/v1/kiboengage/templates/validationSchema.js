@@ -474,8 +474,7 @@ exports.createSurveyQuestionTemplatePayload = {
       'type': 'string'
     },
     'options': {
-      'type': 'array',
-      'items': {}
+      'type': 'array'
     },
     'surveyId': {
       'type': 'string'
@@ -483,7 +482,8 @@ exports.createSurveyQuestionTemplatePayload = {
   },
   'required': [
     'statement',
-    'surveyId'
+    'surveyId',
+    'options'
   ]
 }
 
@@ -519,8 +519,7 @@ exports.updateSurveyQuestionTemplatePayload =
           'type': 'string'
         },
         'options': {
-          'type': 'array',
-          'items': {}
+          'type': 'array'
         },
         'surveyId': {
           'type': 'string'
