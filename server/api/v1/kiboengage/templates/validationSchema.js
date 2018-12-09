@@ -296,10 +296,10 @@ exports.createBroadcastTemplatePayload = {
       'type': 'string'
     },
     'category': {
-      'type': 'string'
+      'type': 'array'
     },
     'payload': {
-      'type': 'object'
+      'type': 'array'
     },
     'userId': {
       'type': 'string'
@@ -311,9 +311,7 @@ exports.createBroadcastTemplatePayload = {
   'required': [
     'title',
     'category',
-    'payload',
-    'userId',
-    'companyId'
+    'payload'
   ]
 }
 
@@ -349,16 +347,10 @@ exports.updateBroadcastPayload =
           'type': 'string'
         },
         'category': {
-          'type': 'string'
+          'type': 'array'
         },
         'payload': {
-          'type': 'object'
-        },
-        'userId': {
-          'type': 'string'
-        },
-        'companyId': {
-          'type': 'string'
+          'type': 'array'
         }
       }
     },
@@ -417,31 +409,7 @@ exports.queryPollTemplatePayload = {
       'type': 'string'
     },
     'match': {
-      'type': 'object',
-      'properties': {
-        'title': {
-          'type': 'string'
-        },
-        'statement': {
-          'type': 'string'
-        },
-        'options': {
-          'type': 'array',
-          'items': [
-            {
-              'type': 'string'
-            }
-          ]
-        },
-        'category': {
-          'type': 'array',
-          'items': [
-            {
-              'type': 'string'
-            }
-          ]
-        }
-      }
+      'type': 'object'
     }
   },
   'required': [
@@ -527,19 +495,7 @@ exports.querySurveyQuestionTemplatePayload = {
       'type': 'string'
     },
     'match': {
-      'type': 'object',
-      'properties': {
-        'statement': {
-          'type': 'string'
-        },
-        'options': {
-          'type': 'array',
-          'items': {}
-        },
-        'surveyId': {
-          'type': 'string'
-        }
-      }
+      'type': 'object'
     }
   },
   'required': [
@@ -616,25 +572,6 @@ exports.querySurveyTemplatePayload = {
   'properties': {
     'purpose': {
       'type': 'string'
-    },
-    'match': {
-      'type': 'object',
-      'properties': {
-        'title': {
-          'type': 'string'
-        },
-        'description': {
-          'type': 'string'
-        },
-        'category': {
-          'type': 'array',
-          'items': [
-            {
-              'type': 'string'
-            }
-          ]
-        }
-      }
     }
   },
   'required': [
