@@ -61,7 +61,7 @@ exports.validateCreatePollTemplatePayload = (body) => {
 
 exports.validateCreateSurveyQuestionTemplatePayload = (body) => {
   let bool = true
-  let arrayOfRequiredFields = ['statement', 'surveyId', 'options', 'category']
+  let arrayOfRequiredFields = ['statement', 'surveyId', 'options']
   let arrayOfKeys = Object.keys(body)
 
   arrayOfRequiredFields.forEach((field, index) => {
