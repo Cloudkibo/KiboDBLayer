@@ -106,7 +106,7 @@ exports.createBroadcastTemplate = function (req, res) {
 
 exports.queryBroadcastTemplate = function (req, res) {
   logger.serverLog(TAG, `Query BroadcastTemplate endpoint is hit:`)
-
+  console.log('Query BroadcastTemplate endpoint is hit:', req.body)
   DataLayer.findUsingQuery(BroadcastTemplateModel, req.body)
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
