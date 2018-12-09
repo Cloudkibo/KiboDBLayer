@@ -325,24 +325,7 @@ exports.queryBroadcastTemplatePayload = {
       'type': 'string'
     },
     'match': {
-      'type': 'object',
-      'properties': {
-        'title': {
-          'type': 'string'
-        },
-        'category': {
-          'type': 'string'
-        },
-        'payload': {
-          'type': 'object'
-        },
-        'userId': {
-          'type': 'string'
-        },
-        'companyId': {
-          'type': 'string'
-        }
-      }
+      'type': 'object'
     }
   },
   'required': [
