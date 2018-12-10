@@ -49,9 +49,7 @@ exports.validateCreateUnansweredPayload = (body) => {
   let bool = true
   let arrayOfRequiredFields = [
     'botId',
-    'intentId',
-    'Question',
-    'Confidence']
+    'Question']
   let arrayOfKeys = Object.keys(body)
 
   arrayOfRequiredFields.forEach((field, index) => {

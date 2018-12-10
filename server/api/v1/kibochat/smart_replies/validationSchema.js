@@ -372,14 +372,12 @@ exports.createUnansweredPayload = {
       'type': 'string'
     },
     'Confidence': {
-      'type': 'integer'
+      'type': 'number'
     }
   },
   'required': [
     'botId',
-    'intentId',
-    'Question',
-    'Confidence'
+    'Question'
   ]
 }
 
