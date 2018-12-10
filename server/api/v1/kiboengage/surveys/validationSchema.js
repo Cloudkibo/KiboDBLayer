@@ -14,9 +14,6 @@ exports.createPayload = {
     'description': {
       'type': 'string'
     },
-    'image': {
-      'type': 'string'
-    },
     'userId': {
       'type': 'string'
     },
@@ -82,27 +79,13 @@ exports.createPayload = {
     },
     'isresponded': {
       'type': 'integer'
-    },
-    'fbMessageTag': {
-      'type': 'string'
     }
   },
   'required': [
     'title',
     'description',
-    'image',
     'userId',
-    'companyId',
-    'isSegmented',
-    'segmentationPageIds',
-    'segmentationLocale',
-    'segmentationGender',
-    'segmentationTimeZone',
-    'segmentationTags',
-    'segmentationSurvey',
-    'isList',
-    'segmentationList',
-    'fbMessageTag'
+    'companyId'
   ]
 }
 
@@ -120,9 +103,6 @@ exports.queryPayload = {
           'type': 'string'
         },
         'description': {
-          'type': 'string'
-        },
-        'image': {
           'type': 'string'
         },
         'userId': {
@@ -190,9 +170,6 @@ exports.queryPayload = {
         },
         'isresponded': {
           'type': 'integer'
-        },
-        'fbMessageTag': {
-          'type': 'string'
         }
       }
     }
@@ -220,9 +197,6 @@ exports.updatePayload =
         'description': {
           'type': 'string'
         },
-        'image': {
-          'type': 'string'
-        },
         'userId': {
           'type': 'string'
         },
@@ -288,9 +262,6 @@ exports.updatePayload =
         },
         'isresponded': {
           'type': 'integer'
-        },
-        'fbMessageTag': {
-          'type': 'string'
         }
       }
     },

@@ -14,9 +14,6 @@ exports.createPayload = {
     'payload': {
       'type': 'array'
     },
-    'type': {
-      'type': 'string'
-    },
     'title': {
       'type': 'string'
     },
@@ -31,9 +28,6 @@ exports.createPayload = {
     },
     'isSegmented': {
       'type': 'boolean'
-    },
-    'fbMessageTag': {
-      'type': 'string'
     },
     'segmentationPageIds': {
       'type': 'array',
@@ -92,16 +86,6 @@ exports.createPayload = {
     'platform',
     'payload',
     'title',
-    'type',
-    'companyId',
-    'isSegmented',
-    'segmentationPageIds',
-    'segmentationLocale',
-    'segmentationGender',
-    'segmentationTags',
-    'isList',
-    'segmentationList',
-    'fbMessageTag',
     'userId',
     'companyId'
   ]
@@ -123,9 +107,6 @@ exports.queryPayload = {
         'payload': {
           'type': 'array'
         },
-        'type': {
-          'type': 'string'
-        },
         'title': {
           'type': 'string'
         },
@@ -140,9 +121,6 @@ exports.queryPayload = {
         },
         'isSegmented': {
           'type': 'boolean'
-        },
-        'fbMessageTag': {
-          'type': 'string'
         },
         'segmentationPageIds': {
           'type': 'array',
@@ -196,9 +174,6 @@ exports.queryPayload = {
         'companyId': {
           'type': 'string'
         },
-        'datetime': {
-          'type': 'date'
-        },
         'clicks': {
           'type': 'number'
         }
@@ -228,9 +203,6 @@ exports.updatePayload =
         'payload': {
           'type': 'array'
         },
-        'type': {
-          'type': 'string'
-        },
         'title': {
           'type': 'string'
         },
@@ -245,9 +217,6 @@ exports.updatePayload =
         },
         'isSegmented': {
           'type': 'boolean'
-        },
-        'fbMessageTag': {
-          'type': 'string'
         },
         'segmentationPageIds': {
           'type': 'array',
@@ -294,9 +263,6 @@ exports.updatePayload =
               'type': 'string'
             }
           ]
-        },
-        'datetime': {
-          'type': 'date'
         },
         'clicks': {
           'type': 'number'

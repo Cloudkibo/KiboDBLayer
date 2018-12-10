@@ -20,7 +20,6 @@ exports.createPayload = {
   },
   'required': [
     'originalURL',
-    'subscriberId',
     'module'
   ]
 }

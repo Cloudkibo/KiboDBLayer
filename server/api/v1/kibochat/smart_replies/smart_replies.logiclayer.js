@@ -14,10 +14,8 @@ exports.validateCreateBotPayload = (body) => {
     'witToken',
     'witAppName',
     'isActive',
-    'payload',
     'hitCount',
-    'missCount',
-    'blockedSubscribers']
+    'missCount']
   let arrayOfKeys = Object.keys(body)
 
   arrayOfRequiredFields.forEach((field, index) => {
@@ -51,9 +49,7 @@ exports.validateCreateUnansweredPayload = (body) => {
   let bool = true
   let arrayOfRequiredFields = [
     'botId',
-    'intentId',
-    'Question',
-    'Confidence']
+    'Question']
   let arrayOfKeys = Object.keys(body)
 
   arrayOfRequiredFields.forEach((field, index) => {

@@ -30,20 +30,19 @@ exports.createPayload = {
       'type': 'string'
     },
     'status': {
-      'type': 'boolean'
-    },
-    'replied_by': {
       'type': 'string'
     },
+    'replied_by': {
+      'type': 'object'
+    },
     'payload': {
-      'type': 'array'
+      'type': 'object'
     },
     'url_meta': {
       'type': 'object'
     }
   },
   'required': [
-    'format',
     'sender_id',
     'recipient_id',
     'sender_fb_id',
@@ -87,7 +86,7 @@ exports.queryPayload = {
           'type': 'string'
         },
         'status': {
-          'type': 'boolean'
+          'type': 'string'
         },
         'replied_by': {
           'type': 'string'
@@ -140,7 +139,7 @@ exports.updatePayload =
           'type': 'string'
         },
         'status': {
-          'type': 'boolean'
+          'type': 'string'
         },
         'replied_by': {
           'type': 'string'

@@ -7,7 +7,6 @@ exports.validateCreatePayload = (body) => {
   let bool = true
   let arrayOfRequiredFields = [
     'originalURL',
-    'subscriberId',
     'module'
   ]
   let arrayOfKeys = Object.keys(body)

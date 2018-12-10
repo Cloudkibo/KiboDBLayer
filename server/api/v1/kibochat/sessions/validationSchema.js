@@ -27,9 +27,7 @@ exports.createPayload = {
   'required': [
     'subscriber_id',
     'page_id',
-    'company_id',
-    'assigned_to',
-    'agent_activity_time'
+    'company_id'
   ]
 }
 

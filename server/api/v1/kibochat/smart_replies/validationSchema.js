@@ -30,46 +30,16 @@ exports.createBotPayload = {
       'type': 'string'
     },
     'isActive': {
-      'type': 'string'
+      'type': 'boolean'
     },
     'payload': {
-      'type': 'array',
-      'items': [
-        {
-          'type': 'object',
-          'properties': {
-            'questions': {
-              'type': 'array',
-              'items': [
-                {
-                  'type': 'string'
-                }
-              ]
-            },
-            'answer': {
-              'type': 'string'
-            },
-            'intent_name': {
-              'type': 'string'
-            },
-            'videoLink': {
-              'type': 'string'
-            }
-          },
-          'required': [
-            'questions',
-            'answer',
-            'intent_name',
-            'videoLink'
-          ]
-        }
-      ]
+      'type': 'array'
     },
     'hitCount': {
-      'type': 'integer'
+      'type': 'number'
     },
     'missCount': {
-      'type': 'integer'
+      'type': 'number'
     },
     'blockedSubscribers': {
       'type': 'array',
@@ -89,10 +59,8 @@ exports.createBotPayload = {
     'witToken',
     'witAppName',
     'isActive',
-    'payload',
     'hitCount',
-    'missCount',
-    'blockedSubscribers'
+    'missCount'
   ]
 }
 
@@ -404,14 +372,12 @@ exports.createUnansweredPayload = {
       'type': 'string'
     },
     'Confidence': {
-      'type': 'integer'
+      'type': 'number'
     }
   },
   'required': [
     'botId',
-    'intentId',
-    'Question',
-    'Confidence'
+    'Question'
   ]
 }
 

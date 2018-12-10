@@ -9,16 +9,6 @@ exports.validateCreatePayload = (body) => {
     'platform',
     'payload',
     'title',
-    'type',
-    'companyId',
-    'isSegmented',
-    'segmentationPageIds',
-    'segmentationLocale',
-    'segmentationGender',
-    'segmentationTags',
-    'isList',
-    'segmentationList',
-    'fbMessageTag',
     'userId',
     'companyId'
   ]
