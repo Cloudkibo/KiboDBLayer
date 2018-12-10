@@ -30,7 +30,7 @@ exports.createBotPayload = {
       'type': 'string'
     },
     'isActive': {
-      'type': 'string'
+      'type': 'boolean'
     },
     'payload': {
       'type': 'array'
