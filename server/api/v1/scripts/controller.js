@@ -7,8 +7,10 @@ exports.normalizeKiboChat = function (req, res) {
   NotificationsDataLayer.findAllNotificationObjects()
     .then(notifications => {
       notifications.forEach(notification => {
-        notification.agentId = notification.agentId.toString()
-        notification.companyId = notification.companyId.toString()
+        /* eslint-disable */
+        notification.agentId = new String(notification.agentId)
+        notification.companyId = new String(notification.companyId)
+        /* eslint-enable */
       })
     })
     .catch(err => {
