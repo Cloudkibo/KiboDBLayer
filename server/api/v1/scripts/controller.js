@@ -11,16 +11,10 @@ exports.normalizeKiboChat = function (req, res) {
         notification.agentId = new String(notification.agentId)
         notification.companyId = new String(notification.companyId)
         /* eslint-enable */
-        NotificationsModel.deleteOne({_id: notification._id})
-          .then(deleted => {
-            let notificationData = new NotificationsModel(notification)
-            notificationData.save((err, saved) => {
-              if (err) console.log(TAG, `Failed to save notification ${err}`)
-            })
-          })
-          .catch(err => {
-            console.log(TAG, `Failed to delete notification ${err}`)
-          })
+        let notificationData = new NotificationsModel(notification)
+        notificationData.save((err, saved) => {
+          if (err) console.log(TAG, `Failed to save notification ${err}`)
+        })
       })
     })
     .catch(err => {
