@@ -1,9 +1,8 @@
-const logger = require('../../../../components/logger')
 const NotificationsDataLayer = require('../kibochat/notifications/notifications.datalayer')
 const TAG = '/api/v1/scripts/controller.js'
 
 exports.normalizeKiboChat = function (req, res) {
-  logger.serverLog(TAG, `normalizeKiboChat endpoint is hit:`)
+  console.log(TAG, `normalizeKiboChat endpoint is hit:`)
   res.status(200).json({status: 'success'})
   NotificationsDataLayer.findAllNotificationObjects()
     .then(notifications => {
@@ -13,6 +12,6 @@ exports.normalizeKiboChat = function (req, res) {
       })
     })
     .catch(err => {
-      logger.serverLog(TAG, `Failed to normalize notifications data ${err}`)
+      console.log(TAG, `Failed to normalize notifications data ${err}`)
     })
 }
