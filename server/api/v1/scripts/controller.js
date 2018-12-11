@@ -13,7 +13,7 @@ exports.normalizeKiboChat = function (req, res) {
         /* eslint-enable */
         NotificationsDataLayer.deleteNotification({purpose: 'deleteOne', match: {_id: notification._id}})
           .then(deleted => {
-            notification.save((err, saved) => {
+            notification.insert((err, saved) => {
               if (err) console.log(TAG, `Failed to save notification ${err}`)
             })
           })
