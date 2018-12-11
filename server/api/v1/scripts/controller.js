@@ -11,7 +11,10 @@ exports.normalizeKiboChat = function (req, res) {
         notification.agentId = new String(notification.agentId)
         notification.companyId = new String(notification.companyId)
         /* eslint-enable */
-        notification.save()
+        notification.save((err, saved) => {
+          if (err) console.log(TAG, `Failed to save notification ${err}`)
+          else console.log(TAG, `Notification saved ${saved}`)
+        })
       })
     })
     .catch(err => {
