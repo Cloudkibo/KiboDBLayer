@@ -67,12 +67,11 @@ exports.normalizeKiboChat = function (req, res) {
       console.log(TAG, `Failed to normalize sessions data ${err}`)
     })
 
-  SmartRepliesModel.find({userId: {$type: 7}, companyId: {$type: 7}})
+  SmartRepliesModel.find({userId: {$type: 7}})
     .then(bots => {
       bots.forEach(bot => {
         /* eslint-disable */
         bot.userId = new String(bot.userId)
-        bot.companyId = new String(bot.companyId)
         /* eslint-enable */
         let botData = new SmartRepliesModel(bot)
         botData.save((err, saved) => {
