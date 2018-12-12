@@ -9,7 +9,6 @@ const pollSchema = new Schema({
   options: [String],
   category: [String],
   datetime: { type: Date, default: Date.now }
-
 })
 
 module.exports = mongoose.model('pollTemplate', pollSchema)

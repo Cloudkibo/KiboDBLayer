@@ -6,7 +6,7 @@ const surveySchema = new Schema({
   pageId: String,
   userId: { type: String },
   companyId: { type: String },
-  surveyId: { type: String }, // Will be updated when broadcasts will be added
+  surveyId: { type: Schema.ObjectId, ref: 'surveys' }, // Will be updated when broadcasts will be added
   subscriberId: String,
   datetime: { type: Date, default: Date.now },
   seen: {type: Boolean}

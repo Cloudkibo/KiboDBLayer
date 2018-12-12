@@ -8,7 +8,7 @@ let AutopostingMessagesSchema = new Schema({
   companyId: String, // this is the company id
   autoposting_type: String, // facebook or twitter or youtube
   message_id: String, // this where message id will go
-  autopostingId: String, // unique name for autoposting account
+  autopostingId: {type: Schema.ObjectId, ref: 'autopostings'}, // unique name for autoposting account
   sent: Number, // sent count
   seen: Number, // seen count
   clicked: Number, // clicked count
