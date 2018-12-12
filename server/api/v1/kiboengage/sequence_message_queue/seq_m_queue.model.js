@@ -2,10 +2,10 @@ let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 
 const sequenceMessageQueueSchema = new Schema({
-  sequenceId: {type: String}, // will be updated
+  sequenceId: {type: Schema.ObjectId, ref: 'sequences'},
   subscriberId: {type: String},
   companyId: { type: String },
-  sequenceMessageId: { type: String }, // will be updated
+  sequenceMessageId: { type: Schema.ObjectId, ref: 'sequenceMessages' },
   queueScheduledTime: {type: Date},
   isActive: { type: Boolean, default: false }
 })

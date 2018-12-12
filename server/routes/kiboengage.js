@@ -21,6 +21,7 @@ module.exports = function (app) {
   app.use('/api/v1/tags_subscriber', require('./../api/v1/kiboengage/tags_subscriber'))
   app.use('/api/v1/templates', require('./../api/v1/kiboengage/templates'))
   app.use('/api/v1/urls', require('./../api/v1/kiboengage/urls'))
+  app.use('/api/v1/scripts', require('./../api/v1/scripts'))
 
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))

@@ -2,7 +2,7 @@ let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 
 const waitingSubscribers = new Schema({
-  botId: {type: String}, // will be updated later
+  botId: {type: Schema.ObjectId, ref: 'bots'},
   subscriberId: {type: String},
   pageId: {type: String},
   intentId: String, // This will represent each unique intent
