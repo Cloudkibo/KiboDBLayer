@@ -18,6 +18,7 @@ const PollResponsesModel = require('../kiboengage/polls/response.model')
 const SequenceMessageQueueModel = require('../kiboengage/sequence_message_queue/seq_m_queue.model')
 const SequencesModel = require('../kiboengage/sequence_messaging/sequence.model')
 const SequenceSubscriberMessagesModel = require('../kiboengage/sequence_subscribers/message.model')
+const SequenceSubscribersModel = require('../kiboengage/sequence_subscribers/seq_sub.model')
 const SurveyResponsesModel = require('../kiboengage/surveys/response.model')
 const SurveysModel = require('../kiboengage/surveys/surveys.model')
 const TagsModel = require('../kiboengage/tags/tags.model')
@@ -357,6 +358,23 @@ exports.normalizeKiboEngage = function (req, res) {
     })
     .catch(err => {
       console.log(TAG, `Failed to normalize sequence subscriber messages data ${err}`)
+    })
+
+  SequenceSubscribersModel.find({subscriberId: {$type: 7}, companyId: {$type: 7}})
+    .then(subscriberMessages => {
+      subscriberMessages.forEach(message => {
+        /* eslint-disable */
+        message.subscriberId = new String(message.subscriberId)
+        message.companyId = new String(message.companyId)
+        /* eslint-enable */
+        let subscriberMessagesData = new SequenceSubscribersModel(message)
+        subscriberMessagesData.save((err, saved) => {
+          if (err) console.log(TAG, `Failed to save sequence subscriber ${err}`)
+        })
+      })
+    })
+    .catch(err => {
+      console.log(TAG, `Failed to normalize sequence subscribers data ${err}`)
     })
 
   SurveyResponsesModel.find({subscriberId: {$type: 7}})
