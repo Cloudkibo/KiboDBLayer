@@ -42,7 +42,7 @@ exports.updateBroadcast = (body) => {
 }
 
 exports.findBroadcastUsingQuery = (body) => {
-  consle.log('body.purpose',body.purpose)
+  console.log('body.purpose',body.purpose)
   if (body.purpose) {
     // If purpose found, then proceed
     if (body.purpose === 'aggregate') {
