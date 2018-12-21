@@ -58,7 +58,7 @@ exports.update = function (req, res) {
 
 exports.delete = function (req, res) {
   logger.serverLog(TAG, `Delete endpoint is hit:`)
-
+  console.log('Delete endpoint is hit')
   DataLayer.deleteResponse(req.body)
     .then(result => {
       res.status(200).json({status: 'success', payload: result})
