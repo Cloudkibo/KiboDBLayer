@@ -68,6 +68,7 @@ exports.findResponseUsingQuery = (body) => {
 }
 
 exports.deleteResponse = (body) => {
+  console.log('body',body)
   if (body.purpose) {
     let query = body.match
     // If purpose found, then proceed
