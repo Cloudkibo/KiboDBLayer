@@ -58,6 +58,7 @@ exports.update = function (req, res) {
 
 exports.delete = function (req, res) {
   logger.serverLog(TAG, `Delete endpoint is hit:`)
+  console.log('survey end point delete hit')
 
   DataLayer.deleteResponse(req.body)
     .then(result => {
