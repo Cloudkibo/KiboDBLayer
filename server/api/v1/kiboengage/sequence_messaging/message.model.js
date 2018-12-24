@@ -4,7 +4,7 @@ let Schema = mongoose.Schema
 
 const messageSchema = new Schema({
   schedule: {type: Schema.Types.Mixed},
-  sequenceId: { type: String }, // Will be updated later
+  sequenceId: {type: Schema.ObjectId, ref: 'sequences'},
   title: String,
   payload: Schema.Types.Mixed,
   trigger: { type: Schema.Types.Mixed, default: {event: 'none', value: null} },

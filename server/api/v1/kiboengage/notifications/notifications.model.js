@@ -11,4 +11,4 @@ let NotificationsSchema = new Schema({
   datetime: { type: Date, default: Date.now }
 })
 
-module.exports = mongoose.model('notifications', NotificationsSchema)
+module.exports = mongoose.model('alerts', NotificationsSchema)

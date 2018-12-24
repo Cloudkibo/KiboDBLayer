@@ -34,7 +34,6 @@ router.put('/response',
   validate({body: validationSchema.responseUpdate}),
   responseController.update)
 router.delete('/response',
-  validate({body: validationSchema.responseQuery}),
   responseController.delete)
 
 // Question Endpoints

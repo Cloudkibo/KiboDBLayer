@@ -58,6 +58,8 @@ exports.findPageBroadcastUsingQuery = (body) => {
       console.log('body.purpose',body.purpose)
       console.log('body.match',body.match)
       // Reject if match criteria not found
+      console.log('body.purpose',body.purpose)
+      console.log('body.match',body.match)
       if (!body.match) return new Promise((resolve, reject) => { reject(new Error('Match Criteria Not Found')) })
       else return MongoInterface.find(body.match)
     } else {

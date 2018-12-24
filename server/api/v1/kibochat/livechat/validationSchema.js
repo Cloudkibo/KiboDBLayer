@@ -37,9 +37,6 @@ exports.createPayload = {
     },
     'payload': {
       'type': 'object'
-    },
-    'url_meta': {
-      'type': 'object'
     }
   },
   'required': [

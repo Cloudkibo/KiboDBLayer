@@ -18,7 +18,7 @@ exports.index = function (req, res) {
 }
 
 exports.create = function (req, res) {
-  logger.serverLog(TAG, `Create endpoint is hit:`)
+  console.log('Create endpoint is hit:', req.body)
 
   DataLayer.createOneLiveChatObject(req.body)
     .then(createdObject => {

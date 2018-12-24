@@ -2,7 +2,7 @@ let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 
 const tagSchema = new Schema({
-  tagId: {type: String}, // will be updated later
+  tagId: {type: Schema.ObjectId, ref: 'tags'},
   subscriberId: {type: String},
   companyId: {type: String},
   dateCreated: {type: Date, default: Date.now}

@@ -20,8 +20,13 @@ exports.validateCreatePayload = (body) => {
 exports.prepareMongoAggregateQuery = (body) => {
   let query = []
 
-  if (body.match) query.push({$match: body.match})
-  else return 'Match Criteria Not Found'
+  if (body.match) {
+    if (body.match.request_time && body.match.request_time.$gte && body.match.request_time.$lt) {
+      body.match.request_time.$gte = new Date(body.match.request_time.$gte)
+      body.match.request_time.$lt = new Date(body.match.request_time.$lt)
+      query.push({$match: body.match})
+    } else query.push({$match: body.match})
+  } else return 'Match Criteria Not Found'
 
   if (body.group) {
     if (!Object.keys(body.group).includes('_id')) return '_id is missing in Group Criteria'

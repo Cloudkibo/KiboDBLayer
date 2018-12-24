@@ -74,9 +74,6 @@ exports.queryBotPayload = {
     'match': {
       'type': 'object',
       'properties': {
-        'pageId': {
-          'type': 'string'
-        },
         'userId': {
           'type': 'string'
         },

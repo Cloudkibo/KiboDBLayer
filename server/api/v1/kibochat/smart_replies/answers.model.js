@@ -2,7 +2,7 @@ let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 
 const answerSchema = new Schema({
-  botId: {type: String}, // Will be updated
+  botId: {type: Schema.ObjectId, ref: 'bots'},
   intentId: String, // This will represent each unique intent
   questions: [String],
   answer: String,

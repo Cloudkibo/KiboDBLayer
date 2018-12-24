@@ -6,7 +6,7 @@ const pollSchema = new Schema({
   pageId: String,
   userId: { type: String },
   companyId: { type: String },
-  pollId: { type: String }, // Will be updated when broadcasts will be added
+  pollId: { type: Schema.ObjectId, ref: 'polls' }, // Will be updated when broadcasts will be added
   subscriberId: String,
   datetime: { type: Date, default: Date.now },
   seen: {type: Boolean}
