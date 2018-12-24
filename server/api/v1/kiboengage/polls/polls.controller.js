@@ -19,7 +19,7 @@ exports.index = function (req, res) {
 
 exports.create = function (req, res) {
   logger.serverLog(TAG, `Create endpoint is hit:`)
-
+  console.log('polls create endpoint is hit')
   DataLayer.createOnePollObject(req.body)
     .then(createdObject => {
       res.status(200).json({status: 'success', payload: createdObject})
