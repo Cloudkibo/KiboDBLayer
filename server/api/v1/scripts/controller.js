@@ -511,3 +511,32 @@ exports.normalizeKiboEngage = function (req, res) {
       console.log(TAG, `Failed to normalize urls data ${err}`)
     })
 }
+
+exports.normalizeDataForDelivery = function (req, res) {
+  console.log(TAG, `normalizeDataForDelivery endpoint is hit:`)
+  res.status(200).json({status: 'success'})
+
+  PageBroadcastModel.update({sent: null}, {sent: true}, {multi: true})
+    .then(updated => {
+      console.log('PageBroadcastModel normalized')
+    })
+    .catch(err => {
+      console.log(`Failed to normalize PageBroadcastModel ${err}`)
+    })
+
+  PagePollModel.update({sent: null}, {sent: true}, {multi: true})
+    .then(updated => {
+      console.log('PagePollModel normalized')
+    })
+    .catch(err => {
+      console.log(`Failed to normalize PagePollModel ${err}`)
+    })
+
+  PageSurveyModel.update({sent: null}, {sent: true}, {multi: true})
+    .then(updated => {
+      console.log('PageSurveyModel normalized')
+    })
+    .catch(err => {
+      console.log(`Failed to normalize PageSurveyModel ${err}`)
+    })
+}

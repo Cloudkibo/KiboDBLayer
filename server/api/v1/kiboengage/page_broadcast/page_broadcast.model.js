@@ -9,6 +9,7 @@ const broadcastSchema = new Schema({
   subscriberId: String,
   broadcastId: { type: Schema.ObjectId, ref: 'broadcasts' }, // Will be updated when broadcasts will be added
   datetime: { type: Date, default: Date.now },
+  sent: {type: Boolean},
   seen: {type: Boolean},
   clicked: {type: Boolean}
 })
