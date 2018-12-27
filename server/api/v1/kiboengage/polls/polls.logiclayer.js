@@ -35,9 +35,13 @@ exports.prepareMongoAggregateQuery = (body) => {
   let query = []
 
   if (body.match) {
-    if (body.match.datetime && body.match.datetime.$gte && body.match.datetime.$lt) {
-      body.match.datetime.$gte = new Date(body.match.datetime.$gte)
-      body.match.datetime.$lt = new Date(body.match.datetime.$lt)
+    if (body.match.datetime) {
+      if (body.match.datetime.$gte) {
+        body.match.datetime.$gte = new Date(body.match.datetime.$gte)
+      } 
+      if (body.match.datetime.$lt) {
+        body.match.datetime.$lt = new Date(body.match.datetime.$lt)
+      }
       query.push({$match: body.match})
     } else query.push({$match: body.match})
   } else return 'Match Criteria Not Found'
