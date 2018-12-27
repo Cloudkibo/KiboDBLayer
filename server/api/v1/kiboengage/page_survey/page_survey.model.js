@@ -9,6 +9,7 @@ const surveySchema = new Schema({
   surveyId: { type: Schema.ObjectId, ref: 'surveys' }, // Will be updated when broadcasts will be added
   subscriberId: String,
   datetime: { type: Date, default: Date.now },
+  sent: {type: Boolean},
   seen: {type: Boolean}
 })
 
