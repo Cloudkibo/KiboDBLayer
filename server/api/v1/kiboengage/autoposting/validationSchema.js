@@ -70,14 +70,7 @@ exports.createPayload = {
     'companyId',
     'accountTitle',
     'subscriptionUrl',
-    'subscriptionType',
-    'accountUniqueName',
-    'payload',
-    'segmentationPageIds',
-    'segmentationLocale',
-    'segmentationGender',
-    'segmentationTimeZone',
-    'segmentationTags'
+    'subscriptionType'
   ]
 }
 
