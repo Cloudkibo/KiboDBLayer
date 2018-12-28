@@ -4,6 +4,7 @@ By separating it from controller, we are separating the concerns.
 Thus we can use it from other non express callers like cron etc
 */
 const mongoose = require('mongoose')
+
 exports.validateCreatePayload = (body) => {
   let bool = true
   let arrayOfRequiredFields = [
