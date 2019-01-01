@@ -98,14 +98,18 @@ exports.messageCreate = {
     'title': {
       'type': 'string'
     },
-    'fbMessageTag': {
-      'type': 'string'
+    'schedule': {
+      'type': 'object'
+    },
+    'payload': {
+      'type': 'array'
     }
   },
   'required': [
     'sequenceId',
     'title',
-    'fbMessageTag'
+    'schedule',
+    'payload'
   ]
 }
 
@@ -125,8 +129,11 @@ exports.messageQuery = {
         'title': {
           'type': 'string'
         },
-        'fbMessageTag': {
-          'type': 'string'
+        'schedule': {
+          'type': 'object'
+        },
+        'payload': {
+          'type': 'array'
         }
       }
     }
