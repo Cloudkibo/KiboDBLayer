@@ -111,6 +111,11 @@ exports.prepareMongoAggregateQuery = (body) => {
         }
       }
     }
+    if (body.match.title) {
+      if (body.match.title.$regex) {
+        body.match.title.$regex = new RegExp('.*' + body.match.title.$regex + '.*', 'i')
+      }
+    }
     query.push({$match: body.match})
   } else {
     return 'Match Criteria Not Found'
