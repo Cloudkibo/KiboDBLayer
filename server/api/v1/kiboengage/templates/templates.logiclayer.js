@@ -3,6 +3,8 @@ This file will contain the functions for logic layer.
 By separating it from controller, we are separating the concerns.
 Thus we can use it from other non express callers like cron etc
 */
+const mongoose = require('mongoose')
+
 exports.validateCreateCategoryPayload = (body) => {
   let bool = true
   let arrayOfRequiredFields = ['name', 'userId', 'companyId']
@@ -94,7 +96,7 @@ exports.prepareMongoAggregateQuery = (body) => {
     if (body.match.datetime) {
       if (body.match.datetime.$gte) {
         body.match.datetime.$gte = new Date(body.match.datetime.$gte)
-      } 
+      }
       if (body.match.datetime.$lt) {
         body.match.datetime.$lt = new Date(body.match.datetime.$lt)
       }
@@ -108,7 +110,7 @@ exports.prepareMongoAggregateQuery = (body) => {
           body.match.$and[1]._id.$gt = mongoose.Types.ObjectId(body.match.$and[1]._id.$gt)
         }
       }
-    }  
+    }
     query.push({$match: body.match})
   } else {
     return 'Match Criteria Not Found'
