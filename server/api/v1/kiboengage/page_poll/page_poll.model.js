@@ -9,6 +9,7 @@ const pollSchema = new Schema({
   pollId: { type: Schema.ObjectId, ref: 'polls' }, // Will be updated when broadcasts will be added
   subscriberId: String,
   datetime: { type: Date, default: Date.now },
+  sent: {type: Boolean},
   seen: {type: Boolean}
 })
 

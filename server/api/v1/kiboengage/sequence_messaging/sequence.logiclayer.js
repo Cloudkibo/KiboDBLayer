@@ -19,7 +19,7 @@ exports.validateCreatePayload = (body) => {
 
 exports.validateMessagePayload = (body) => {
   let bool = true
-  let arrayOfRequiredFields = ['sequenceId', 'title', 'fbMessageTag']
+  let arrayOfRequiredFields = ['sequenceId', 'title', 'schedule', 'payload']
   let arrayOfKeys = Object.keys(body)
 
   arrayOfRequiredFields.forEach((field, index) => {

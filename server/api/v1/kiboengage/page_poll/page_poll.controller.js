@@ -45,12 +45,14 @@ exports.query = function (req, res) {
 
 exports.update = function (req, res) {
   logger.serverLog(TAG, `Update endpoint is hit:`)
-
+  console.log('update endpoint is hit', req.body)
   DataLayer.updatePagePoll(req.body)
     .then(foundObjects => {
+      console.log('successfully updated', foundObjects)
       res.status(200).json({status: 'success', payload: foundObjects})
     })
     .catch(err => {
+      console.log('error updating', err)
       logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
       res.status(500).json({status: 'failed', payload: err.toString()})
     })

@@ -50,7 +50,7 @@ exports.findBroadcastUsingQuery = (body) => {
       // If not validated
       logger.serverLog(TAG, `Inside Aggregate: ${util.inspect(aggregateQuery)}`)
       console.log('typeof aggregateQuery',typeof aggregateQuery)
-      console.log('aggregateQuery',aggregateQuery)
+      console.log('aggregateQuery', JSON.stringify(aggregateQuery))
       if (typeof aggregateQuery === 'string') return new Promise((resolve, reject) => { reject(new Error(aggregateQuery)) })
       else return MongoInterface.aggregate(aggregateQuery)
     } else if (body.purpose === 'findOne') {
