@@ -6,6 +6,7 @@ Thus Our web layer is agnostic of database
 
 exports.find = (Model, criteria = {}) => {
   return Model.find(criteria)
+    .populate('botId')
     .exec()
 }
 
