@@ -45,27 +45,7 @@ exports.queryPayload = {
       'type': 'string'
     },
     'match': {
-      'type': 'object',
-      'properties': {
-        'pageId': {
-          'type': 'string'
-        },
-        'userId': {
-          'type': 'string'
-        },
-        'companyId': {
-          'type': 'string'
-        },
-        'surveyId': {
-          'type': 'string'
-        },
-        'subscriberId': {
-          'type': 'string'
-        },
-        'seen': {
-          'type': 'boolean'
-        }
-      }
+      'type': 'object'
     }
   },
   'required': [
