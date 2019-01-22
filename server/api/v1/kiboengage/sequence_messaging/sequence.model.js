@@ -5,7 +5,7 @@ const sequenceSchema = new Schema({
   name: String,
   companyId: { type: String },
   userId: { type: String },
-  trigger: {type: Schema.Types.Mixed, default: {event: 'subscribe_to_sequence', value: null}},
+  trigger: {type: Schema.Types.Mixed, default: {event: 'subscribes_to_sequence', value: null}},
   datetime: { type: Date, default: Date.now }
 })
 

@@ -11,9 +11,6 @@ const all = {
   // Project root path
   root: path.normalize(`${__dirname}/../../..`),
 
-  // Server port
-  port: process.env.PORT || 5000,
-
   ip: process.env.IP || undefined,
 
   domain: `${process.env.DOMAIN || 'project domain'}`,
