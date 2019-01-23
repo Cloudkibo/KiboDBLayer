@@ -33,11 +33,11 @@ exports.prepareMongoAggregateQuery = (body) => {
     if (body.match.datetime) {
       if (body.match.datetime.$gte) {
         body.match.datetime.$gte = new Date(body.match.datetime.$gte)
-      } 
+      }
       if (body.match.datetime.$lt) {
         body.match.datetime.$lt = new Date(body.match.datetime.$lt)
       }
-    } 
+    }
     if (body.match.$and) {
       if (body.match.$and[1]._id) {
         if (body.match.$and[1]._id.$lt) {
@@ -47,7 +47,7 @@ exports.prepareMongoAggregateQuery = (body) => {
           body.match.$and[1]._id.$gt = mongoose.Types.ObjectId(body.match.$and[1]._id.$gt)
         }
       }
-    } 
+    }
     if (body.match.title) {
       if (body.match.title.$regex) {
         body.match.title.$regex = new RegExp('.*' + body.match.title.$regex + '.*', 'i')
