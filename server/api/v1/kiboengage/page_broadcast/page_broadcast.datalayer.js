@@ -47,6 +47,7 @@ exports.findPageBroadcastUsingQuery = (body) => {
     if (body.purpose === 'aggregate') {
       let aggregateQuery = LogicLayer.prepareMongoAggregateQuery(body)
       // If not validated
+      console.log('aggregateQuery', aggregateQuery)
       logger.serverLog(TAG, `Inside Aggregate: ${util.inspect(aggregateQuery)}`)
       if (typeof aggregateQuery === 'string') return new Promise((resolve, reject) => { reject(new Error(aggregateQuery)) })
       else return MongoInterface.aggregate(aggregateQuery)
