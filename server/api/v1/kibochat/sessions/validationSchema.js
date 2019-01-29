@@ -41,9 +41,6 @@ exports.queryPayload = {
     'match': {
       'type': 'object',
       'properties': {
-        'subscriber_id': {
-          'type': 'string'
-        },
         'company_id': {
           'type': 'string'
         },

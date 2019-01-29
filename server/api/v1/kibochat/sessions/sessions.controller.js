@@ -38,7 +38,7 @@ exports.query = function (req, res) {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
+      console.log(TAG, `Error found Query Controller : ${util.inspect(err)}`)
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }
