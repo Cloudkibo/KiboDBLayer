@@ -3,6 +3,8 @@ This file will contain the functions for logic layer.
 By separating it from controller, we are separating the concerns.
 Thus we can use it from other non express callers like cron etc
 */
+const mongoose = require('mongoose')
+
 exports.validateCreatePayload = (body) => {
   let bool = true
   let arrayOfRequiredFields = ['userId', 'pageId', 'companyId', 'subscriberId', 'pollId', 'seen']
@@ -21,6 +23,9 @@ exports.prepareMongoAggregateQuery = (body) => {
   let query = []
 
   if (body.match) {
+    if (body.match.companyId) {
+      body.match.companyId = mongoose.Types.ObjectId(body.match.companyId)
+    }
     if (body.match.datetime) {
       if (body.match.datetime.$gte) {
         body.match.datetime.$gte = new Date(body.match.datetime.$gte)
