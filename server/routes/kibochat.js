@@ -1,4 +1,6 @@
 // Will only contain routes for KiboChat
+const config = require('../config/environment/index')
+const Raven = require('raven')
 
 module.exports = function (app) {
   // API middlewares go here
@@ -17,6 +19,10 @@ module.exports = function (app) {
   }).post((req, res) => {
     res.status(404).send({url: `${req.originalUrl} not found`})
   })
+
+  if (config.env === 'production' || config.env === 'staging') {
+    app.use(Raven.errorHandler())
+  }
 
   // app.route('/*').get((req, res) => {
   //   res.redirect('/')
