@@ -6,6 +6,7 @@ Thus Our web layer is agnostic of database
 const LiveChatModel = require('./livechat.model')
 
 exports.find = (criteria = {}) => {
+  console.log('criteria in livechat', criteria)
   return LiveChatModel.find(criteria)
     .exec()
 }
