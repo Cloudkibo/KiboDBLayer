@@ -59,42 +59,7 @@ exports.queryPayload = {
       'type': 'string'
     },
     'match': {
-      'type': 'object',
-      'properties': {
-        'format': {
-          'type': 'string'
-        },
-        'sender_id': {
-          'type': 'string'
-        },
-        'recipient_id': {
-          'type': 'string'
-        },
-        'sender_fb_id': {
-          'type': 'string'
-        },
-        'recipient_fb_id': {
-          'type': 'string'
-        },
-        'session_id': {
-          'type': 'string'
-        },
-        'company_id': {
-          'type': 'string'
-        },
-        'status': {
-          'type': 'string'
-        },
-        'replied_by': {
-          'type': 'string'
-        },
-        'payload': {
-          'type': 'array'
-        },
-        'url_meta': {
-          'type': 'object'
-        }
-      }
+      'type': 'object'
     }
   },
   'required': [

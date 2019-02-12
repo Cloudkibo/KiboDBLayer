@@ -35,6 +35,9 @@ exports.prepareMongoAggregateQuery = (body) => {
     if (Object.keys(body.match).includes('session_id')) {
       body.match.session_id = mongoose.Types.ObjectId(body.match.session_id)
     }
+    if (Object.keys(body.match).includes('_id') && body.match._id.$lt) {
+      body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
+    }
     query.push({$match: body.match})
   } else {
     return 'Match Criteria Not Found'
