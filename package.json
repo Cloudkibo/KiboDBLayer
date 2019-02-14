@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/Cloudkibo/KiboDBLayer/blob/master/README.md",
   "dependencies": {
+    "async": "^2.6.2",
     "axios": "^0.18.0",
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
