@@ -11,9 +11,6 @@ exports.createPayload = {
     'originalURL': {
       'type': 'string'
     },
-    'subscriberId': {
-      'type': 'array'
-    },
     'module': {
       'type': 'object'
     }
