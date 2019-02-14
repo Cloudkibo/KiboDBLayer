@@ -8,6 +8,7 @@ let LiveChatSchema = new Schema({
   recipient_id: String,
   sender_fb_id: String, // this is facebook subscriber id or page id
   recipient_fb_id: String, // this is facebook subscriber id or page id
+  subscriber_id: String,
   session_id: {type: Schema.Types.ObjectId, ref: 'sessions'},
   company_id: String, // this is admin id till we have companies
   status: String, // seen or unseen
