@@ -63,3 +63,22 @@ exports.prepareMongoAggregateQuery = (body) => {
   console.log('query to return in autoposting_messages_id', query)
   return query
 }
+exports.validateResponsePayload = (body) => {
+  let bool = true
+  let arrayOfRequiredFields = [
+    'pageId',
+    'companyId',
+    'autopostingId',
+    'autoposting_messages_id',
+    'subscriberId'
+  ]
+  let arrayOfKeys = Object.keys(body)
+
+  arrayOfRequiredFields.forEach((field, index) => {
+    if (!arrayOfKeys.includes(field)) {
+      bool = false
+    }
+  })
+
+  return bool
+}
