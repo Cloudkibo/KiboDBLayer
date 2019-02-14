@@ -61,6 +61,6 @@ exports.prepareMongoAggregateQuery = (body) => {
   if (body.skip) query.push({$skip: body.skip})
   if (body.sort) query.push({$sort: body.sort})
   if (body.limit) query.push({$limit: body.limit})
-
+  console.log('query to return in autoposting_messages_id', query)
   return query
 }
