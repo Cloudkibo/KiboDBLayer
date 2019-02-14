@@ -7,7 +7,6 @@ exports.validateCreatePayload = (body) => {
   let bool = true
   let arrayOfRequiredFields = [
     'pageId',
-    'page_fb_id',
     'companyId',
     'autoposting_type',
     'message_id',
@@ -61,6 +60,25 @@ exports.prepareMongoAggregateQuery = (body) => {
   if (body.skip) query.push({$skip: body.skip})
   if (body.sort) query.push({$sort: body.sort})
   if (body.limit) query.push({$limit: body.limit})
-
+  console.log('query to return in autoposting_messages_id', query)
   return query
+}
+exports.validateResponsePayload = (body) => {
+  let bool = true
+  let arrayOfRequiredFields = [
+    'pageId',
+    'companyId',
+    'autopostingId',
+    'autoposting_messages_id',
+    'subscriberId'
+  ]
+  let arrayOfKeys = Object.keys(body)
+
+  arrayOfRequiredFields.forEach((field, index) => {
+    if (!arrayOfKeys.includes(field)) {
+      bool = false
+    }
+  })
+
+  return bool
 }

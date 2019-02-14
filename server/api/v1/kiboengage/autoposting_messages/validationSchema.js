@@ -11,9 +11,6 @@ exports.createPayload = {
     'pageId': {
       'type': 'string'
     },
-    'page_fb_id': {
-      'type': 'string'
-    },
     'companyId': {
       'type': 'string'
     },
@@ -38,7 +35,6 @@ exports.createPayload = {
   },
   'required': [
     'pageId',
-    'page_fb_id',
     'companyId',
     'autoposting_type',
     'message_id',
