@@ -2,6 +2,7 @@ const KiboChatNotificationsModel = require('../kibochat/notifications/notificati
 const SessionsModel = require('../kibochat/sessions/sessions.model')
 const SmartRepliesModel = require('../kibochat/smart_replies/smart_replies.model')
 const WaitingSubscribersModel = require('../kibochat/smart_replies/waiting_sub.model')
+const ChatModel = require('../kibochat/livechat/livechat.model')
 
 const AutomationQueueModel = require('../kiboengage/automation_queue/automation_queue.model')
 const AutopostingModel = require('../kiboengage/autoposting/autoposting.model')
@@ -27,8 +28,36 @@ const BotsTemplateModel = require('../kiboengage/templates/botTemplate.model')
 const BroadcastsTemplateModel = require('../kiboengage/templates/broadcastTemplate.model')
 const CategoryModel = require('../kiboengage/templates/category.model')
 const UrlsModel = require('../kiboengage/urls/urls.model')
-
+const async = require('async')
 const TAG = '/api/v1/scripts/controller.js'
+
+exports.normalizeChat = function (req, res) {
+  ChatModel.find().populate('session_id').exec()
+    .then(chats => {
+      async.each(chats, updateChat, function (err) {
+        if (err) {
+          console.log(TAG, `async each error ${JSON.stringify(err)}`)
+          res.status(500).json({status: 'failed', payload: err})
+        } else {
+          res.status(200).json({status: 'success', payload: 'updated successfully'})
+        }
+      })
+    })
+    .catch(err => {
+      console.log(TAG, `fetch chat error ${JSON.stringify(err)}`)
+      res.status(500).json({status: 'failed', payload: err})
+    })
+}
+
+function updateChat (chat, callback) {
+  ChatModel.update({_id: chat._id}, {subscriber_id: chat.session_id.subscriber_id})
+    .exec().then(result => {
+      callback(null)
+    })
+    .catch(err => {
+      callback(err)
+    })
+}
 
 exports.normalizeKiboChat = function (req, res) {
   console.log(TAG, `normalizeKiboChat endpoint is hit:`)
