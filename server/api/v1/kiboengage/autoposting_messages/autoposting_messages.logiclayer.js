@@ -7,7 +7,6 @@ exports.validateCreatePayload = (body) => {
   let bool = true
   let arrayOfRequiredFields = [
     'pageId',
-    'page_fb_id',
     'companyId',
     'autoposting_type',
     'message_id',
