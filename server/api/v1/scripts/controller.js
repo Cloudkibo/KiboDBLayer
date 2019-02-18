@@ -18,6 +18,7 @@ const PollsModel = require('../kiboengage/polls/polls.model')
 const PollResponsesModel = require('../kiboengage/polls/response.model')
 const SequenceMessageQueueModel = require('../kiboengage/sequence_message_queue/seq_m_queue.model')
 const SequencesModel = require('../kiboengage/sequence_messaging/sequence.model')
+const SequenceMessageModel = require('../kiboengage/sequence_messaging/message.model')
 const SequenceSubscriberMessagesModel = require('../kiboengage/sequence_subscribers/message.model')
 const SequenceSubscribersModel = require('../kiboengage/sequence_subscribers/seq_sub.model')
 const SurveyResponsesModel = require('../kiboengage/surveys/response.model')
@@ -29,6 +30,7 @@ const BroadcastsTemplateModel = require('../kiboengage/templates/broadcastTempla
 const CategoryModel = require('../kiboengage/templates/category.model')
 const UrlsModel = require('../kiboengage/urls/urls.model')
 const async = require('async')
+const config = require('./../../../config/environment/index')
 const TAG = '/api/v1/scripts/controller.js'
 
 exports.normalizeChat = function (req, res) {
@@ -567,5 +569,133 @@ exports.normalizeDataForDelivery = function (req, res) {
     })
     .catch(err => {
       console.log(`Failed to normalize PageSurveyModel ${err}`)
+    })
+}
+
+function updateCards (cards) {
+  return new Promise(function (resolve, reject) {
+    let id = ''
+    cards.forEach((card, index) => {
+      if (card.fileurl && card.fileurl.url) {
+        id = card.fileurl.url.substring(card.fileurl.url.indexOf('download/') + 9)
+        if (config.env === 'staging') {
+          card.fileurl.url = `https://saccounts.cloudkibo.com/api/v1/files/download/${id}`
+        } else {
+          card.fileurl.url = `https://accounts.cloudkibo.com/api/v1/files/download/${id}`
+        }
+      }
+      if (card.image_url) {
+        id = card.image_url.substring(card.image_url.indexOf('download/') + 9)
+        if (config.env === 'staging') {
+          card.image_url = `https://saccounts.cloudkibo.com/api/v1/files/download/${id}`
+        } else {
+          card.image_url = `https://accounts.cloudkibo.com/api/v1/files/download/${id}`
+        }
+      }
+      if (index === cards.length - 1) {
+        resolve(cards)
+      }
+    })
+  })
+}
+
+function updatePayload (payloads) {
+  return new Promise(function (resolve, reject) {
+    let id = ''
+    payloads.forEach((payload, index) => {
+      if (payload.componentType === 'gallery') {
+        updateCards(payload.cards)
+          .then(cards => {
+          })
+      } else if (payload.componentType === 'list') {
+        updateCards(payload.listItems)
+          .then(cards => {
+          })
+      } else {
+        if (payload.fileurl && payload.fileurl.url) {
+          id = payload.fileurl.url.substring(payload.fileurl.url.indexOf('download/') + 9)
+          if (config.env === 'staging') {
+            payload.fileurl.url = `https://saccounts.cloudkibo.com/api/v1/files/download/${id}`
+          } else {
+            payload.fileurl.url = `https://accounts.cloudkibo.com/api/v1/files/download/${id}`
+          }
+        }
+        if (payload.image_url) {
+          id = payload.image_url.substring(payload.image_url.indexOf('download/') + 9)
+          if (config.env === 'staging') {
+            payload.image_url = `https://saccounts.cloudkibo.com/api/v1/files/download/${id}`
+          } else {
+            payload.image_url = `https://accounts.cloudkibo.com/api/v1/files/download/${id}`
+          }
+        }
+      }
+      if (index === payloads.length - 1) {
+        resolve(payloads)
+      }
+    })
+  })
+}
+
+exports.normalizeBroadcastUrls = function (req, res) {
+  BroadcastsModel.find({})
+    .then(broadcasts => {
+      console.log('broadcast found')
+      broadcasts.forEach((broadcast, index) => {
+        updatePayload(broadcast.payload)
+          .then(payload => {
+            console.log('payload', payload)
+            BroadcastsModel.updateOne({_id: broadcast._id}, {payload: payload}).then(updated => {
+              console.log('updated', updated)
+            })
+          })
+        if (index === broadcasts.length - 1) {
+          // broadcast.save((err, saved) => {
+          //   if (err) console.log(TAG, `Failed to save url ${err}`)
+          // })
+          return res.status(200).json({status: 'success', payload: 'updated successfully'})
+        }
+      })
+    })
+}
+exports.normalizeTemplateUrls = function (req, res) {
+  BroadcastsTemplateModel.find({})
+    .then(broadcasts => {
+      console.log('broadcast found')
+      broadcasts.forEach((broadcast, index) => {
+        updatePayload(broadcast.payload)
+          .then(payload => {
+            console.log('payload', payload)
+            BroadcastsTemplateModel.updateOne({_id: broadcast._id}, {payload: payload}).then(updated => {
+              console.log('updated', updated)
+            })
+          })
+        if (index === broadcasts.length - 1) {
+          // broadcast.save((err, saved) => {
+          //   if (err) console.log(TAG, `Failed to save url ${err}`)
+          // })
+          return res.status(200).json({status: 'success', payload: 'updated successfully'})
+        }
+      })
+    })
+}
+exports.normalizeSequenceUrls = function (req, res) {
+  SequenceMessageModel.find({})
+    .then(messages => {
+      console.log('broadcast found')
+      messages.forEach((message, index) => {
+        updatePayload(message.payload)
+          .then(payload => {
+            console.log('payload', payload)
+            SequenceMessageModel.updateOne({_id: message._id}, {payload: payload}).then(updated => {
+              console.log('updated', updated)
+            })
+          })
+        if (index === messages.length - 1) {
+          // broadcast.save((err, saved) => {
+          //   if (err) console.log(TAG, `Failed to save url ${err}`)
+          // })
+          return res.status(200).json({status: 'success', payload: 'updated successfully'})
+        }
+      })
     })
 }
