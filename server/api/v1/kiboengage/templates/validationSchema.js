@@ -323,7 +323,12 @@ exports.queryBroadcastTemplatePayload = {
       'type': 'string'
     },
     'match': {
-      'type': 'object'
+      'type': 'object',
+      'properties': {
+        'companyId': {
+          'type': 'string'
+        }
+      }
     }
   },
   'required': [
