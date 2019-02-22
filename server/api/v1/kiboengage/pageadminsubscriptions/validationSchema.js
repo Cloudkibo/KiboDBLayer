@@ -46,7 +46,8 @@ exports.queryPayload = {
           'type': 'string'
         },
         'companyId': {
-          'type': 'string'
+          'type': 'string',
+          'required': true
         },
         'subscriberId': {
           'type': 'string'

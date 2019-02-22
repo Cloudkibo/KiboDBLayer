@@ -69,7 +69,8 @@ exports.queryBotPayload = {
   'type': 'object',
   'properties': {
     'purpose': {
-      'type': 'string'
+      'type': 'string',
+      'required': true
     },
     'match': {
       'type': 'object',
@@ -142,13 +143,10 @@ exports.queryBotPayload = {
             }
           ]
         }
-      }
+      },
+      'required': true
     }
-  },
-  'required': [
-    'purpose',
-    'match'
-  ]
+  }
 }
 
 exports.updateBotPayload =

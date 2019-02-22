@@ -38,7 +38,8 @@ exports.queryPayload = {
   'type': 'object',
   'properties': {
     'purpose': {
-      'type': 'string'
+      'type': 'string',
+      'required': true
     },
     'match': {
       'type': 'object',
@@ -58,13 +59,10 @@ exports.queryPayload = {
         'scheduledTime': {
           'type': 'string'
         }
-      }
+      },
+      'required': true
     }
-  },
-  'required': [
-    'purpose',
-    'match'
-  ]
+  }
 }
 
 exports.updatePayload = {

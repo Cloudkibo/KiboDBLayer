@@ -56,16 +56,20 @@ exports.queryPayload = {
   'type': 'object',
   'properties': {
     'purpose': {
-      'type': 'string'
+      'type': 'string',
+      'required': true
     },
     'match': {
-      'type': 'object'
+      'type': 'object',
+      'properties': {
+        'company_id': {
+          'type': 'string',
+          'required': true
+        }
+      },
+      'required': true
     }
-  },
-  'required': [
-    'purpose',
-    'match'
-  ]
+  }
 }
 
 exports.updatePayload =
