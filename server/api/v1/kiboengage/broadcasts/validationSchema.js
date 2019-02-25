@@ -96,94 +96,20 @@ exports.queryPayload = {
   'type': 'object',
   'properties': {
     'purpose': {
-      'type': 'string'
+      'type': 'string',
+      'required': true
     },
     'match': {
       'type': 'object',
       'properties': {
-        'platform': {
-          'type': 'string'
-        },
-        'payload': {
-          'type': 'array'
-        },
-        'title': {
-          'type': 'string'
-        },
-        'text': {
-          'type': 'string'
-        },
-        'fileurl': {
-          'type': 'string'
-        },
-        'attachmentType': {
-          'type': 'string'
-        },
-        'isSegmented': {
-          'type': 'boolean'
-        },
-        'segmentationPageIds': {
-          'type': 'array',
-          'items': [
-            {
-              'type': 'string'
-            }
-          ]
-        },
-        'segmentationLocale': {
-          'type': 'array',
-          'items': [
-            {
-              'type': 'string'
-            }
-          ]
-        },
-        'segmentationGender': {
-          'type': 'array',
-          'items': [
-            {
-              'type': 'string'
-            }
-          ]
-        },
-        'segmentationTimeZone': {
-          'type': 'string'
-        },
-        'segmentationTags': {
-          'type': 'array',
-          'items': [
-            {
-              'type': 'string'
-            }
-          ]
-        },
-        'isList': {
-          'type': 'boolean'
-        },
-        'segmentationList': {
-          'type': 'array',
-          'items': [
-            {
-              'type': 'string'
-            }
-          ]
-        },
-        'userId': {
-          'type': 'string'
-        },
         'companyId': {
-          'type': 'string'
-        },
-        'clicks': {
-          'type': 'number'
+          'type': 'string',
+          'required': true
         }
-      }
+      },
+      'required': true
     }
-  },
-  'required': [
-    'purpose',
-    'match'
-  ]
+  }
 }
 
 exports.updatePayload =

@@ -50,7 +50,8 @@ exports.queryPayload = {
   'type': 'object',
   'properties': {
     'purpose': {
-      'type': 'string'
+      'type': 'string',
+      'required': true
     },
     'match': {
       'type': 'object',
@@ -62,7 +63,8 @@ exports.queryPayload = {
           'type': 'string'
         },
         'companyId': {
-          'type': 'string'
+          'type': 'string',
+          'required': true
         },
         'autoposting_type': {
           'type': 'string'
@@ -82,13 +84,10 @@ exports.queryPayload = {
         'clicked': {
           'type': 'number'
         }
-      }
+      },
+      'required': true
     }
-  },
-  'required': [
-    'purpose',
-    'match'
-  ]
+  }
 }
 
 exports.updatePayload =
@@ -177,7 +176,8 @@ exports.subscriberMessagesQuery = {
   'type': 'object',
   'properties': {
     'purpose': {
-      'type': 'string'
+      'type': 'string',
+      'required': true
     },
     'match': {
       'type': 'object',
@@ -186,7 +186,8 @@ exports.subscriberMessagesQuery = {
           'type': 'string'
         },
         'companyId': {
-          'type': 'string'
+          'type': 'string',
+          'required': true
         },
         'autopostingId': {
           'type': 'string'
@@ -197,13 +198,10 @@ exports.subscriberMessagesQuery = {
         'subscriberId': {
           'type': 'string'
         }
-      }
+      },
+      'required': true
     }
-  },
-  'required': [
-    'purpose',
-    'match'
-  ]
+  }
 }
 
 exports.subscriberMessagesUpdate = {
