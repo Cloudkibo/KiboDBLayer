@@ -253,6 +253,7 @@ exports.updatePollTemplate = function (req, res) {
 
   DataLayer.update(PollTemplateModel, req.body)
     .then(foundObjects => {
+      console.log(foundObjects)
       res.status(200).json({status: 'success', payload: foundObjects})
     })
     .catch(err => {
