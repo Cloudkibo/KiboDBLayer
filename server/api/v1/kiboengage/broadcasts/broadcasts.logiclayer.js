@@ -37,14 +37,12 @@ exports.prepareMongoAggregateQuery = (body) => {
       if (body.match.datetime.$lt) {
         body.match.datetime.$lt = new Date(body.match.datetime.$lt)
       }
-    }
-    if (body.match.$and) {
-      if (body.match.$and[1]._id) {
-        if (body.match.$and[1]._id.$lt) {
-          body.match.$and[1]._id.$lt = mongoose.Types.ObjectId(body.match.$and[1]._id.$lt)
+      if (body.match._id) {
+        if (body.match._id.$lt) {
+          body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
         }
-        if (body.match.$and[1]._id.$gt) {
-          body.match.$and[1]._id.$gt = mongoose.Types.ObjectId(body.match.$and[1]._id.$gt)
+        if (body.match._id.$gt) {
+          body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
         }
       }
     }

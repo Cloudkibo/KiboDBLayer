@@ -101,6 +101,12 @@ exports.queryPayload = {
     },
     'match': {
       'type': 'object',
+      'properties': {
+        'companyId': {
+          'type': 'string',
+          'required': true
+        }
+      },
       'required': true
     }
   }
