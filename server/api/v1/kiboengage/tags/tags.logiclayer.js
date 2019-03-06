@@ -28,8 +28,8 @@ exports.prepareMongoAggregateQuery = (body) => {
     else query.push({$group: body.group})
   }
 
-  if (body.skip) query.push({$skip: body.skip})
   if (body.sort) query.push({$sort: body.sort})
+  if (body.skip) query.push({$skip: body.skip})
   if (body.limit) query.push({$limit: body.limit})
 
   return query

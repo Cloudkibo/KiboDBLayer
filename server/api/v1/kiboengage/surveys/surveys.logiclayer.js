@@ -54,7 +54,7 @@ exports.prepareMongoAggregateQuery = (body) => {
     if (body.match.datetime) {
       if (body.match.datetime.$gte) {
         body.match.datetime.$gte = new Date(body.match.datetime.$gte)
-      } 
+      }
       if (body.match.datetime.$lt) {
         body.match.datetime.$lt = new Date(body.match.datetime.$lt)
       }
@@ -68,7 +68,7 @@ exports.prepareMongoAggregateQuery = (body) => {
           body.match.$and[1]._id.$gt = mongoose.Types.ObjectId(body.match.$and[1]._id.$gt)
         }
       }
-    }  
+    }
     query.push({$match: body.match})
   } else {
     return 'Match Criteria Not Found'
@@ -79,8 +79,8 @@ exports.prepareMongoAggregateQuery = (body) => {
     else query.push({$group: body.group})
   }
 
-  if (body.skip) query.push({$skip: body.skip})
   if (body.sort) query.push({$sort: body.sort})
+  if (body.skip) query.push({$skip: body.skip})
   if (body.limit) query.push({$limit: body.limit})
 
   return query

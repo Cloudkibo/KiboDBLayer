@@ -15,7 +15,7 @@ exports.findOne = (Model, criteria) => {
 }
 
 exports.findOneAndUpdate = (Model, query, updated, options) => {
-  return Model.findOneAndUpdate(query, updated, options)
+  return Model.updateOne(query, updated, options)
     .exec()
 }
 
