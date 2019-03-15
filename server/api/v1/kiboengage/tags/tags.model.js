@@ -7,7 +7,8 @@ const tagSchema = new Schema({
   companyId: {type: String},
   dateCreated: {type: Date, default: Date.now},
   pageId: String,
-  labelFbId: String
+  labelFbId: String,
+  defaultTag: {type: Boolean, default: false}
 })
 
 module.exports = mongoose.model('tags', tagSchema)
