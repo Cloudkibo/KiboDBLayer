@@ -2,31 +2,31 @@ exports.createPayload = {
   '$schema': 'http://json-schema.org/draft-04/schema#',
   'type': 'object',
   'properties': {
-    'platform': {
+    'senderNumber': {
       'type': 'string'
     },
-    'payload': {
-      'type': 'array'
-    },
-    'title': {
+    'recipientNumber': {
       'type': 'string'
     },
-    'userId': {
+    'contactId': {
       'type': 'string'
     },
     'companyId': {
       'type': 'string'
+    },
+    'payload': {
+      'type': 'string'
     }
   },
   'required': [
-    'platform',
-    'payload',
-    'title',
-    'userId',
+    'senderNumber',
+    'recipientNumber',
+    'contactId',
     'companyId',
-    'phoneNumber'
+    'payload'
   ]
 }
+
 exports.queryPayload = {
   '$schema': 'http://json-schema.org/draft-04/schema#',
   'type': 'object',
@@ -46,25 +46,4 @@ exports.queryPayload = {
       'required': true
     }
   }
-}
-exports.updatePayload =
-{
-  '$schema': 'http://json-schema.org/draft-04/schema#',
-  'type': 'object',
-  'properties': {
-    'purpose': {
-      'type': 'string'
-    },
-    'match': {
-      'type': 'object'
-    },
-    'updated': {
-      'type': 'object'
-    }
-  },
-  'required': [
-    'purpose',
-    'match',
-    'updated'
-  ]
 }
