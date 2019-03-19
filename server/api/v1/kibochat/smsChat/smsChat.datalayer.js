@@ -35,3 +35,24 @@ exports.findLiveChatUsingQuery = (body) => {
     return new Promise((resolve, reject) => { reject(new Error('Purpose Not Found')) })
   }
 }
+exports.updateLiveChat = (body) => {
+  if (body.purpose) {
+    let query = body.match
+    let updated = body.updated
+    let options = {}
+    if (body.upsert) options.upsert = body.upsert
+    if (body.new) options.new = body.new
+    // If purpose found, then proceed
+    if (body.purpose === 'updateOne') {
+      return MongoInterface.findOneAndUpdate(query, updated, options)
+    } else if (body.purpose === 'updateAll') {
+      // Can updated multiple record matching the query
+      return MongoInterface.updateMany(query, updated, options)
+    } else {
+      return new Promise((resolve, reject) => { reject(new Error('Correct Purpose Not Found')) })
+    }
+  } else {
+    // If purpose not found, then reject
+    return new Promise((resolve, reject) => { reject(new Error('Purpose Not Found')) })
+  }
+}

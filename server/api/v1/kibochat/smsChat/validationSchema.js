@@ -15,7 +15,7 @@ exports.createPayload = {
       'type': 'string'
     },
     'payload': {
-      'type': 'string'
+      'type': 'object'
     }
   },
   'required': [
@@ -46,4 +46,25 @@ exports.queryPayload = {
       'required': true
     }
   }
+}
+exports.updatePayload =
+{
+  '$schema': 'http://json-schema.org/draft-04/schema#',
+  'type': 'object',
+  'properties': {
+    'purpose': {
+      'type': 'string'
+    },
+    'match': {
+      'type': 'object'
+    },
+    'updated': {
+      'type': 'object'
+    }
+  },
+  'required': [
+    'purpose',
+    'match',
+    'updated'
+  ]
 }

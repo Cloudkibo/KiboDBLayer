@@ -13,4 +13,8 @@ router.post('/query',
   validate({body: validationSchema.queryPayload}),
   controller.query)
 
+router.put('/',
+  validate({body: validationSchema.updatePayload}),
+  controller.update)
+
 module.exports = router

@@ -29,3 +29,15 @@ exports.query = function (req, res) {
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }
+exports.update = function (req, res) {
+  logger.serverLog(TAG, `Update endpoint is hit:`)
+
+  DataLayer.updateLiveChat(req.body)
+    .then(foundObjects => {
+      res.status(200).json({status: 'success', payload: foundObjects})
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
+      res.status(500).json({status: 'failed', payload: err.toString()})
+    })
+}
