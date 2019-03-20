@@ -25,3 +25,12 @@ exports.aggregate = (query) => {
   return LiveChatModel.aggregate(query)
     .exec()
 }
+exports.findOneAndUpdate = (query, updated, options) => {
+  return LiveChatModel.findOneAndUpdate(query, updated, options)
+    .exec()
+}
+
+exports.updateMany = (query, updated, options) => {
+  return LiveChatModel.updateMany(query, updated, options)
+    .exec()
+}
