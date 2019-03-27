@@ -19,8 +19,11 @@ const surveySchema = new Schema({
   isList: { type: Boolean, default: false },
   segmentationList: [String],
   isresponded: { type: Number, default: 0 },
-  fbMessageTag: String
-
+  fbMessageTag: String,
+  sent: Number,
+  messageCreativeId: String,
+  broadcastFbId: String,
+  APIName: {type: String, default: 'send_api'}
 })
 
 module.exports = mongoose.model('surveys', surveySchema)
