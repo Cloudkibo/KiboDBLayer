@@ -12,9 +12,6 @@ let AutopostingMessagesSchema = new Schema({
   sent: Number, // sent count
   seen: Number, // seen count
   clicked: Number, // clicked count
-  messageCreativeId: String,
-  broadcastFbId: String,
-  APIName: String,
   datetime: {type: Date, default: Date.now}
 })
 
