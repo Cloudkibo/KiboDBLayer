@@ -51,6 +51,14 @@ exports.prepareMongoAggregateQuery = (body) => {
         body.match.title.$regex = new RegExp('.*' + body.match.title.$regex + '.*', 'i')
       }
     }
+    if (body.match._id) {
+      if (body.match._id.$lt) {
+        body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
+      }
+      if (body.match._id.$gt) {
+        body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
+      }
+    }
     query.push({$match: body.match})
   } else {
     return 'Match Criteria Not Found'
@@ -64,6 +72,7 @@ exports.prepareMongoAggregateQuery = (body) => {
   if (body.sort) query.push({$sort: body.sort})
   if (body.skip) query.push({$skip: body.skip})
   if (body.limit) query.push({$limit: body.limit})
+  if (body.lookup) query.push({$lookup: body.lookup})
 
   return query
 }
