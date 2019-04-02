@@ -48,6 +48,7 @@ exports.validateQuestionPayload = (body) => {
 }
 
 exports.prepareMongoAggregateQuery = (body) => {
+  console.log('body in survey', body)
   let query = []
 
   if (body.match) {
@@ -82,6 +83,8 @@ exports.prepareMongoAggregateQuery = (body) => {
   if (body.sort) query.push({$sort: body.sort})
   if (body.skip) query.push({$skip: body.skip})
   if (body.limit) query.push({$limit: body.limit})
+  if (body.lookup) query.push({$lookup: body.lookup})
+  if (body.lookup1) query.push({$lookup: body.lookup1})
 
   return query
 }
