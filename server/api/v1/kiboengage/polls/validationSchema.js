@@ -325,13 +325,13 @@ exports.responseQuery = {
       'type': 'object',
       'properties': {
         'response': {
-          'type': 'string'
+          'type': ['string', 'object']
         },
         'pollId': {
-          'type': 'string'
+          'type': ['string', 'object']
         },
         'subscriberId': {
-          'type': 'string'
+          'type': ['string', 'object']
         }
       }
     }
