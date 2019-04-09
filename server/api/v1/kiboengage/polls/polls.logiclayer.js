@@ -55,6 +55,14 @@ exports.prepareMongoAggregateQuery = (body) => {
         }
       }
     }
+    if (body.match._id) {
+      if (body.match._id.$lt) {
+        body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
+      }
+      if (body.match._id.$gt) {
+        body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
+      }
+    }
     query.push({$match: body.match})
   } else {
     return 'Match Criteria Not Found'
@@ -70,6 +78,8 @@ exports.prepareMongoAggregateQuery = (body) => {
   if (body.limit) query.push({$limit: body.limit})
   if (body.lookup) query.push({$lookup: body.lookup})
   if (body.lookup1) query.push({$lookup: body.lookup1})
+
+  console.log('final query in polls', JSON.stringify(query))
 
   return query
 }
