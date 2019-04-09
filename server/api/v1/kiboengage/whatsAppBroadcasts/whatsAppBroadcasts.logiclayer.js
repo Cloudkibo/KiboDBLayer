@@ -7,8 +7,7 @@ exports.validateCreatePayload = (body) => {
     'payload',
     'title',
     'userId',
-    'companyId',
-    'phoneNumber'
+    'companyId'
   ]
   let arrayOfKeys = Object.keys(body)
 
@@ -59,6 +58,6 @@ exports.prepareMongoAggregateQuery = (body) => {
   if (body.sort) query.push({$sort: body.sort})
   if (body.skip) query.push({$skip: body.skip})
   if (body.limit) query.push({$limit: body.limit})
-  console.log('final query', JSON.stringify(query))
+
   return query
 }
