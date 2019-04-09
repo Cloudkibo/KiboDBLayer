@@ -22,7 +22,11 @@ let broadcastSchema = new Schema({
   userId: String,
   companyId: String,
   datetime: { type: Date, default: Date.now },
-  clicks: {type: Number, default: 0}
+  clicks: {type: Number, default: 0},
+  sent: Number,
+  messageCreativeId: String,
+  broadcastFbId: String,
+  APIName: {type: String, default: 'batch_api'}
 })
 
 module.exports = mongoose.model('broadcasts', broadcastSchema)

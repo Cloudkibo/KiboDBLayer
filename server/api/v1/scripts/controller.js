@@ -31,6 +31,7 @@ const CategoryModel = require('../kiboengage/templates/category.model')
 const UrlsModel = require('../kiboengage/urls/urls.model')
 const async = require('async')
 const config = require('./../../../config/environment/index')
+const logger = require('../../../components/logger')
 const TAG = '/api/v1/scripts/controller.js'
 
 exports.normalizeChat = function (req, res) {
@@ -697,5 +698,66 @@ exports.normalizeSequenceUrls = function (req, res) {
           return res.status(200).json({status: 'success', payload: 'updated successfully'})
         }
       })
+    })
+}
+
+exports.normalizeSentCount = function (req, res) {
+  normalizeForBroadcasts()
+  normalizeForPolls()
+  normalizeForSurveys()
+  return res.status(200).json({status: 'success', payload: 'Normalized successfully!'})
+}
+
+function normalizeForBroadcasts () {
+  BroadcastsModel.find({}).exec()
+    .then(broadcasts => {
+      broadcasts.forEach(broadcast => {
+        PageBroadcastModel.find({broadcastId: broadcast._id}).exec()
+          .then(countData => {
+            BroadcastsModel.update({_id: broadcast._id}, {sent: countData.length})
+          })
+          .catch(err => {
+            logger.serverLog(TAG, `Filed to fetch broadcast sent count ${err}`)
+          })
+      })
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Filed to fetch broadcasts ${err}`)
+    })
+}
+
+function normalizeForPolls () {
+  PollsModel.find({}).exec()
+    .then(polls => {
+      polls.forEach(poll => {
+        PagePollModel.find({pollId: poll._id}).exec()
+          .then(countData => {
+            PollsModel.update({_id: poll._id}, {sent: countData.length})
+          })
+          .catch(err => {
+            logger.serverLog(TAG, `Filed to fetch poll sent count ${err}`)
+          })
+      })
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Filed to fetch polls ${err}`)
+    })
+}
+
+function normalizeForSurveys () {
+  SurveysModel.find({}).exec()
+    .then(surveys => {
+      surveys.forEach(survey => {
+        PageSurveyModel.find({surveyId: survey._id}).exec()
+          .then(countData => {
+            SurveysModel.update({_id: survey._id}, {sent: countData.length})
+          })
+          .catch(err => {
+            logger.serverLog(TAG, `Filed to fetch survey sent count ${err}`)
+          })
+      })
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Filed to fetch surveys ${err}`)
     })
 }
