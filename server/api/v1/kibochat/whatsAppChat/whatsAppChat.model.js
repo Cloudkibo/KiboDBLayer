@@ -11,7 +11,8 @@ let LiveChatSchema = new Schema({
   payload: Schema.Types.Mixed,
   datetime: { type: Date, default: Date.now },
   status: {type: String, default: 'unseen'},
-  repliedBy: Schema.Types.Mixed
+  repliedBy: Schema.Types.Mixed,
+  seenDateTime: { type: Date, default: Date.now }
 })
 
 module.exports = mongoose.model('whatsAppChat', LiveChatSchema)
