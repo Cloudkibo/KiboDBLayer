@@ -73,6 +73,7 @@ exports.prepareMongoAggregateQuery = (body) => {
   if (body.skip) query.push({$skip: body.skip})
   if (body.limit) query.push({$limit: body.limit})
   if (body.lookup) query.push({$lookup: body.lookup})
+  console.log('final query in broadcast', JSON.stringify(query))
 
   return query
 }

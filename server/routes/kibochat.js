@@ -10,6 +10,7 @@ module.exports = function (app) {
   app.use('/api/v1/smart_replies', require('./../api/v1/kibochat/smart_replies'))
   app.use('/api/v1/sessions', require('./../api/v1/kibochat/sessions'))
   app.use('/api/v1/smsChat', require('./../api/v1/kibochat/smsChat'))
+  app.use('/api/v1/whatsAppChat', require('./../api/v1/kibochat/whatsAppChat'))
   app.use('/api/v1/scripts', require('./../api/v1/scripts'))
 
   // auth middleware go here if you authenticate on same server

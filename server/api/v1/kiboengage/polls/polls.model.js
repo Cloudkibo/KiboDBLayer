@@ -18,8 +18,11 @@ const pollSchema = new Schema({
   isList: { type: Boolean, default: false },
   segmentationList: [String],
   segmentationPoll: [String],
-  fbMessageTag: String
-
+  fbMessageTag: String,
+  sent: Number,
+  messageCreativeId: String,
+  broadcastFbId: String,
+  APIName: {type: String, default: 'send_api'}
 })
 
 module.exports = mongoose.model('polls', pollSchema)

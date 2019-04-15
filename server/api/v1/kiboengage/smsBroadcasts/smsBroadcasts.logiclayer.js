@@ -32,13 +32,13 @@ exports.prepareMongoAggregateQuery = (body) => {
       if (body.match.datetime.$lt) {
         body.match.datetime.$lt = new Date(body.match.datetime.$lt)
       }
-      if (body.match._id) {
-        if (body.match._id.$lt) {
-          body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
-        }
-        if (body.match._id.$gt) {
-          body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
-        }
+    }
+    if (body.match._id) {
+      if (body.match._id.$lt) {
+        body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
+      }
+      if (body.match._id.$gt) {
+        body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
       }
     }
     if (body.match.title) {
@@ -59,6 +59,6 @@ exports.prepareMongoAggregateQuery = (body) => {
   if (body.sort) query.push({$sort: body.sort})
   if (body.skip) query.push({$skip: body.skip})
   if (body.limit) query.push({$limit: body.limit})
-
+  console.log('final query', JSON.stringify(query))
   return query
 }
