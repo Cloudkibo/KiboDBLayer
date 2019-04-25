@@ -8,8 +8,8 @@ const sequenceSubscribersMessages = new Schema({
   companyId: { type: String },
   datetime: { type: Date, default: Date.now },
   seen: {type: Boolean, default: false},
-  clicked: {type: Boolean, default: false},
-  received: {type: Schema.Types.Mixed}
+  clicked: {type: Schema.Types.Mixed},
+  received: {type: Boolean, default: false}
 })
 
 module.exports = mongoose.model('sequenceSubscribersMessages', sequenceSubscribersMessages)

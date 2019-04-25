@@ -28,8 +28,7 @@ exports.createPayload = {
     'sequenceId',
     'subscriberId',
     'companyId',
-    'sequenceMessageId',
-    'queueScheduledTime'
+    'sequenceMessageId'
   ]
 }
 
