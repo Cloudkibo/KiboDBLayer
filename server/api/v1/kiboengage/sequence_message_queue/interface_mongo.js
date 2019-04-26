@@ -7,11 +7,13 @@ const SequenceMessageQueueModel = require('./seq_m_queue.model')
 
 exports.find = (criteria = {}) => {
   return SequenceMessageQueueModel.find(criteria)
+    .populate('sequenceMessageId')
     .exec()
 }
 
 exports.findOne = (criteria) => {
   return SequenceMessageQueueModel.findOne(criteria)
+    .populate('sequenceMessageId')
     .exec()
 }
 
