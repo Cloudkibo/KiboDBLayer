@@ -12,7 +12,7 @@ exports.validateCreatePayload = (body) => {
     'recipient_id',
     'sender_fb_id',
     'recipient_fb_id',
-    'session_id',
+    'subscriber_id',
     'company_id',
     'status',
     'payload'
