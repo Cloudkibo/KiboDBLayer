@@ -23,7 +23,7 @@ exports.createPayload = {
     'recipient_fb_id': {
       'type': 'string'
     },
-    'session_id': {
+    'subscriber_id': {
       'type': 'string'
     },
     'company_id': {
@@ -44,7 +44,7 @@ exports.createPayload = {
     'recipient_id',
     'sender_fb_id',
     'recipient_fb_id',
-    'session_id',
+    'subscriber_id',
     'company_id',
     'status',
     'payload'
