@@ -53,13 +53,17 @@ exports.normalizeChat = function (req, res) {
 }
 
 function updateChat (chat, callback) {
-  ChatModel.update({_id: chat._id}, {subscriber_id: chat.session_id.subscriber_id})
-    .exec().then(result => {
-      callback(null)
-    })
-    .catch(err => {
-      callback(err)
-    })
+  if (chat.session_id) {
+    ChatModel.update({_id: chat._id}, {subscriber_id: chat.session_id.subscriber_id})
+      .exec().then(result => {
+        callback(null)
+      })
+      .catch(err => {
+        callback(err)
+      })
+  } else {
+    callback(null)
+  }
 }
 
 exports.normalizeKiboChat = function (req, res) {
