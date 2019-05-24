@@ -62,7 +62,7 @@ function updateChat (chat, callback) {
         callback(err)
       })
   } else {
-    callback()
+    callback(null)
   }
 }
 
