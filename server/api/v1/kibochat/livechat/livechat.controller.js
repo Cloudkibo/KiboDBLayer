@@ -43,6 +43,19 @@ exports.query = function (req, res) {
     })
 }
 
+exports.search = function (req, res) {
+  logger.serverLog(TAG, `Search endpoint is hit:`)
+
+  DataLayer.searchLiveChat(req.body)
+    .then(foundObjects => {
+      res.status(200).json({status: 'success', payload: foundObjects})
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Error found search Controller : ${util.inspect(err)}`)
+      res.status(500).json({status: 'failed', payload: err.toString()})
+    })
+}
+
 exports.update = function (req, res) {
   logger.serverLog(TAG, `Update endpoint is hit:`)
 
