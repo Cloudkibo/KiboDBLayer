@@ -2,5 +2,6 @@
 # This will install all the required libraries.
 git pull origin staging
 npm install
-npm run stop:staging
-npm run start:staging
+forever stop server/app.js
+forever cleanlogs
+forever start server/app.js
