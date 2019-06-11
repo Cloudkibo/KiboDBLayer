@@ -109,6 +109,9 @@ exports.queryPayload = {
         'isActive': {
           'type': 'boolean'
         },
+        'actionType': {
+          'type': 'string'
+        },
         'isSegmented': {
           'type': 'boolean'
         },
@@ -186,6 +189,9 @@ exports.updatePayload = {
         },
         'isActive': {
           'type': 'boolean'
+        },
+        'actionType': {
+          'type': 'string'
         },
         'isSegmented': {
           'type': 'boolean'
