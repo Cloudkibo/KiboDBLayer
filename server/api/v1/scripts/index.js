@@ -11,5 +11,6 @@ router.get('/normalizeBroadcastUrls', controller.normalizeBroadcastUrls)
 router.get('/normalizeTemplateUrls', controller.normalizeTemplateUrls)
 router.get('/normalizeSequenceUrls', controller.normalizeSequenceUrls)
 router.get('/broadcast_api/normalize/sentCount', controller.normalizeSentCount)
+router.get('/autopost_tweets_to_fb/normalize/actionType', controller.normalizeActionType)
 
 module.exports = router
