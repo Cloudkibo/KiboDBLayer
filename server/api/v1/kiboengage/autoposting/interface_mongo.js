@@ -6,7 +6,6 @@ Thus Our web layer is agnostic of database
 const AutopostingModel = require('./autoposting.model')
 
 exports.find = (criteria = {}) => {
-  console.log('criteria to find', JSON.stringify(criteria))
   return AutopostingModel.find(criteria)
     .exec()
 }
