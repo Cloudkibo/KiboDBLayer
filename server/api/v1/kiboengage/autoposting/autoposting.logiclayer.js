@@ -20,8 +20,17 @@ exports.validateCreatePayload = (body) => {
 exports.prepareMongoAggregateQuery = (body) => {
   let query = []
 
-  if (body.match) query.push({$match: body.match})
-  else return 'Match Criteria Not Found'
+  if (body.match) {
+    if (body.match.datetime) {
+      if (body.match.datetime.$gte) {
+        body.match.datetime.$gte = new Date(body.match.datetime.$gte)
+      }
+      if (body.match.datetime.$lt) {
+        body.match.datetime.$lt = new Date(body.match.datetime.$lt)
+      }
+    }
+    query.push({$match: body.match})
+  } else return 'Match Criteria Not Found'
 
   if (body.group) {
     if (!Object.keys(body.group).includes('_id')) return '_id is missing in Group Criteria'
@@ -34,6 +43,5 @@ exports.prepareMongoAggregateQuery = (body) => {
   if (body.limit) query.push({$limit: body.limit})
   if (body.project) query.push({$project: body.project})
   if (body.projectAgain) query.push({$project: body.projectAgain})
-
   return query
 }

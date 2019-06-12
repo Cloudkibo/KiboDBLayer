@@ -15,7 +15,8 @@ let autoPostingSchema = new Schema({
   segmentationLocale: [String],
   segmentationGender: [String],
   segmentationTimeZone: String,
-  segmentationTags: [String]
+  segmentationTags: [String],
+  datetime: {type: Date, default: Date.now}
 })
 
 module.exports = mongoose.model('autopostings', autoPostingSchema)

@@ -11,5 +11,6 @@ router.get('/normalizeBroadcastUrls', controller.normalizeBroadcastUrls)
 router.get('/normalizeTemplateUrls', controller.normalizeTemplateUrls)
 router.get('/normalizeSequenceUrls', controller.normalizeSequenceUrls)
 router.get('/broadcast_api/normalize/sentCount', controller.normalizeSentCount)
+router.get('/normalizeAutopostingDate', controller.normalizeAutopostingDate)
 
 module.exports = router
