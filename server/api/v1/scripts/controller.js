@@ -765,3 +765,12 @@ function normalizeForSurveys () {
       logger.serverLog(TAG, `Filed to fetch surveys ${err}`)
     })
 }
+exports.normalizeAutopostingDate = function (req, res) {
+  AutopostingModel.update({}, {$set: {datetime: Date.now()}}, {multi: true}).exec()
+    .then(updated => {
+      return res.status(200).json({status: 'success', payload: 'Normalized successfully!'})
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Filed to update Records ${err}`)
+    })
+}
