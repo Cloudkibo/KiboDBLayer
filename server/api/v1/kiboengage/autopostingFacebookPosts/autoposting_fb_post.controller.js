@@ -1,6 +1,6 @@
 // Web layer of this API node
 const logger = require('../../../../components/logger')
-const DataLayer = require('./autoposting_messages.datalayer')
+const DataLayer = require('./autoposting_fb_post.datalayer')
 const TAG = '/api/v1/kiboengage/autoposting_messages/autoposting_messages.controller.js'
 
 const util = require('util')
