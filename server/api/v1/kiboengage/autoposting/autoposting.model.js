@@ -10,6 +10,7 @@ let autoPostingSchema = new Schema({
   accountUniqueName: String,
   payload: Schema.Types.Mixed,
   isActive: { type: Boolean, default: true },
+  actionType: { type: String, default: 'messenger' },
   isSegmented: { type: Boolean, default: false },
   segmentationPageIds: [String],
   segmentationLocale: [String],

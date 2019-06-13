@@ -27,6 +27,7 @@ module.exports = function (app) {
   app.use('/api/v1/urls', require('./../api/v1/kiboengage/urls'))
   app.use('/api/v1/scripts', require('./../api/v1/scripts'))
   app.use('/api/v1/whatsAppBroadcasts', require('./../api/v1/kiboengage/whatsAppBroadcasts'))
+  app.use('/api/v1/autoposting_fb_post', require('./../api/v1/kiboengage/autopostingFacebookPosts'))
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))
 
