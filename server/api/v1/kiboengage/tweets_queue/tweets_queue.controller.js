@@ -42,9 +42,9 @@ exports.query = function(req, res){
 }
 
 exports.update = function(req, res){
-    Datalayer.findQueueUsingQuery(req.body)
-    .then(foundRes => {
-        return res.status(200).json({status: 'success', payload: foundRes})
+    Datalayer.updateQueue(req.body)
+    .then(updatedPayload => {
+        return res.status(200).json({status: 'success', payload: updatedPayload})
     })
     .catch(err => {
         return res.status(500).json({status: 'failed', payload: err})

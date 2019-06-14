@@ -16,9 +16,9 @@ router.post('/query',
   validate({body: validationSchema.queryPayload}),
   controller.query)
 
-// router.put('/',
-//   validate({body: validationSchema.updatePayload}),
-//   controller.update)
+router.put('/',
+  validate({body: validationSchema.updatePayload}),
+  controller.update)
 
 router.delete('/',
   validate({body: validationSchema.queryPayload}),

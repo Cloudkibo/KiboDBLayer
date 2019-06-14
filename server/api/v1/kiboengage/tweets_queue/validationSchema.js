@@ -48,3 +48,27 @@ exports.queryPayload = {
         'required' : true
     }
 }
+
+exports.updatePayload = {
+    '$schema' : 'http://json-schema.org/draft-04/schema#',
+    'type': 'object',
+    'properties' : {
+        'purpose' : {
+            'type' : 'string'
+        },
+        'match' : {
+            'type' : 'object',
+            'properties' : {
+                'autopostingId' :{
+                    'type' : 'string'
+                },
+                'tweet' : {
+                    'type' : 'object'
+                },
+                'expiryTime' : {
+                    'type': 'string'
+                }
+            }
+        }
+    }
+}
