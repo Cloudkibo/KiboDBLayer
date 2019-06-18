@@ -786,3 +786,18 @@ exports.normalizeAutopostingDate = function (req, res) {
       logger.serverLog(TAG, `Filed to update Records ${err}`)
     })
 }
+
+exports.normalizeFilterAndModeration = function (req, res) {
+  let updated = {
+    filterTweets: false,
+    moderateTweets: false
+  }
+  AutopostingModel.update({filterTweets: null}, updated, {multi: true}).exec()
+    .then(updated => {
+      return res.status(200).json({status: 'success', payload: 'Normalized successfully!'})
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Filed to update autoposting ${err}`)
+      return res.status(500).json({status: 'failed', description: err})
+    })
+}
