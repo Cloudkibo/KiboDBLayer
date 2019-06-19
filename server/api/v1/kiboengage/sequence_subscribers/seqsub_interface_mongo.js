@@ -6,8 +6,16 @@ Thus Our web layer is agnostic of database
 const SequenceSubscriberModel = require('./seq_sub.model')
 
 exports.find = (criteria = {}) => {
-  return SequenceSubscriberModel.find(criteria)
-    .exec()
+  if (criteria.populate) {
+    let populateParameter = criteria.populate
+    delete criteria.populate
+    return SequenceSubscriberModel.find(criteria)
+      .populate(populateParameter)
+      .exec()
+  } else {
+    return SequenceSubscriberModel.find(criteria)
+      .exec()
+  }
 }
 
 exports.findOne = (criteria) => {
