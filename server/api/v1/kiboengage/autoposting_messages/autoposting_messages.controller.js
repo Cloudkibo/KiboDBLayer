@@ -42,6 +42,7 @@ exports.query = function (req, res) {
   }
   DataLayer.findAutopostingMessagesUsingQuery(req.body)
     .then(foundObjects => {
+      console.log('autoposting_messages foundObjects', foundObjects)
       res.status(200).json({status: 'success', payload: foundObjects})
     })
     .catch(err => {
