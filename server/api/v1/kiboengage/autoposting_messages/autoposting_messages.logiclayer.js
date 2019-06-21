@@ -63,6 +63,13 @@ exports.prepareMongoAggregateQuery = (body) => {
         body.match.datetime.$lt = new Date(body.match.datetime.$lt)
       }
     }
+    if (body.match._id) {
+      if (body.match._id.$lt) {
+        body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
+      } else if (body.match._id.$gt) {
+        body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
+      }
+    }
     query.push({$match: body.match})
   } else {
     return 'Match Criteria Not Found'
