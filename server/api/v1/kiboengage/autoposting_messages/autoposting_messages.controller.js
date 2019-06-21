@@ -31,7 +31,7 @@ exports.create = function (req, res) {
 }
 
 exports.query = function (req, res) {
-  logger.serverLog(TAG, `Query endpoint is hit:`)
+  logger.serverLog(TAG, `Query endpoint is hit: ${req.body}`)
   if (req.body._id) {
     if (req.body._id.$lt) {
       req.body._id.$lt = mongoose.Types.ObjectId(req.body._id.$lt)
