@@ -1,5 +1,5 @@
 // Web layer of this API node
-const logger = require('../../../components/logger')
+const logger = require('./../../../../../components/logger')
 const DataLayer = require('./abandoned_checkout.datalayer')
 const TAG = '/api/v1/kiboengage/abandoned_cart/abandoned_checkout/abandoned_checkout.controller.js'
 
