@@ -5,7 +5,7 @@ Thus we can use it from other non express callers like cron etc
 */
 const LogicLayer = require('./storeinfo.logiclayer')
 const MongoInterface = require('./storeinfo_interface_mongo')
-const logger = require('../../../../components/logger')
+const logger = require('./../../../../../components/logger')
 const TAG = '/api/v1/kiboengage/abandoned_cart/storeinfo/storeinfo.datalayer.js'
 
 const util = require('util')
