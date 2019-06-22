@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const controller = require('./controller.js')
+const controller = require('./storeinfo.controller.js')
 
 router.get('/', controller.index)
 router.post('/',
