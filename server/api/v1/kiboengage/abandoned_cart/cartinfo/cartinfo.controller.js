@@ -1,13 +1,13 @@
 // Web layer of this API node
-const logger = require('../../../../components/logger')
-const DataLayer = require('./autoposting_messages.datalayer')
-const TAG = '/api/v1/kiboengage/autoposting_messages/autoposting_messages.controller.js'
-const mongoose = require('mongoose')
+const logger = require('./../../../../../components/logger')
+const DataLayer = require('./cartinfo.datalayer')
+const TAG = '/api/v1/kiboengage/abandoned_cart/cartinfo/cartinfo.controller.js'
+
 const util = require('util')
 
 exports.index = function (req, res) {
   logger.serverLog(TAG, `Index endpoint is hit:`)
-  DataLayer.findAllAutopostingMessagesObjects()
+  DataLayer.findAllCartInfoObjects()
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
@@ -20,7 +20,7 @@ exports.index = function (req, res) {
 exports.create = function (req, res) {
   logger.serverLog(TAG, `Create endpoint is hit:`)
 
-  DataLayer.createOneAutopostingMessageObject(req.body)
+  DataLayer.createOneCartInfoObject(req.body)
     .then(createdObject => {
       res.status(200).json({status: 'success', payload: createdObject})
     })
@@ -31,8 +31,9 @@ exports.create = function (req, res) {
 }
 
 exports.query = function (req, res) {
-  logger.serverLog(TAG, `Query endpoint is hit: ${req.body}`)
-  DataLayer.findAutopostingMessagesUsingQuery(req.body)
+  logger.serverLog(TAG, `Query endpoint is hit:`)
+
+  DataLayer.findCartInfoUsingQuery(req.body)
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
@@ -45,7 +46,7 @@ exports.query = function (req, res) {
 exports.update = function (req, res) {
   logger.serverLog(TAG, `Update endpoint is hit:`)
 
-  DataLayer.updateAutopostingMessage(req.body)
+  DataLayer.updateCartInfo(req.body)
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
@@ -58,7 +59,7 @@ exports.update = function (req, res) {
 exports.delete = function (req, res) {
   logger.serverLog(TAG, `Delete endpoint is hit:`)
 
-  DataLayer.deleteAutopostingMessage(req.body)
+  DataLayer.deleteCartInfo(req.body)
     .then(result => {
       res.status(200).json({status: 'success', payload: result})
     })
