@@ -13,6 +13,7 @@ exports.index = function (req, res) {
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
+      console.log(`Error found Index Controller : ${util.inspect(err)}`)
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }
