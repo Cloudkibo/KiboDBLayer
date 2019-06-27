@@ -33,6 +33,7 @@ const async = require('async')
 const config = require('./../../../config/environment/index')
 const logger = require('../../../components/logger')
 const TAG = '/api/v1/scripts/controller.js'
+const mongoose = require('mongoose')
 
 exports.normalizeChat = function (req, res) {
   ChatModel.find().populate('session_id').exec()
@@ -800,4 +801,22 @@ exports.normalizeFilterAndModeration = function (req, res) {
       logger.serverLog(TAG, `Filed to update autoposting ${err}`)
       return res.status(500).json({status: 'failed', description: err})
     })
+}
+
+exports.normalizeSequenceSubscribers = function (req, res) {
+  SequenceSubscribersModel.find({}).exec()
+    .then(subscribers => {
+      subscribers.forEach(subscriber => {
+        SequenceSubscribersModel.update({_id: subscriber._id}, {sequenceId: mongoose.Types.ObjectId(subscriber.sequenceId)}).exec()
+          .then(updated => {
+          })
+          .catch(err => {
+            logger.serverLog(TAG, `Filed to update sequence subscriber ${err}`)
+          })
+      })
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Filed to fetch sequence subscriber ${err}`)
+    })
+  return res.status(200).json({status: 'success', payload: 'Normalized successfully!'})
 }

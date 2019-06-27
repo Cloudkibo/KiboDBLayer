@@ -1,18 +1,19 @@
 // Web layer of this API node
-const logger = require('../../../../components/logger')
-const DataLayer = require('./autoposting.datalayer')
-const TAG = '/api/v1/kiboengage/autoposting/autoposting.controller.js'
+const logger = require('./../../../../../components/logger')
+const DataLayer = require('./storeinfo.datalayer')
+const TAG = '/api/v1/kiboengage/abandoned_cart/storeinfo/storeinfo.controller.js'
 
 const util = require('util')
 
 exports.index = function (req, res) {
   logger.serverLog(TAG, `Index endpoint is hit:`)
-  DataLayer.findAllAutopostingObjects()
+  DataLayer.findAllStoreInfoObjects()
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
+      console.log(`Error found Index Controller : ${util.inspect(err)}`)
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }
@@ -20,7 +21,7 @@ exports.index = function (req, res) {
 exports.create = function (req, res) {
   logger.serverLog(TAG, `Create endpoint is hit:`)
 
-  DataLayer.createOneAutopostingObject(req.body)
+  DataLayer.createOneStoreInfoObject(req.body)
     .then(createdObject => {
       res.status(200).json({status: 'success', payload: createdObject})
     })
@@ -32,7 +33,8 @@ exports.create = function (req, res) {
 
 exports.query = function (req, res) {
   logger.serverLog(TAG, `Query endpoint is hit:`)
-  DataLayer.findAutopostingUsingQuery(req.body)
+
+  DataLayer.findStoreInfoUsingQuery(req.body)
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
@@ -45,7 +47,7 @@ exports.query = function (req, res) {
 exports.update = function (req, res) {
   logger.serverLog(TAG, `Update endpoint is hit:`)
 
-  DataLayer.updateAutoposting(req.body)
+  DataLayer.updateStoreInfo(req.body)
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
@@ -58,7 +60,7 @@ exports.update = function (req, res) {
 exports.delete = function (req, res) {
   logger.serverLog(TAG, `Delete endpoint is hit:`)
 
-  DataLayer.deleteAutoposting(req.body)
+  DataLayer.deleteStoreInfo(req.body)
     .then(result => {
       res.status(200).json({status: 'success', payload: result})
     })

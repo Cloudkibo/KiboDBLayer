@@ -3,7 +3,7 @@ let Schema = mongoose.Schema
 
 const sequenceSubscribers = new Schema({
   subscriberId: { type: String },
-  sequenceId: { type: String }, // will be updated
+  sequenceId: { type: Schema.ObjectId, ref: 'sequences' }, // will be updated
   companyId: { type: String },
   status: String, // subscribed or unsubscribed
   datetime: { type: Date, default: Date.now }

@@ -14,5 +14,5 @@ router.get('/broadcast_api/normalize/sentCount', controller.normalizeSentCount)
 router.get('/autopost_tweets_to_fb/normalize/actionType', controller.normalizeActionType)
 router.get('/filterAndModeration/normalizeData', controller.normalizeFilterAndModeration)
 router.get('/normalizeAutopostingDate', controller.normalizeAutopostingDate)
-
+router.get('/normalizeSequenceSubscribers', controller.normalizeSequenceSubscribers)
 module.exports = router

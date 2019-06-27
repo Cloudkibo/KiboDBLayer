@@ -2,7 +2,7 @@
 const logger = require('../../../../components/logger')
 const DataLayer = require('./autoposting_messages.datalayer')
 const TAG = '/api/v1/kiboengage/autoposting_messages/autoposting_messages.controller.js'
-
+const mongoose = require('mongoose')
 const util = require('util')
 
 exports.index = function (req, res) {
@@ -31,8 +31,7 @@ exports.create = function (req, res) {
 }
 
 exports.query = function (req, res) {
-  logger.serverLog(TAG, `Query endpoint is hit:`)
-
+  logger.serverLog(TAG, `Query endpoint is hit: ${req.body}`)
   DataLayer.findAutopostingMessagesUsingQuery(req.body)
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
