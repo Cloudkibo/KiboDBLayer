@@ -81,8 +81,7 @@ exports.createPayload = {
     'companyId',
     'accountTitle',
     'subscriptionUrl',
-    'subscriptionType',
-    'approvalChannel'
+    'subscriptionType'
   ]
 }
 
