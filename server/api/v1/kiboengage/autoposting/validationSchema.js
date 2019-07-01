@@ -38,7 +38,7 @@ exports.createPayload = {
       ]
     },
     'approvalChannel': {
-      'tyoe': 'object'
+      'type': 'object'
     },
     'segmentationPageIds': {
       'type': 'array',
