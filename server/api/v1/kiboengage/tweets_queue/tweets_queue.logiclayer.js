@@ -12,14 +12,6 @@ exports.prepareMongoAggregateQuery = (body) => {
     if (body.match.autopostingId) {
       body.match.autopostingId = mongoose.Types.ObjectId(body.match.autopostingId)
     }
-    if (body.match.datetime) {
-      if (body.match.datetime.$gte) {
-        body.match.datetime.$gte = new Date(body.match.datetime.$gte)
-      }
-      if (body.match.datetime.$lt) {
-        body.match.datetime.$lt = new Date(body.match.datetime.$lt)
-      }
-    }
     query.push({$match: body.match})
   } else {
     return 'Match Criteria Not Found'

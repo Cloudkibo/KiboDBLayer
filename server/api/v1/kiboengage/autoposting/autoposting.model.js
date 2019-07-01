@@ -11,12 +11,18 @@ let autoPostingSchema = new Schema({
   payload: Schema.Types.Mixed,
   isActive: { type: Boolean, default: true },
   actionType: { type: String, default: 'messenger' },
+  filterTweets: { type: Boolean, default: false },
+  filterTags: [String],
+  moderateTweets: { type: Boolean, default: false },
+  approvalChannel: Schema.Types.Mixed,
   isSegmented: { type: Boolean, default: false },
   segmentationPageIds: [String],
   segmentationLocale: [String],
   segmentationGender: [String],
   segmentationTimeZone: String,
   segmentationTags: [String],
+  tweetsForwarded: {type: Number, default: 0},
+  tweetsIgnored: {type: Number, default: 0},
   datetime: {type: Date, default: Date.now}
 })
 

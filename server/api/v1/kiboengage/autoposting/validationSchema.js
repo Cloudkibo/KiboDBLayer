@@ -29,6 +29,17 @@ exports.createPayload = {
     'payload': {
       'type': 'object'
     },
+    'filterTags': {
+      'type': 'array',
+      'items': [
+        {
+          'type': 'string'
+        }
+      ]
+    },
+    'approvalChannel': {
+      'tyoe': 'object'
+    },
     'segmentationPageIds': {
       'type': 'array',
       'items': [
@@ -70,7 +81,8 @@ exports.createPayload = {
     'companyId',
     'accountTitle',
     'subscriptionUrl',
-    'subscriptionType'
+    'subscriptionType',
+    'approvalChannel'
   ]
 }
 
@@ -111,6 +123,12 @@ exports.queryPayload = {
         },
         'actionType': {
           'type': 'string'
+        },
+        'filterTweets': {
+          'type': 'boolean'
+        },
+        'moderateTweets': {
+          'type': 'boolean'
         },
         'isSegmented': {
           'type': 'boolean'
@@ -192,6 +210,23 @@ exports.updatePayload = {
         },
         'actionType': {
           'type': 'string'
+        },
+        'filterTweets': {
+          'type': 'boolean'
+        },
+        'moderateTweets': {
+          'type': 'boolean'
+        },
+        'filterTags': {
+          'type': 'array',
+          'items': [
+            {
+              'type': 'string'
+            }
+          ]
+        },
+        'approvalChannel': {
+          'tyoe': 'object'
         },
         'isSegmented': {
           'type': 'boolean'
