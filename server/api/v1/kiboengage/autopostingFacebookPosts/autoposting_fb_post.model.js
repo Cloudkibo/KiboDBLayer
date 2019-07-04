@@ -8,9 +8,10 @@ let AutopostingFacebookPostSchema = new Schema({
   autopostingType: {type: String, default: 'twitter'}, // facebook or twitter or youtube
   messageId: String, // this where message id will go
   post: {type: Schema.Types.Mixed},
+  postId: {type: String},
   autopostingId: {type: Schema.ObjectId, ref: 'autopostings'}, // unique name for autoposting account
-  likes: Number, // sent count
-  clicked: Number, // clicked count
+  likes: Number, // likes count
+  comments: Number, // comments count
   datetime: {type: Date, default: Date.now}
 })
 
