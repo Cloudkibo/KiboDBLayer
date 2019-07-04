@@ -23,6 +23,7 @@ let autoPostingSchema = new Schema({
   segmentationTags: [String],
   tweetsForwarded: {type: Number, default: 0},
   tweetsIgnored: {type: Number, default: 0},
+  scheduledTime: String,
   datetime: {type: Date, default: Date.now}
 })
 
