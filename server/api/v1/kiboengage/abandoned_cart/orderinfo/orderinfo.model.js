@@ -43,7 +43,7 @@ const checkoutSchema = new Schema({
   fulfillmentId: {
     type: String
   },
-  orderid: {
+  orderId: {
     type: String
   }
 })
