@@ -13,7 +13,7 @@ const checkoutSchema = new Schema({
   },
   storeId: {
     type: Schema.ObjectId,
-    ref: 'storeInfo'  // Schema.ObjectId, ref: 'storeId'
+    ref: 'storeInfo' // Schema.ObjectId, ref: 'storeId'
   },
   userId: {
     type: String
