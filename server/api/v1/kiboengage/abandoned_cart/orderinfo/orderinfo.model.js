@@ -40,25 +40,15 @@ const checkoutSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  scheduled_at: {
-    type: Date,
-    default: () => Date.now() + 24 * 60 * 60 * 1000
+  fulfillmentId: {
+    type: String
   },
-  isPurchased: {
-    type: Boolean,
-    default: false
-  },
-  isExtraSales: {
-    type: Boolean,
-    default: false
-  },
-  sentCount: {
-    type: Number,
-    default: 0
+  orderId: {
+    type: String
   },
   subscriberId: {
     type: String
   }
 })
 
-module.exports = mongoose.model('checkoutInfo', checkoutSchema)
+module.exports = mongoose.model('orderinfo', checkoutSchema)

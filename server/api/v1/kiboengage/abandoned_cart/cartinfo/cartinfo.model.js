@@ -36,6 +36,9 @@ const cartSchema = new Schema({
   scheduled_at: {
     type: Date,
     default: () => Date.now() + 24 * 60 * 60 * 1000
+  },
+  subscriberId: {
+    type: String
   }
 })
 

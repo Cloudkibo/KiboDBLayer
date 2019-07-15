@@ -21,10 +21,22 @@ const storeSchema = new Schema({
     type: Boolean,
     default: true
   },
-  sendOrderUpdates: { type: Boolean, default: true },
-  cartAlertEnabled: { type: Boolean, default: true },
-  schedule: {type: Date, default: Date.now},
-  alertMessage: {type: String}
+  sendOrderUpdates: {
+    type: Boolean,
+    default: false
+  },
+  cartAlertEnabled: { // for sending message to customers for abandoned cart
+    type: Boolean,
+    default: true
+  },
+  schedule: {
+    type: Date,
+    default: () => Date.now() + 24 * 60 * 60 * 1000
+  },
+  alertMessage: {
+    type: String,
+    default: 'Hey you forgot to complete this order on our store'
+  }
 })
 
 module.exports = mongoose.model('storeInfo', storeSchema)

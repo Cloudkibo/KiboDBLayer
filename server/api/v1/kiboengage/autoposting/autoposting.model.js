@@ -24,6 +24,7 @@ let autoPostingSchema = new Schema({
   tweetsForwarded: {type: Number, default: 0},
   tweetsIgnored: {type: Number, default: 0},
   scheduledTime: String,
+  scheduledInterval: String,
   datetime: {type: Date, default: Date.now}
 })
 
