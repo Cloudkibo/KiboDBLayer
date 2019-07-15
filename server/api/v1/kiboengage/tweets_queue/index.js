@@ -5,12 +5,11 @@ const validate = require('express-jsonschema').validate
 const validationSchema = require('./validationSchema')
 const controller = require('./tweets_queue.controller')
 
-
 router.get('/', controller.index)
 
 router.post('/',
-validate({body: validationSchema.createPayload}),
-controller.create)
+  validate({body: validationSchema.createPayload}),
+  controller.create)
 
 router.post('/query',
   validate({body: validationSchema.queryPayload}),
