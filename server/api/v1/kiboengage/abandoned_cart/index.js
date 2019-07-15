@@ -6,5 +6,6 @@ router.use('/cartinfo', require('./cartinfo'))
 router.use('/checkoutinfo', require('./checkoutinfo'))
 router.use('/storeanalytics', require('./storeanalytics'))
 router.use('/storeinfo', require('./storeinfo'))
+router.use('/orderinfo', require('./orderinfo'))
 
 module.exports = router
