@@ -45,6 +45,9 @@ const checkoutSchema = new Schema({
   },
   orderId: {
     type: String
+  },
+  subscriberId: {
+    type: String
   }
 })
 

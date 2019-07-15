@@ -55,6 +55,9 @@ const checkoutSchema = new Schema({
   sentCount: {
     type: Number,
     default: 0
+  },
+  subscriberId: {
+    type: String
   }
 })
 
