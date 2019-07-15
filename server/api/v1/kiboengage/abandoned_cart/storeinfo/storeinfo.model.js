@@ -20,7 +20,11 @@ const storeSchema = new Schema({
   isActive: {
     type: Boolean,
     default: true
-  }
+  },
+  sendOrderUpdates: { type: Boolean, default: true },
+  cartAlertEnabled: { type: Boolean, default: true },
+  schedule: {type: Date, default: Date.now},
+  alertMessage: {type: String}
 })
 
 module.exports = mongoose.model('storeInfo', storeSchema)

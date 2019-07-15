@@ -36,6 +36,7 @@ exports.query = function (req, res) {
 
   DataLayer.findStoreInfoUsingQuery(req.body)
     .then(foundObjects => {
+      console.log('store found', foundObjects)
       res.status(200).json({status: 'success', payload: foundObjects})
     })
     .catch(err => {
