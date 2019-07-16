@@ -16,6 +16,8 @@ exports.findOne = (criteria) => {
 }
 
 exports.findOneAndUpdate = (query, updated, options) => {
+  console.log('query in update', query)
+  console.log('updated in update', updated)
   return StoreInfoModel.findOneAndUpdate(query, updated, options)
     .exec()
 }

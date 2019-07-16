@@ -30,8 +30,11 @@ const storeSchema = new Schema({
     default: true
   },
   schedule: {
-    type: Date,
-    default: () => Date.now() + 24 * 60 * 60 * 1000
+    type: Schema.Types.Mixed,
+    default: {
+      condition: 'hours',
+      value: 24
+    }
   },
   alertMessage: {
     type: String,

@@ -2,13 +2,13 @@ let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 
 const checkoutSchema = new Schema({
-  shopifyCheckoutId: {
+  shopifyCheckoutId: { //show
     type: String
   },
-  checkoutToken: {
+  checkoutToken: { //show
     type: String
   },
-  cartToken: {
+  cartToken: { //show
     type: String
   },
   storeId: {
@@ -21,13 +21,13 @@ const checkoutSchema = new Schema({
   companyId: {
     type: String
   },
-  totalPrice: {
+  totalPrice: { //show
     type: Number
   },
-  abandonedCheckoutUrl: {
+  abandonedCheckoutUrl: { //show
     type: String
   },
-  status: {
+  status: { //show
     type: String
   },
   userRef: {
@@ -36,14 +36,14 @@ const checkoutSchema = new Schema({
   productIds: {
     type: [String]
   },
-  created_at: {
+  created_at: { //show
     type: Date,
     default: Date.now
   },
   fulfillmentId: {
     type: String
   },
-  orderId: {
+  orderId: { //show
     type: String
   },
   subscriberId: {
