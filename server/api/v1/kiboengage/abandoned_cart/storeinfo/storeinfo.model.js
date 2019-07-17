@@ -33,7 +33,7 @@ const storeSchema = new Schema({
     type: Schema.Types.Mixed,
     default: {
       condition: 'hours',
-      value: 24
+      value: '24'
     }
   },
   alertMessage: {
