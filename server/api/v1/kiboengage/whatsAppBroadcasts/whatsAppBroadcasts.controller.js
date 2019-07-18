@@ -1,7 +1,7 @@
 const logger = require('../../../../components/logger')
 const DataLayer = require('./whatsAppBroadcasts.datalayer')
 const TAG = '/api/v1/kiboengage/whatsAppBroadcasts/whatsAppBroadcasts.controller.js'
-
+const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
 const util = require('util')
 
 exports.create = function (req, res) {
@@ -9,11 +9,11 @@ exports.create = function (req, res) {
 
   DataLayer.createOneBroadcastObject(req.body)
     .then(createdObject => {
-      res.status(200).json({status: 'success', payload: createdObject})
+      sendSuccessResponse(res, 200, createdObject)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 exports.query = function (req, res) {
@@ -22,11 +22,11 @@ exports.query = function (req, res) {
   DataLayer.findBroadcastUsingQuery(req.body)
     .then(foundObjects => {
       console.log('foundObjects', foundObjects)
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 exports.update = function (req, res) {
@@ -34,10 +34,10 @@ exports.update = function (req, res) {
 
   DataLayer.updateBroadcast(req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }

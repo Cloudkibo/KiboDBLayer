@@ -1,12 +1,13 @@
 const Datalayer = require('./tweets_queue.datalayer')
+const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
 
 exports.index = function (req, res) {
     Datalayer.findAllQueueObjects()
     .then(foundObj => {
-        return res.status(200).json({status:'success', payload: foundObj})
+        sendSuccessResponse(res, 200, foundObj)
     })
     .catch(err => {
-        return res.status(500).json({status:'failed', payload: err})
+        sendErrorResponse(res, 500, err)
     })
 }
 
@@ -14,39 +15,39 @@ exports.create = function (req,res) {
     console.log(req.body)
     Datalayer.createOneQueueObject(req.body)
     .then(resp => {
-        return res.status(200).json({status: 'success', payload: resp})
+        sendSuccessResponse(res, 200, resp)
     })
     .catch(err => {
-        return res.status(500).json({status: 'failed', payload: err.toString()})
+        sendErrorResponse(res, 500, err)
     })
 }
 
-exports.delete = function(req, res){
+exports.delete = function(req, res) {
     Datalayer.deleteQueue(req.body)
     .then(result => {
-        return res.status(200).json({status: 'success', payload: result})
+      sendSuccessResponse(res, 200, result)
     })
     .catch(err => {
-        return res.status(500).json({status: 'failed', payload: err})
+      sendErrorResponse(res, 500, err)
     })
 }
 
-exports.query = function(req, res){
+exports.query = function (req, res) {
     Datalayer.findQueueUsingQuery(req.body)
     .then(foundRes => {
-        return res.status(200).json({status: 'success', payload: foundRes})
+        sendSuccessResponse(res, 200, foundRes)
     })
     .catch(err => {
-        return res.status(500).json({status: 'failed', payload: err})
+        sendErrorResponse(res, 500, err)
     })
 }
 
-exports.update = function(req, res){
+exports.update = function (req, res) {
     Datalayer.updateQueue(req.body)
     .then(updatedPayload => {
-        return res.status(200).json({status: 'success', payload: updatedPayload})
+        sendSuccessResponse(res, 200, updatedPayload)
     })
     .catch(err => {
-        return res.status(500).json({status: 'failed', payload: err})
+        sendErrorResponse(res, 500, err)
     })
 }
