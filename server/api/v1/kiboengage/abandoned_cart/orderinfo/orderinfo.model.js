@@ -40,11 +40,11 @@ const checkoutSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  fulfillmentId: {
-    type: String
-  },
   orderId: {
     type: String
+  },
+  number: {
+    type: Number
   },
   subscriberId: {
     type: String
