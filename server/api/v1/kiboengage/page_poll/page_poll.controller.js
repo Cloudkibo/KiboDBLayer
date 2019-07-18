@@ -2,18 +2,18 @@
 const logger = require('../../../../components/logger')
 const DataLayer = require('./page_poll.datalayer')
 const TAG = '/api/v1/kiboengage/page_poll/page_poll.controller.js'
-
+const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
 const util = require('util')
 
 exports.index = function (req, res) {
   logger.serverLog(TAG, `Index endpoint is hit:`)
   DataLayer.findAllPagePollObjects()
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -22,11 +22,11 @@ exports.create = function (req, res) {
 
   DataLayer.createOnePagePollObject(req.body)
     .then(createdObject => {
-      res.status(200).json({status: 'success', payload: createdObject})
+      sendSuccessResponse(res, 200, createdObject)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -35,11 +35,11 @@ exports.query = function (req, res) {
   console.log('query in page_poll', req.body)
   DataLayer.findPagePollUsingQuery(req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -49,12 +49,12 @@ exports.update = function (req, res) {
   DataLayer.updatePagePoll(req.body)
     .then(foundObjects => {
       console.log('successfully updated', foundObjects)
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       console.log('error updating', err)
       logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -63,10 +63,10 @@ exports.delete = function (req, res) {
 
   DataLayer.deletePagePoll(req.body)
     .then(result => {
-      res.status(200).json({status: 'success', payload: result})
+      sendSuccessResponse(res, 200, result)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
