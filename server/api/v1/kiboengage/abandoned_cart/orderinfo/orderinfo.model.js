@@ -46,6 +46,9 @@ const checkoutSchema = new Schema({
   number: {
     type: Number
   },
+  order_status_url: {
+    type: String
+  },
   subscriberId: {
     type: String
   }
