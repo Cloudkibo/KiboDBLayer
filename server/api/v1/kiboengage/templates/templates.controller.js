@@ -8,7 +8,7 @@ const PollTemplateModel = require('./pollTemplate.model')
 const SurveyQuestionModel = require('./surveyQuestion.model')
 const SurveyTemplateModel = require('./surveyTemplate.model')
 const TAG = '/api/v1/kiboengage/templates/templates.controller.js'
-
+const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
 const util = require('util')
 
 // // // // // // // =======================Bot template ENDPOINTS============================ // // // // //
@@ -17,11 +17,11 @@ exports.indexBotTemplate = function (req, res) {
   logger.serverLog(TAG, `Index bot template endpoint is hit:`)
   DataLayer.findAllObjects(BotTemplateModel)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -30,11 +30,11 @@ exports.createBotTemplate = function (req, res) {
 
   DataLayer.createOneBotTemplateObject(BotTemplateModel, req.body)
     .then(createdObject => {
-      res.status(200).json({status: 'success', payload: createdObject})
+      sendSuccessResponse(res, 200, createdObject)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -43,11 +43,11 @@ exports.queryBotTemplate = function (req, res) {
 
   DataLayer.findUsingQuery(BotTemplateModel, req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -56,11 +56,11 @@ exports.updateBotTemplate = function (req, res) {
 
   DataLayer.update(BotTemplateModel, req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -69,11 +69,11 @@ exports.deleteBotTemplate = function (req, res) {
 
   DataLayer.delete(BotTemplateModel, req.body)
     .then(result => {
-      res.status(200).json({status: 'success', payload: result})
+      sendSuccessResponse(res, 200, result)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -83,11 +83,11 @@ exports.indexBroadcastTemplate = function (req, res) {
   logger.serverLog(TAG, `Index BroadcastTemplate endpoint is hit:`)
   DataLayer.findAllObjects(BroadcastTemplateModel)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -96,11 +96,11 @@ exports.createBroadcastTemplate = function (req, res) {
 
   DataLayer.createOneBroadcastTemplateObject(BroadcastTemplateModel, req.body)
     .then(createdObject => {
-      res.status(200).json({status: 'success', payload: createdObject})
+      sendSuccessResponse(res, 200, createdObject)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -108,11 +108,11 @@ exports.queryBroadcastTemplate = function (req, res) {
   logger.serverLog(TAG, `Query BroadcastTemplate endpoint is hit:`)
   DataLayer.findUsingQuery(BroadcastTemplateModel, req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -121,11 +121,11 @@ exports.updateBroadcastTemplate = function (req, res) {
 
   DataLayer.update(BroadcastTemplateModel, req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -134,11 +134,11 @@ exports.deleteBroadcastTemplate = function (req, res) {
 
   DataLayer.delete(BroadcastTemplateModel, req.body)
     .then(result => {
-      res.status(200).json({status: 'success', payload: result})
+      sendSuccessResponse(res, 200, result)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -148,11 +148,11 @@ exports.indexCategory = function (req, res) {
   logger.serverLog(TAG, `Index Category endpoint is hit:`)
   DataLayer.findAllObjects(CategoryModel)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -161,11 +161,11 @@ exports.createCategory = function (req, res) {
 
   DataLayer.createOneCategoryObject(CategoryModel, req.body)
     .then(createdObject => {
-      res.status(200).json({status: 'success', payload: createdObject})
+      sendSuccessResponse(res, 200, createdObject)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -174,11 +174,11 @@ exports.queryCategory = function (req, res) {
 
   DataLayer.findUsingQuery(CategoryModel, req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -187,11 +187,11 @@ exports.updateCategory = function (req, res) {
 
   DataLayer.update(CategoryModel, req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -200,11 +200,11 @@ exports.deleteCategory = function (req, res) {
 
   DataLayer.delete(CategoryModel, req.body)
     .then(result => {
-      res.status(200).json({status: 'success', payload: result})
+      sendSuccessResponse(res, 200, result)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -214,11 +214,11 @@ exports.indexPollTemplate = function (req, res) {
   logger.serverLog(TAG, `Index PollTemplate endpoint is hit:`)
   DataLayer.findAllObjects(PollTemplateModel)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -227,11 +227,11 @@ exports.createPollTemplate = function (req, res) {
 
   DataLayer.createOnePollTemplateObject(PollTemplateModel, req.body)
     .then(createdObject => {
-      res.status(200).json({status: 'success', payload: createdObject})
+      sendSuccessResponse(res, 200, createdObject)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -240,11 +240,11 @@ exports.queryPollTemplate = function (req, res) {
 
   DataLayer.findUsingQuery(PollTemplateModel, req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -254,11 +254,11 @@ exports.updatePollTemplate = function (req, res) {
   DataLayer.update(PollTemplateModel, req.body)
     .then(foundObjects => {
       console.log(foundObjects)
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -267,11 +267,11 @@ exports.deletePollTemplate = function (req, res) {
 
   DataLayer.delete(PollTemplateModel, req.body)
     .then(result => {
-      res.status(200).json({status: 'success', payload: result})
+      sendSuccessResponse(res, 200, result)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -281,11 +281,11 @@ exports.indexSurveyQuestionTemplate = function (req, res) {
   logger.serverLog(TAG, `Index SurveyQuestionTemplate endpoint is hit:`)
   DataLayer.findAllObjects(SurveyQuestionModel)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -294,11 +294,11 @@ exports.createSurveyQuestionTemplate = function (req, res) {
 
   DataLayer.createOneSurveyQuestionTemplateObject(SurveyQuestionModel, req.body)
     .then(createdObject => {
-      res.status(200).json({status: 'success', payload: createdObject})
+      sendSuccessResponse(res, 200, createdObject)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -307,11 +307,11 @@ exports.querySurveyQuestionTemplate = function (req, res) {
 
   DataLayer.findUsingQuery(SurveyQuestionModel, req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -320,11 +320,11 @@ exports.updateSurveyQuestionTemplate = function (req, res) {
 
   DataLayer.update(SurveyQuestionModel, req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -333,11 +333,11 @@ exports.deleteSurveyQuestionTemplate = function (req, res) {
 
   DataLayer.delete(SurveyQuestionModel, req.body)
     .then(result => {
-      res.status(200).json({status: 'success', payload: result})
+      sendSuccessResponse(res, 200, result)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -347,11 +347,11 @@ exports.indexSurveyTemplate = function (req, res) {
   logger.serverLog(TAG, `Index SurveyTemplate endpoint is hit:`)
   DataLayer.findAllObjects(SurveyTemplateModel)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -360,11 +360,11 @@ exports.createSurveyTemplate = function (req, res) {
 
   DataLayer.createOneSurveyTemplateObject(SurveyTemplateModel, req.body)
     .then(createdObject => {
-      res.status(200).json({status: 'success', payload: createdObject})
+      sendSuccessResponse(res, 200, createdObject)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -373,11 +373,11 @@ exports.querySurveyTemplate = function (req, res) {
 
   DataLayer.findUsingQuery(SurveyTemplateModel, req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -386,11 +386,11 @@ exports.updateSurveyTemplate = function (req, res) {
 
   DataLayer.update(SurveyTemplateModel, req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -399,10 +399,10 @@ exports.deleteSurveyTemplate = function (req, res) {
 
   DataLayer.delete(SurveyTemplateModel, req.body)
     .then(result => {
-      res.status(200).json({status: 'success', payload: result})
+      sendSuccessResponse(res, 200, result)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
