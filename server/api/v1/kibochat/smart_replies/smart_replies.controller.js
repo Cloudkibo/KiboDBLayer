@@ -173,7 +173,7 @@ exports.queryUnanswered = function (req, res) {
 
   DataLayer.findUsingQuery(UnansweredModel, req.body)
     .then(foundObjects => {
-      sendSuccessResponse(res, 20, foundObjects)
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
