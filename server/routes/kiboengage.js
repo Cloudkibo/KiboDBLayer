@@ -30,6 +30,7 @@ module.exports = function (app) {
   app.use('/api/v1/whatsAppBroadcasts', require('./../api/v1/kiboengage/whatsAppBroadcasts'))
   app.use('/api/v1/autoposting_fb_post', require('./../api/v1/kiboengage/autopostingFacebookPosts'))
   app.use('/api/v1/abandoned_cart', require('./../api/v1/kiboengage/abandoned_cart'))
+  app.use('/api/v1/messageStatistics', require('./../api/v1/kiboengage/messageStatistics'))
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))
 
