@@ -28,7 +28,7 @@ const checkoutSchema = new Schema({
     type: String
   },
   status: {
-    type: String
+    type: String, default: 'pending'
   },
   userRef: {
     type: String
