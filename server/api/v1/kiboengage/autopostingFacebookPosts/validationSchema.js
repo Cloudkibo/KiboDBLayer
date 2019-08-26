@@ -40,7 +40,6 @@ exports.createPayload = {
     'pageId',
     'companyId',
     'autopostingType',
-    'messageId',
     'post',
     'postId',
     'autopostingId'
