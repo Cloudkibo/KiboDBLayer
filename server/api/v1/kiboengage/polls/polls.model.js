@@ -22,7 +22,8 @@ const pollSchema = new Schema({
   sent: Number,
   messageCreativeId: String,
   broadcastFbId: String,
-  APIName: {type: String, default: 'send_api'}
+  APIName: {type: String, default: 'send_api'},
+  actions: Schema.Types.Mixed
 })
 
 module.exports = mongoose.model('polls', pollSchema)
