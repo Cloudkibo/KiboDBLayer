@@ -9,7 +9,7 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/kibodblayer-kiboengage-dev'
+    uri: 'mongodb://localhost/local-kibodblayer-kiboengage-prod'
   },
   seedDB: false
 }
