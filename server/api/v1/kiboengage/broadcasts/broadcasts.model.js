@@ -26,7 +26,8 @@ let broadcastSchema = new Schema({
   sent: Number,
   messageCreativeId: String,
   broadcastFbId: String,
-  APIName: {type: String, default: 'batch_api'}
+  APIName: {type: String, default: 'batch_api'},
+  messageType: {type: String}
 })
 
 module.exports = mongoose.model('broadcasts', broadcastSchema)
