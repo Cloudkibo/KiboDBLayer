@@ -613,10 +613,6 @@ function updatePayload (payloads) {
         updateCards(payload.cards)
           .then(cards => {
           })
-      } else if (payload.componentType === 'list') {
-        updateCards(payload.listItems)
-          .then(cards => {
-          })
       } else {
         if (payload.fileurl && payload.fileurl.url) {
           id = payload.fileurl.url.substring(payload.fileurl.url.indexOf('download/') + 9)
