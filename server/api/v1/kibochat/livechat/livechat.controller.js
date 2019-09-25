@@ -2,18 +2,18 @@
 const logger = require('../../../../components/logger')
 const DataLayer = require('./livechat.datalayer')
 const TAG = '/api/v1/kibochat/livechat/livechat.controller.js'
-
+const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
 const util = require('util')
 
 exports.index = function (req, res) {
   logger.serverLog(TAG, `Index endpoint is hit:`)
   DataLayer.findAllLiveChatObjects()
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -22,11 +22,11 @@ exports.create = function (req, res) {
 
   DataLayer.createOneLiveChatObject(req.body)
     .then(createdObject => {
-      res.status(200).json({status: 'success', payload: createdObject})
+      sendSuccessResponse(res, 200, createdObject)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -35,11 +35,11 @@ exports.query = function (req, res) {
 
   DataLayer.findLiveChatUsingQuery(req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -48,11 +48,11 @@ exports.search = function (req, res) {
 
   DataLayer.searchLiveChat(req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found search Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -61,11 +61,11 @@ exports.update = function (req, res) {
 
   DataLayer.updateLiveChat(req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }
 
@@ -74,10 +74,10 @@ exports.delete = function (req, res) {
 
   DataLayer.deleteLiveChat(req.body)
     .then(result => {
-      res.status(200).json({status: 'success', payload: result})
+      sendSuccessResponse(res, 200, result)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.toString())
     })
 }

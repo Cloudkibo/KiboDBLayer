@@ -2,18 +2,18 @@
 const logger = require('../../../../components/logger')
 const DataLayer = require('./page_broadcast.datalayer')
 const TAG = '/api/v1/kiboengage/page_broadcast/page_broadcast.controller.js'
-
+const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
 const util = require('util')
 
 exports.index = function (req, res) {
   logger.serverLog(TAG, `Index endpoint is hit:`)
   DataLayer.findAllPageBroadcastObjects()
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.tostr())
     })
 }
 
@@ -22,11 +22,11 @@ exports.create = function (req, res) {
 
   DataLayer.createOnePageBroadcastObject(req.body)
     .then(createdObject => {
-      res.status(200).json({status: 'success', payload: createdObject})
+      sendSuccessResponse(res, 200, createdObject)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.tostr())
     })
 }
 
@@ -34,11 +34,11 @@ exports.query = function (req, res) {
   logger.serverLog(TAG, `Query endpoint is hit:`)
   DataLayer.findPageBroadcastUsingQuery(req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.tostr())
     })
 }
 
@@ -47,11 +47,11 @@ exports.update = function (req, res) {
 
   DataLayer.updatePageBroadcast(req.body)
     .then(foundObjects => {
-      res.status(200).json({status: 'success', payload: foundObjects})
+      sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.tostr())
     })
 }
 
@@ -60,10 +60,10 @@ exports.delete = function (req, res) {
 
   DataLayer.deletePageBroadcast(req.body)
     .then(result => {
-      res.status(200).json({status: 'success', payload: result})
+      sendSuccessResponse(res, 200, result)
     })
     .catch(err => {
       logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
-      res.status(500).json({status: 'failed', payload: err.toString()})
+      sendErrorResponse(res, 500, err.tostr())
     })
 }

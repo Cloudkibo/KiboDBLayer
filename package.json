@@ -54,6 +54,7 @@
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "pidusage": "^2.0.17",
     "raven": "^2.6.4",
     "request": "^2.88.0",
     "serve-favicon": "^2.5.0",

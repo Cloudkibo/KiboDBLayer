@@ -23,6 +23,9 @@ exports.createPayload = {
     'post': {
       'type': 'object'
     },
+    'postId': {
+      'type': 'string'
+    },
     'autopostingId': {
       'type': 'string'
     },
@@ -37,8 +40,8 @@ exports.createPayload = {
     'pageId',
     'companyId',
     'autopostingType',
-    'messageId',
     'post',
+    'postId',
     'autopostingId'
   ]
 }

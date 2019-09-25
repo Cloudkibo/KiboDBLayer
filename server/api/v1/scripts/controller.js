@@ -613,10 +613,6 @@ function updatePayload (payloads) {
         updateCards(payload.cards)
           .then(cards => {
           })
-      } else if (payload.componentType === 'list') {
-        updateCards(payload.listItems)
-          .then(cards => {
-          })
       } else {
         if (payload.fileurl && payload.fileurl.url) {
           id = payload.fileurl.url.substring(payload.fileurl.url.indexOf('download/') + 9)
@@ -787,6 +783,22 @@ exports.normalizeAutopostingDate = function (req, res) {
       logger.serverLog(TAG, `Filed to update Records ${err}`)
     })
 }
+
+exports.normalizeFilterAndModeration = function (req, res) {
+  let updated = {
+    filterTweets: false,
+    moderateTweets: false
+  }
+  AutopostingModel.update({filterTweets: null}, updated, {multi: true}).exec()
+    .then(updated => {
+      return res.status(200).json({status: 'success', payload: 'Normalized successfully!'})
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Filed to update autoposting ${err}`)
+      return res.status(500).json({status: 'failed', description: err})
+    })
+}
+
 exports.normalizeSequenceSubscribers = function (req, res) {
   SequenceSubscribersModel.find({}).exec()
     .then(subscribers => {
