@@ -5,6 +5,7 @@ const { sendSuccessResponse, sendErrorResponse } = require('../../global/respons
 const util = require('util')
 
 exports.create = function (req, res) {
+  console.log('inside create broadcast')
   logger.serverLog(TAG, `Create endpoint is hit:`)
 
   DataLayer.createOneBroadcastObject(req.body)

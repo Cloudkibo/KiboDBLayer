@@ -34,3 +34,8 @@ exports.updateMany = (query, updated, options) => {
   return LiveChatModel.updateMany(query, updated, options)
     .exec()
 }
+exports.search = (criteria) => {
+  return LiveChatModel.find(criteria, {score: {$meta: 'textScore'}})
+    .sort({score: {$meta: 'textScore'}})
+    .exec()
+}

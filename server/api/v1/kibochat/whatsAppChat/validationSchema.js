@@ -68,3 +68,21 @@ exports.updatePayload =
     'updated'
   ]
 }
+exports.searchPayload = {
+  '$schema': 'http://json-schema.org/draft-04/schema#',
+  'type': 'object',
+  'properties': {
+    'companyId': {
+      'type': 'string',
+      'required': true
+    },
+    '$text': {
+      'type': 'object',
+      'required': true
+    },
+    'contactId': {
+      'type': 'string',
+      'required': true
+    }
+  }
+}

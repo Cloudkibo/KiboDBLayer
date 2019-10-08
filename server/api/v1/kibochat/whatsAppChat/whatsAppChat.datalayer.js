@@ -56,3 +56,6 @@ exports.updateLiveChat = (body) => {
     return new Promise((resolve, reject) => { reject(new Error('Purpose Not Found')) })
   }
 }
+exports.searchLiveChat = (body) => {
+  return MongoInterface.search(body)
+}
