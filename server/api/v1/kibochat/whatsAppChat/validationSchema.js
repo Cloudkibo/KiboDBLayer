@@ -41,9 +41,21 @@ exports.queryPayload = {
         'companyId': {
           'type': 'string',
           'required': true
+        },
+        'senderNumber': {
+          'type': 'string'
+        },
+        'format': {
+          'type': 'string'
         }
       },
       'required': true
+    },
+    'sort': {
+      'type': 'object'
+    },
+    'limit': {
+      'type': 'integer'
     }
   }
 }
