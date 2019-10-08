@@ -39,3 +39,15 @@ exports.update = function (req, res) {
       sendErrorResponse(res, 500, err.toString())
     })
 }
+exports.search = function (req, res) {
+  logger.serverLog(TAG, `Search endpoint is hit:`)
+
+  DataLayer.searchLiveChat(req.body)
+    .then(foundObjects => {
+      sendSuccessResponse(res, 200, foundObjects)
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Error found search Controller : ${util.inspect(err)}`)
+      sendErrorResponse(res, 500, err.toString())
+    })
+}
