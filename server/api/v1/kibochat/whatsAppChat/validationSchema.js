@@ -41,9 +41,21 @@ exports.queryPayload = {
         'companyId': {
           'type': 'string',
           'required': true
+        },
+        'senderNumber': {
+          'type': 'string'
+        },
+        'format': {
+          'type': 'string'
         }
       },
       'required': true
+    },
+    'sort': {
+      'type': 'object'
+    },
+    'limit': {
+      'type': 'integer'
     }
   }
 }
@@ -67,4 +79,22 @@ exports.updatePayload =
     'match',
     'updated'
   ]
+}
+exports.searchPayload = {
+  '$schema': 'http://json-schema.org/draft-04/schema#',
+  'type': 'object',
+  'properties': {
+    'companyId': {
+      'type': 'string',
+      'required': true
+    },
+    '$text': {
+      'type': 'object',
+      'required': true
+    },
+    'contactId': {
+      'type': 'string',
+      'required': true
+    }
+  }
 }
