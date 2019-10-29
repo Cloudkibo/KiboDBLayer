@@ -816,3 +816,28 @@ exports.normalizeSequenceSubscribers = function (req, res) {
     })
   return res.status(200).json({status: 'success', payload: 'Normalized successfully!'})
 }
+
+exports.normalizeClickCount = function (req, res) {
+  BroadcastsModel.find(req.body.companyId ? {companyId: req.body.companyId} : {}).exec()
+    .then(broadcasts => {
+      let requests = []
+      broadcasts.forEach(broadcast => {
+        if (broadcast.clicks > broadcast.seen) {
+          requests.push(BroadcastsModel.update({_id: broadcast._id}, {clicks: broadcast.seen}).exec())
+        }
+      })
+      Promise.all(requests)
+        .then(results => {
+          logger.serverLog(TAG, `Updated all broadcast click counts for company ${req.body.companyId}`)
+          return res.status(200).json({status: 'success', payload: results})
+        })
+        .catch(err => {
+          logger.serverLog(TAG, `Failed to update broadcast click count ${err}`)
+          return res.status(500).json({status: `failed`, description: err})
+        })
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Failed to fetch broadcasts ${err}`)
+      return res.status(500).json({status: `Failed to fetch broadcasts ${err}`, description: err})
+    })
+}
