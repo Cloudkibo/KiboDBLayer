@@ -822,7 +822,13 @@ exports.normalizeClickCount = function (req, res) {
     .then(broadcasts => {
       broadcasts.forEach(broadcast => {
         if (broadcast.clicks > broadcast.seen) {
-          BroadcastsModel.update({_id: broadcast._id}, {clicks: broadcast.seen})
+          BroadcastsModel.update({_id: broadcast._id}, {clicks: broadcast.seen}).exec()
+            .then(updated => {
+              logger.serverLog(TAG, `Updated broadcast click count for ${broadcast._id}`)
+            })
+            .catch(err => {
+              logger.serverLog(TAG, `Failed to update broadcast click count ${err}`)
+            })
         }
       })
     })
