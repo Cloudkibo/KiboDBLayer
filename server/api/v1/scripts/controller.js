@@ -818,7 +818,7 @@ exports.normalizeSequenceSubscribers = function (req, res) {
 }
 
 exports.normalizeClickCount = function (req, res) {
-  BroadcastsModel.find({companyId: req.body.companyId}).exec()
+  BroadcastsModel.find(req.body.companyId ? {companyId: req.body.companyId} : {}).exec()
     .then(broadcasts => {
       let requests = []
       broadcasts.forEach(broadcast => {
