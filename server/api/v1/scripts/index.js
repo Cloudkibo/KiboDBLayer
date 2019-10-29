@@ -15,4 +15,5 @@ router.get('/autopost_tweets_to_fb/normalize/actionType', controller.normalizeAc
 router.get('/filterAndModeration/normalizeData', controller.normalizeFilterAndModeration)
 router.get('/normalizeAutopostingDate', controller.normalizeAutopostingDate)
 router.get('/normalizeSequenceSubscribers', controller.normalizeSequenceSubscribers)
+router.get('/normalizeClickCount', controller.normalizeClickCount)
 module.exports = router

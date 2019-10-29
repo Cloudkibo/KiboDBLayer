@@ -816,3 +816,17 @@ exports.normalizeSequenceSubscribers = function (req, res) {
     })
   return res.status(200).json({status: 'success', payload: 'Normalized successfully!'})
 }
+
+exports.normalizeClickCount = function (req, res) {
+  BroadcastsModel.find({}).exec()
+    .then(broadcasts => {
+      broadcasts.forEach(broadcast => {
+        if (broadcast.clicks > broadcast.seen) {
+          BroadcastsModel.update({_id: broadcast._id}, {clicks: broadcast.seen})
+        }
+      })
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Failed to fetch broadcasts ${err}`)
+    })
+}
