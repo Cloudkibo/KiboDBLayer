@@ -818,8 +818,10 @@ exports.normalizeSequenceSubscribers = function (req, res) {
 }
 
 exports.normalizeClickCount = function (req, res) {
+  logger.serverLog(TAG, `normalizeClickCount ${req.body.companyId}`)
   BroadcastsModel.find(req.body.companyId ? {companyId: req.body.companyId} : {}).exec()
     .then(broadcasts => {
+      logger.serverLog(TAG, `got broadcasts ${JSON.stringify(broadcasts)}`)
       let requests = []
       broadcasts.forEach(broadcast => {
         if (broadcast.clicks > broadcast.seen) {
