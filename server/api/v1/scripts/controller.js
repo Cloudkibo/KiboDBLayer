@@ -824,7 +824,7 @@ exports.normalizeClickCount = function (req, res) {
       console.log(`got broadcasts ${JSON.stringify(broadcasts)}`)
       let requests = []
       broadcasts.forEach(broadcast => {
-        if (broadcast.clicks > broadcast.seen) {
+        if (broadcast.clicks > broadcast.sent) {
           requests.push(BroadcastsModel.update({_id: broadcast._id}, {clicks: broadcast.seen}).exec())
         }
       })
