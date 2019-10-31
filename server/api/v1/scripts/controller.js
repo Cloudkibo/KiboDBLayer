@@ -818,10 +818,10 @@ exports.normalizeSequenceSubscribers = function (req, res) {
 }
 
 exports.normalizeClickCount = function (req, res) {
-  logger.serverLog(TAG, `normalizeClickCount ${req.body.companyId}`)
+  console.log(`normalizeClickCount ${req.body.companyId}`)
   BroadcastsModel.find(req.body.companyId ? {companyId: req.body.companyId} : {}).exec()
     .then(broadcasts => {
-      logger.serverLog(TAG, `got broadcasts ${JSON.stringify(broadcasts)}`)
+      console.log(`got broadcasts ${JSON.stringify(broadcasts)}`)
       let requests = []
       broadcasts.forEach(broadcast => {
         if (broadcast.clicks > broadcast.seen) {
@@ -830,7 +830,7 @@ exports.normalizeClickCount = function (req, res) {
       })
       Promise.all(requests)
         .then(results => {
-          logger.serverLog(TAG, `Updated all broadcast click counts for company ${req.body.companyId}`)
+          console.log(`Updated all broadcast click counts for company ${req.body.companyId}`)
           return res.status(200).json({status: 'success', payload: results})
         })
         .catch(err => {
