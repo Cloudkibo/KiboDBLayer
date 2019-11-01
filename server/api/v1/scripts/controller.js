@@ -818,17 +818,19 @@ exports.normalizeSequenceSubscribers = function (req, res) {
 }
 
 exports.normalizeClickCount = function (req, res) {
+  console.log(`normalizeClickCount ${req.body.companyId}`)
   BroadcastsModel.find(req.body.companyId ? {companyId: req.body.companyId} : {}).exec()
     .then(broadcasts => {
+      console.log(`got broadcasts ${JSON.stringify(broadcasts)}`)
       let requests = []
       broadcasts.forEach(broadcast => {
-        if (broadcast.clicks > broadcast.seen) {
-          requests.push(BroadcastsModel.update({_id: broadcast._id}, {clicks: broadcast.seen}).exec())
+        if (broadcast.clicks > broadcast.sent) {
+          requests.push(BroadcastsModel.update({_id: broadcast._id}, {clicks: broadcast.sent}).exec())
         }
       })
       Promise.all(requests)
         .then(results => {
-          logger.serverLog(TAG, `Updated all broadcast click counts for company ${req.body.companyId}`)
+          console.log(`Updated all broadcast click counts for company ${req.body.companyId}`)
           return res.status(200).json({status: 'success', payload: results})
         })
         .catch(err => {
