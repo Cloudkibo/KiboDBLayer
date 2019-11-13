@@ -715,7 +715,14 @@ function normalizeForBroadcasts () {
       broadcasts.forEach(broadcast => {
         PageBroadcastModel.find({broadcastId: broadcast._id}).exec()
           .then(countData => {
-            BroadcastsModel.update({_id: broadcast._id}, {sent: countData.length})
+            console.log(`countData for ${broadcast._id}`, countData.length)
+            BroadcastsModel.update({_id: broadcast._id}, {sent: countData.length}, (err, result) => {
+              if (err) {
+                console.log(`error occurred during updating ${broadcast._id}`, err)
+              } else {
+                console.log(`successfully updated ${broadcast._id}`, result)
+              }
+            })
           })
           .catch(err => {
             logger.serverLog(TAG, `Filed to fetch broadcast sent count ${err}`)
