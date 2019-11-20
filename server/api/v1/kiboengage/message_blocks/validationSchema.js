@@ -1,0 +1,132 @@
+/*
+This file will contain the validation schemas.
+By separating it from controller, we are cleaning the code.
+Now the middleware will automatically send error response if the payload fails
+*/
+// For express json validation
+exports.createPayload = {
+  '$schema': 'http://json-schema.org/draft-04/schema#',
+  'type': 'object',
+  'properties': {
+    'userId': {
+      'type': 'string'
+    },
+    'companyId': {
+      'type': 'string'
+    },
+    'internalId': {
+      'type': 'string'
+    },
+    'payload': {
+      'type': 'array'
+    },
+    'module': {
+      'type': 'object',
+      'properties': {
+        'id': {
+          'type': 'string'
+        },
+        'type': {
+          'type': 'string'
+        }
+      },
+      'required': [
+        'id',
+        'type'
+      ]
+    }
+  },
+  'required': [
+    'userId',
+    'companyId',
+    'internalId',
+    'payload',
+    'module'
+  ]
+}
+
+exports.queryPayload = {
+  '$schema': 'http://json-schema.org/draft-04/schema#',
+  'type': 'object',
+  'properties': {
+    'purpose': {
+      'type': 'string',
+      'required': true
+    },
+    'match': {
+      'type': 'object',
+      'properties': {
+        'userId': {
+          'type': 'string'
+        },
+        'companyId': {
+          'type': 'string'
+        },
+        'internalId': {
+          'type': 'string'
+        },
+        'payload': {
+          'type': 'array'
+        },
+        'module': {
+          'type': 'object',
+          'properties': {
+            'id': {
+              'type': 'string'
+            },
+            'type': {
+              'type': 'string'
+            }
+          }
+        }
+      },
+      'required': true
+    }
+  }
+}
+
+exports.updatePayload = {
+  '$schema': 'http://json-schema.org/draft-04/schema#',
+  'type': 'object',
+  'properties': {
+    'purpose': {
+      'type': 'string'
+    },
+    'match': {
+      'type': 'object',
+      'properties': {
+        'userId': {
+          'type': 'string'
+        },
+        'companyId': {
+          'type': 'string'
+        },
+        'internalId': {
+          'type': 'string'
+        },
+        'payload': {
+          'type': 'array'
+        },
+        'module': {
+          'type': 'object',
+          'properties': {
+            'id': {
+              'type': 'string'
+            },
+            'type': {
+              'type': 'string'
+            }
+          }
+        }
+      }
+    },
+    'updated': {
+      'type': 'object'
+    }
+  },
+  'required': [
+    'purpose',
+    'match',
+    'updated'
+  ]
+}
