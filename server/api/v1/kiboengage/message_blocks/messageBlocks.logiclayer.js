@@ -48,6 +48,9 @@ exports.prepareMongoAggregateQuery = (body) => {
       if (body.match._id.$gt) {
         body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
       }
+      if (typeof body.$match._id === 'string') {
+        body.$match._id = mongoose.Types.ObjectId(body.$match._id)
+      }
     }
     query.push({$match: body.match})
   } else {
