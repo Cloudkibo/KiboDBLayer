@@ -14,7 +14,7 @@ exports.createPayload = {
     'companyId': {
       'type': 'string'
     },
-    'internalId': {
+    'uniqueId': {
       'type': 'string'
     },
     'payload': {
@@ -39,7 +39,7 @@ exports.createPayload = {
   'required': [
     'userId',
     'companyId',
-    'internalId',
+    'uniqueId',
     'payload',
     'module'
   ]
@@ -62,7 +62,7 @@ exports.queryPayload = {
         'companyId': {
           'type': 'string'
         },
-        'internalId': {
+        'uniqueId': {
           'type': 'string'
         },
         'payload': {
@@ -101,7 +101,7 @@ exports.updatePayload = {
         'companyId': {
           'type': 'string'
         },
-        'internalId': {
+        'uniqueId': {
           'type': 'string'
         },
         'payload': {
