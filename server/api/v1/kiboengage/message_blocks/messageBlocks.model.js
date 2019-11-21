@@ -6,7 +6,7 @@ let messageBlocksSchema = new Schema({
     id: String,
     type: String
   },
-  internalId: String,
+  uniqueId: String,
   payload: Schema.Types.Mixed,
   userId: String,
   companyId: String,
