@@ -67,7 +67,7 @@ exports.findMessageBlockUsingQuery = (body) => {
   }
 }
 
-exports.deleteAutoposting = (body) => {
+exports.deleteMessageBlock = (body) => {
   if (body.purpose) {
     let query = body.match
     // If purpose found, then proceed

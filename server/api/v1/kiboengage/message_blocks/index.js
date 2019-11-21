@@ -12,8 +12,6 @@ router.post('/',
 router.post('/query',
   validate({body: validationSchema.queryPayload}),
   controller.query)
-router.post('/kiboDashQuery',
-  controller.query)
 router.put('/',
   validate({body: validationSchema.updatePayload}),
   controller.update)
