@@ -7,21 +7,12 @@ const botSchema = new Schema({
   userId: {type: String},
   companyId: {type: String},
   botName: String,
-  witAppId: String,
-  witToken: String,
-  witAppName: String,
-  isActive: String,
-  payload: [
-    {
-      questions: [String],
-      answer: String,
-      intent_name: String,
-      videoLink: String
-    }],
+  gcpPojectId: String,
+  dialogFlowAgentId: String,
+  isActive: {type: String, default: 'false'},
   hitCount: Number,
   missCount: Number,
-  datetime: {type: Date, default: Date.now},
-  blockedSubscribers: [String]
+  datetime: {type: Date, default: Date.now}
 })
 
 module.exports = mongoose.model('bots', botSchema)

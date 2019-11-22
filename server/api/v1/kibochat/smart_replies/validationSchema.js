@@ -20,34 +20,20 @@ exports.createBotPayload = {
     'botName': {
       'type': 'string'
     },
-    'witAppId': {
+    'gcpPojectId': {
       'type': 'string'
     },
-    'witToken': {
-      'type': 'string'
-    },
-    'witAppName': {
+    'dialogFlowAgentId': {
       'type': 'string'
     },
     'isActive': {
       'type': 'boolean'
-    },
-    'payload': {
-      'type': 'array'
     },
     'hitCount': {
       'type': 'number'
     },
     'missCount': {
       'type': 'number'
-    },
-    'blockedSubscribers': {
-      'type': 'array',
-      'items': [
-        {
-          'type': 'string'
-        }
-      ]
     }
   },
   'required': [
@@ -55,9 +41,8 @@ exports.createBotPayload = {
     'userId',
     'companyId',
     'botName',
-    'witAppId',
-    'witToken',
-    'witAppName',
+    'gcpPojectId',
+    'dialogFlowAgentId',
     'isActive',
     'hitCount',
     'missCount'
@@ -84,64 +69,20 @@ exports.queryBotPayload = {
         'botName': {
           'type': 'string'
         },
-        'witAppId': {
+        'gcpPojectId': {
           'type': 'string'
         },
-        'witToken': {
-          'type': 'string'
-        },
-        'witAppName': {
+        'dialogFlowAgentId': {
           'type': 'string'
         },
         'isActive': {
           'type': 'string'
-        },
-        'payload': {
-          'type': 'array',
-          'items': [
-            {
-              'type': 'object',
-              'properties': {
-                'questions': {
-                  'type': 'array',
-                  'items': [
-                    {
-                      'type': 'string'
-                    }
-                  ]
-                },
-                'answer': {
-                  'type': 'string'
-                },
-                'intent_name': {
-                  'type': 'string'
-                },
-                'videoLink': {
-                  'type': 'string'
-                }
-              },
-              'required': [
-                'questions',
-                'answer',
-                'intent_name',
-                'videoLink'
-              ]
-            }
-          ]
         },
         'hitCount': {
           'type': 'integer'
         },
         'missCount': {
           'type': 'integer'
-        },
-        'blockedSubscribers': {
-          'type': 'array',
-          'items': [
-            {
-              'type': 'string'
-            }
-          ]
         }
       },
       'required': true
