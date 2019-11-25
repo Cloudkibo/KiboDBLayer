@@ -11,6 +11,9 @@ exports.createPayload = {
     'userId': {
       'type': 'string'
     },
+    'title': {
+      'type': 'string'
+    },
     'companyId': {
       'type': 'string'
     },
@@ -37,6 +40,7 @@ exports.createPayload = {
     }
   },
   'required': [
+    'title',
     'userId',
     'companyId',
     'uniqueId',

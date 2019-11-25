@@ -10,6 +10,7 @@ let messageBlocksSchema = new Schema({
   payload: Schema.Types.Mixed,
   userId: String,
   companyId: String,
+  title: String,
   datetime: { type: Date, default: Date.now }
 })
 
