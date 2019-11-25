@@ -2,10 +2,7 @@ let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 
 let messageBlocksSchema = new Schema({
-  module: {
-    id: String,
-    type: String
-  },
+  module: Schema.Types.Mixed,
   uniqueId: String,
   payload: Schema.Types.Mixed,
   userId: String,
