@@ -26,9 +26,6 @@ exports.createBotPayload = {
     'dialogFlowAgentId': {
       'type': 'string'
     },
-    'isActive': {
-      'type': 'boolean'
-    },
     'hitCount': {
       'type': 'number'
     },
@@ -43,7 +40,6 @@ exports.createBotPayload = {
     'botName',
     'gcpPojectId',
     'dialogFlowAgentId',
-    'isActive',
     'hitCount',
     'missCount'
   ]

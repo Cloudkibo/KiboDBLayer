@@ -6,16 +6,15 @@ Thus we can use it from other non express callers like cron etc
 exports.validateCreateBotPayload = (body) => {
   let bool = true
   let arrayOfRequiredFields = [
-    'userId',
     'pageId',
+    'userId',
     'companyId',
     'botName',
-    'witAppId',
-    'witToken',
-    'witAppName',
-    'isActive',
+    'gcpPojectId',
+    'dialogFlowAgentId',
     'hitCount',
-    'missCount']
+    'missCount'
+  ]
   let arrayOfKeys = Object.keys(body)
 
   arrayOfRequiredFields.forEach((field, index) => {
