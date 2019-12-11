@@ -237,7 +237,7 @@ exports.createWaiting = function (req, res) {
 exports.queryWaiting = function (req, res) {
   logger.serverLog(TAG, `Query Waiting endpoint is hit:`)
 
-  DataLayer.findUsingQuery(WaitingModel, req.body)
+  DataLayer.findUsingQuery(WaitingModel, req.body, {waitingSubscribers: true})
     .then(foundObjects => {
       sendSuccessResponse(res, 200, foundObjects)
     })

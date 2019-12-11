@@ -56,11 +56,11 @@ exports.update = (Model, body) => {
   }
 }
 
-exports.findUsingQuery = (Model, body) => {
+exports.findUsingQuery = (Model, body, requester) => {
   if (body.purpose) {
     // If purpose found, then proceed
     if (body.purpose === 'aggregate') {
-      let aggregateQuery = LogicLayer.prepareMongoAggregateQuery(body)
+      let aggregateQuery = LogicLayer.prepareMongoAggregateQuery(body, requester)
       // If not validated
       logger.serverLog(TAG, `Inside Aggregate: ${util.inspect(aggregateQuery)}`)
       if (typeof aggregateQuery === 'string') return new Promise((resolve, reject) => { reject(new Error(aggregateQuery)) })
