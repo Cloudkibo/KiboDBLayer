@@ -26,9 +26,6 @@ exports.createBotPayload = {
     'dialogFlowAgentId': {
       'type': 'string'
     },
-    'isActive': {
-      'type': 'boolean'
-    },
     'hitCount': {
       'type': 'number'
     },
@@ -43,7 +40,6 @@ exports.createBotPayload = {
     'botName',
     'gcpPojectId',
     'dialogFlowAgentId',
-    'isActive',
     'hitCount',
     'missCount'
   ]
@@ -393,15 +389,15 @@ exports.createWaitingPayload = {
       'type': 'string'
     },
     'subscriberId': {
-      'type': 'string'
+      'type': 'object'
     },
     'pageId': {
-      'type': 'string'
+      'type': 'object'
     },
     'intentId': {
       'type': 'string'
     },
-    'Question': {
+    'question': {
       'type': 'string'
     }
   },
@@ -410,7 +406,7 @@ exports.createWaitingPayload = {
     'subscriberId',
     'pageId',
     'intentId',
-    'Question'
+    'question'
   ]
 }
 
@@ -422,24 +418,10 @@ exports.queryWaitingPayload = {
       'type': 'string'
     },
     'match': {
-      'type': 'object',
-      'properties': {
-        'botId': {
-          'type': 'string'
-        },
-        'subscriberId': {
-          'type': 'string'
-        },
-        'pageId': {
-          'type': 'string'
-        },
-        'intentId': {
-          'type': 'string'
-        },
-        'Question': {
-          'type': 'string'
-        }
-      }
+      'anyOf': [
+        {'type': 'object'},
+        {'type': 'array'}
+      ]
     }
   },
   'required': [
@@ -457,24 +439,7 @@ exports.updateWaitingPayload =
       'type': 'string'
     },
     'match': {
-      'type': 'object',
-      'properties': {
-        'botId': {
-          'type': 'string'
-        },
-        'subscriberId': {
-          'type': 'string'
-        },
-        'pageId': {
-          'type': 'string'
-        },
-        'intentId': {
-          'type': 'string'
-        },
-        'Question': {
-          'type': 'string'
-        }
-      }
+      'type': 'object'
     },
     'updated': {
       'type': 'object'

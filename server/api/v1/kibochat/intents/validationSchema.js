@@ -11,24 +11,12 @@ exports.createPayload = {
     'botId': {
       'type': 'string'
     },
-    'dialogflowIntentId': {
-      'type': 'string'
-    },
-    'questions': {
-      'type': 'array'
-    },
-    'answer': {
-      'type': 'array'
-    },
     'name': {
       'type': 'string'
     }
   },
   'required': [
-    'dialogflowIntentId',
     'botId',
-    'questions',
-    'answer',
     'name'
   ]
 }
