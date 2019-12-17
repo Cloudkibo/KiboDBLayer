@@ -3,6 +3,8 @@ This file will contain the functions for logic layer.
 By separating it from controller, we are separating the concerns.
 Thus we can use it from other non express callers like cron etc
 */
+const mongoose = require('mongoose')
+
 exports.validateCreateBotPayload = (body) => {
   let bool = true
   let arrayOfRequiredFields = [
@@ -85,6 +87,32 @@ exports.prepareMongoAggregateQuery = (body, requester) => {
 
   if (requester.waitingSubscribers) {
     query = body.match
+    if (query[0].$match) {
+      if (query[0].$match.botId) {
+        query[0].$match.botId = mongoose.Types.ObjectId(query[0].$match.botId)
+      }
+      if (query[0].$match.$and) {
+        if (query[0].$match.$and[1]._id) {
+          if (query[0].$match.$and[1]._id.$lt) {
+            query[0].$match.$and[1]._id.$lt = mongoose.Types.ObjectId(query[0].$match.$and[1]._id.$lt)
+          }
+          if (query[0].$match.$and[1]._id.$gt) {
+            query[0].$match.$and[1]._id.$gt = mongoose.Types.ObjectId(query[0].$match.$and[1]._id.$gt)
+          }
+        }
+      }
+      if (query[0].$match._id) {
+        if (query[0].$match._id.$lt) {
+          query[0].$match._id.$lt = mongoose.Types.ObjectId(query[0].$match._id.$lt)
+        }
+        if (query[0].$match._id.$gt) {
+          query[0].$match._id.$gt = mongoose.Types.ObjectId(query[0].$match._id.$gt)
+        }
+        if (typeof query[0].$match._id === 'string') {
+          query[0].$match._id = mongoose.Types.ObjectId(query[0].$match._id)
+        }
+      }
+    }
   } else {
     if (body.match) {
       if (body.match.datetime) {
