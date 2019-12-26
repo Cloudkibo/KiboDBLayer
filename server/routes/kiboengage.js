@@ -32,6 +32,7 @@ module.exports = function (app) {
   app.use('/api/v1/abandoned_cart', require('./../api/v1/kiboengage/abandoned_cart'))
   app.use('/api/v1/messageStatistics', require('./../api/v1/kiboengage/messageStatistics'))
   app.use('/api/v1/messageBlocks', require('./../api/v1/kiboengage/message_blocks'))
+  app.use('/api/v1/rssFeeds', require('./../api/v1/kiboengage/rssFeeds'))
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))
 
