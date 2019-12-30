@@ -31,6 +31,9 @@ exports.prepareMongoAggregateQuery = (body) => {
         body.match.datetime.$lt = new Date(body.match.datetime.$lt)
       }
     }
+    if (body.match.rssFeedId) {
+      body.match.rssFeedId = mongoose.Types.ObjectId(body.match.rssFeedId)
+    }
     if (body.match.$and) {
       if (body.match.$and[1]._id) {
         if (body.match.$and[1]._id.$lt) {
