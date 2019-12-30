@@ -11,7 +11,7 @@ const rssFeedsSchema = new Schema({
   subscriptions: Number,
   storiesCount: Number,
   defaultFeed: Boolean,
-  timeInterval: {type: Number, default: 24}, // default 24,
+  timeInterval: {type: String, default: '24 hours'}, // default 24,
   scheduledTime: Date, // default time 8AM
   isActive: Boolean,
   datetime: { type: Date, default: Date.now }
