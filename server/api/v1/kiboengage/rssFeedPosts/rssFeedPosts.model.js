@@ -6,9 +6,7 @@ const rssFeedPostsSchema = new Schema({
   rssFeedId: {type: Schema.ObjectId, ref: 'rssFeeds'},
   companyId: String,
   pageId: String,
-  sent: Number,
-  seen: Number,
-  clicked: Number,
+  clicked: {type: Number, default: 0},
   datetime: { type: Date, default: Date.now }
 })
 

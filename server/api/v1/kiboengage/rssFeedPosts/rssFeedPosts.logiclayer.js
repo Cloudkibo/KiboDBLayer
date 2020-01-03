@@ -56,7 +56,8 @@ exports.prepareMongoAggregateQuery = (body) => {
   } else {
     return 'Match Criteria Not Found'
   }
-
+  if (body.lookup) query.push({$lookup: body.lookup})
+  if (body.unwind) query.push({$unwind: body.unwind})
   if (body.group) {
     if (!Object.keys(body.group).includes('_id')) return '_id is missing in Group Criteria'
     else query.push({$group: body.group})
@@ -65,7 +66,6 @@ exports.prepareMongoAggregateQuery = (body) => {
   if (body.sort) query.push({$sort: body.sort})
   if (body.skip) query.push({$skip: body.skip})
   if (body.limit) query.push({$limit: body.limit})
-  if (body.lookup) query.push({$lookup: body.lookup})
   if (body.lookup1) query.push({$lookup: body.lookup1})
 
   return query
