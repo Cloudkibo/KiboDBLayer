@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const rssFeedsSchema = new Schema({
-  pageIds: [String],
+  pageId: String,
   companyId: String,
   userId: String,
   feedUrl: String,
