@@ -35,6 +35,7 @@ module.exports = function (app) {
   app.use('/api/v1/rssFeeds', require('./../api/v1/kiboengage/rssFeeds'))
   app.use('/api/v1/rssFeedPosts', require('./../api/v1/kiboengage/rssFeedPosts'))
   app.use('/api/v1/rssSubscriptions', require('./../api/v1/kiboengage/rssSubscriptions'))
+  app.use('/api/v1/rssFeedPostSubscribers', require('./../api/v1/kiboengage/rssFeedPostSubscribers'))
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))
 

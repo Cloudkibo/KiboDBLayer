@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 
 exports.validateCreatePayload = (body) => {
   let bool = true
-  let arrayOfRequiredFields = ['subscriberId', 'rssFeedId', 'subscription']
+  let arrayOfRequiredFields = ['rssFeedId', 'companyId', 'pageId', 'subscriberId', 'rssFeedPostId']
   let arrayOfKeys = Object.keys(body)
 
   arrayOfRequiredFields.forEach((field, index) => {
@@ -31,6 +31,9 @@ exports.prepareMongoAggregateQuery = (body) => {
         body.match.datetime.$lt = new Date(body.match.datetime.$lt)
       }
     }
+    if (body.match.rssFeedId) {
+      body.match.rssFeedId = mongoose.Types.ObjectId(body.match.rssFeedId)
+    }
     if (body.match.$and) {
       if (body.match.$and[1]._id) {
         if (body.match.$and[1]._id.$lt) {
@@ -48,9 +51,6 @@ exports.prepareMongoAggregateQuery = (body) => {
       if (body.match._id.$gt) {
         body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
       }
-    }
-    if (body.match.rssFeedId) {
-      body.match.rssFeedId = mongoose.Types.ObjectId(body.match.rssFeedId)
     }
     query.push({$match: body.match})
   } else {

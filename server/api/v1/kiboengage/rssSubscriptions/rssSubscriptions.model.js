@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 const rssSubscriptionsSchema = new Schema({
   rssFeedId: {type: Schema.ObjectId, ref: 'rssFeeds'},
-  subscriberId: String,
+  subscriberId: Schema.Types.Mixed,
   subscription: Boolean,
   datetime: { type: Date, default: Date.now }
 })
