@@ -2,8 +2,8 @@ exports.createPayload = {
   '$schema': 'http://json-schema.org/draft-04/schema#',
   'type': 'object',
   'properties': {
-    'pageId': {
-      'type': 'string',
+    'pageIds': {
+      'type': 'array',
     },
     'userId': {
       'type': 'string'
@@ -33,7 +33,7 @@ exports.createPayload = {
   'required': [
     'userId',
     'companyId',
-    'pageId',
+    'pageIds',
     'feedUrl',
     'title',
     'storiesCount',
