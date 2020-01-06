@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 
 exports.validateCreatePayload = (body) => {
   let bool = true
-  let arrayOfRequiredFields = ['pageId', 'companyId', 'userId', 'feedUrl', 'title', 'storiesCount', 'defaultFeed', 'isActive']
+  let arrayOfRequiredFields = ['pageIds', 'companyId', 'userId', 'feedUrl', 'title', 'storiesCount', 'defaultFeed', 'isActive']
   let arrayOfKeys = Object.keys(body)
   arrayOfRequiredFields.forEach((field, index) => {
     if (!arrayOfKeys.includes(field)) {
@@ -45,6 +45,9 @@ exports.prepareMongoAggregateQuery = (body) => {
       }
       if (body.match._id.$gt) {
         body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
+      }
+      if (body.match._id.$ne) {
+        body.match._id.$ne = mongoose.Types.ObjectId(body.match._id.$ne)
       }
     }
     query.push({$match: body.match})
