@@ -49,6 +49,9 @@ exports.prepareMongoAggregateQuery = (body) => {
         body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
       }
     }
+    if (body.match.rssFeedId) {
+      body.match.rssFeedId = mongoose.Types.ObjectId(body.match.rssFeedId)
+    }
     query.push({$match: body.match})
   } else {
     return 'Match Criteria Not Found'

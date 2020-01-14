@@ -2,43 +2,28 @@ exports.createPayload = {
   '$schema': 'http://json-schema.org/draft-04/schema#',
   'type': 'object',
   'properties': {
-    'pageIds': {
-      'type': 'array',
-    },
-    'userId': {
+    'pageId': {
       'type': 'string'
     },
     'companyId': {
       'type': 'string'
     },
-    'feedUrl': {
+    'rssFeedId': {
       'type': 'string'
     },
-    'title': {
+    'rssFeedPostId': {
       'type': 'string'
     },
-    'storiesCount': {
-      'type': 'number'
-    },
-    'subscriptions': {
-      'type': 'number'
-    },
-    'defaultFeed': {
-      'type': 'boolean'
-    },
-    'isActive': {
-      'type': 'boolean'
+    'subscriberId': {
+      'type': 'string'
     }
   },
   'required': [
-    'userId',
     'companyId',
-    'pageIds',
-    'feedUrl',
-    'title',
-    'storiesCount',
-    'defaultFeed',
-    'isActive'
+    'pageId',
+    'rssFeedId',
+    'rssFeedPostId',
+    'subscriberId'
   ]
 }
 
