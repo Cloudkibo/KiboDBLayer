@@ -16,4 +16,6 @@ router.get('/filterAndModeration/normalizeData', controller.normalizeFilterAndMo
 router.get('/normalizeAutopostingDate', controller.normalizeAutopostingDate)
 router.get('/normalizeSequenceSubscribers', controller.normalizeSequenceSubscribers)
 router.post('/normalizeClickCount', controller.normalizeClickCount)
+router.post('/normalizeDataForBroadcast', controller.normalizeDataForBroadcast)
+
 module.exports = router
