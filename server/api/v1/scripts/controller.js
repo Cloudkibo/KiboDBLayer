@@ -734,6 +734,105 @@ function normalizeForBroadcasts () {
     })
 }
 
+function saveBroadcast(broadcast) {
+  console.log('called function saveBroadcast')
+  BroadcastsModel.update({_id: broadcast._id}, {payload: broadcast.payload}, (err, result) => {
+    if (err) {
+      console.log(`error occurred during updating ${broadcast._id}`, err)
+    } else {
+      console.log(`successfully updated ${broadcast._id}`, result)
+    }
+  })
+}
+
+exports.normalizeDataForBroadcast = function (req, res) {
+  let requests = []
+  BroadcastsModel.aggregate([
+    {$skip: req.body.skip},
+    {$limit: req.body.limit}
+  ]).exec()
+    .then(broadcasts => {
+      console.log('broadcasts.length', broadcasts.length)
+      broadcasts.forEach(broadcast => {
+        requests.push(new Promise((resolve, reject) => {
+          if (broadcast.payload && broadcast.payload.length < 2) {
+            console.log('broadcast.payload[0].componentType', broadcast.payload[0].componentType)
+            if (broadcast.payload[0].componentType === 'card') {
+              console.log('true if condition')
+              if (broadcast.payload[0].links && broadcast.payload[0].links.length > 0) {
+                console.log('broadcast.payload[0].links.length', broadcast.payload[0].links.length)
+                if (broadcast.payload[0].buttons && broadcast.payload[0].buttons.length > 0) {
+                  if (!broadcast.payload[0].componentName) {
+                    if (broadcast.payload[0].buttons[0].title === 'Watch on YouTube') {
+                      broadcast.payload[0].componentName = 'YouTube video'
+                      BroadcastsModel.updateOne({_id: broadcast._id}, {payload: broadcast.payload}).then(updated => {
+                        resolve('success')
+                      }).catch(err => {
+                        reject('fail')
+                        logger.serverLog(TAG, `Filed to fetch broadcasts ${err}`)
+                      })                   
+                    }
+                    else {
+                      broadcast.payload[0].componentName = 'links carousel'
+                      BroadcastsModel.updateOne({_id: broadcast._id}, {payload: broadcast.payload}).then(updated => {
+                        resolve('success')
+                      }).catch(err => {
+                        reject('fail')
+                        logger.serverLog(TAG, `Filed to fetch broadcasts ${err}`)
+                      })   
+                    }
+                  } else {
+                    resolve('success')
+                  }
+                }
+                else {
+                  resolve('success') 
+                }
+              } else {
+                if (!broadcast.payload[0].componentName) {
+                  broadcast.payload[0].componentName = broadcast.payload[0].componentType
+                  BroadcastsModel.updateOne({_id: broadcast._id}, {payload: broadcast.payload}).then(updated => {
+                    resolve('success')
+                  }).catch(err => {
+                    reject('fail')
+                    logger.serverLog(TAG, `Filed to fetch broadcasts ${err}`)
+                  })  
+                } else {
+                  resolve('success')
+                }
+              }
+            } else {
+              console.log('true else condition', broadcast.payload[0].componentName)
+              if (!broadcast.payload[0].componentName) {
+                broadcast.payload[0].componentName = broadcast.payload[0].componentType
+                BroadcastsModel.updateOne({_id: broadcast._id}, {payload: broadcast.payload}).then(updated => {
+                  resolve('success')
+                }).catch(err => {
+                  reject('fail')
+                  logger.serverLog(TAG, `Filed to fetch broadcasts ${err}`)
+                })               
+              } else {
+                resolve('success')
+              }
+            }
+          } else {
+            resolve('success')
+          }
+        }))
+      })
+      Promise.all(requests)
+        .then(results => {
+          console.log('results after', results)
+          return res.status(200).json({status: 'success', payload: 'Normalized successfully!'})
+        }).catch(err => {
+          logger.serverLog(TAG, err)
+        })
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Filed to fetch broadcasts ${err}`)
+    })
+}
+
 function normalizeForPolls () {
   PollsModel.find({}).exec()
     .then(polls => {
