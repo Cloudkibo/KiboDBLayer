@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 
 exports.validateCreatePayload = (body) => {
   let bool = true
-  let arrayOfRequiredFields = ['pageIds', 'companyId', 'userId', 'feedUrl', 'title', 'storiesCount', 'defaultFeed', 'isActive', 'integrationType']
+  let arrayOfRequiredFields = ['pageIds', 'companyId', 'userId', 'title', 'defaultFeed', 'isActive', 'integrationType']
   let arrayOfKeys = Object.keys(body)
   arrayOfRequiredFields.forEach((field, index) => {
     if (!arrayOfKeys.includes(field)) {

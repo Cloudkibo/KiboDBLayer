@@ -37,9 +37,7 @@ exports.createPayload = {
     'userId',
     'companyId',
     'pageIds',
-    'feedUrl',
     'title',
-    'storiesCount',
     'defaultFeed',
     'isActive',
     'integrationType'
