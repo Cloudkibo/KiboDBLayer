@@ -32,10 +32,10 @@ module.exports = function (app) {
   app.use('/api/v1/abandoned_cart', require('./../api/v1/kiboengage/abandoned_cart'))
   app.use('/api/v1/messageStatistics', require('./../api/v1/kiboengage/messageStatistics'))
   app.use('/api/v1/messageBlocks', require('./../api/v1/kiboengage/message_blocks'))
-  app.use('/api/v1/rssFeeds', require('./../api/v1/kiboengage/rssFeeds'))
-  app.use('/api/v1/rssFeedPosts', require('./../api/v1/kiboengage/rssFeedPosts'))
-  app.use('/api/v1/rssSubscriptions', require('./../api/v1/kiboengage/rssSubscriptions'))
-  app.use('/api/v1/rssFeedPostSubscribers', require('./../api/v1/kiboengage/rssFeedPostSubscribers'))
+  app.use('/api/v1/newsSections', require('./../api/v1/kiboengage/newsSections'))
+  app.use('/api/v1/newsPosts', require('./../api/v1/kiboengage/newsPosts'))
+  app.use('/api/v1/newsSubscriptions', require('./../api/v1/kiboengage/newsSubscriptions'))
+  app.use('/api/v1/newsPostSubscribers', require('./../api/v1/kiboengage/newsPostSubscribers'))
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))
 
