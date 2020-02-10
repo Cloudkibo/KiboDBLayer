@@ -26,12 +26,12 @@ exports.prepareMongoAggregateQuery = (body) => {
     if (body.match.datetime) {
       if (body.match.datetime.$gte) {
         console.log('body.match.datetime.$gte before', body.match.datetime.$gte)
-        body.match.datetime.$gte = new Date(body.match.datetime.$gte)
+        body.match.datetime.$gte = new Date(body.match.datetime.$gte + '')
         console.log('body.match.datetime.$gte after', body.match.datetime.$gte)
       }
       if (body.match.datetime.$lt) {
         console.log('body.match.datetime.$lt before', body.match.datetime.$lt)
-        body.match.datetime.$lt = new Date(body.match.datetime.$lt)
+        body.match.datetime.$lt = new Date(body.match.datetime.$lt + '')
         console.log('body.match.datetime.$lt after', body.match.datetime.$lt)
       }
     }
