@@ -4,6 +4,8 @@ By separating it from controller, we are separating the concerns.
 Thus we can use it from other non express callers like cron etc
 */
 const mongoose = require('mongoose')
+const logger = require('../../../../components/logger')
+const TAG = '/api/v1/kiboengage/newsPosts/newsPosts.datalayer.js'
 
 exports.validateCreatePayload = (body) => {
   let bool = true
@@ -21,18 +23,14 @@ exports.validateCreatePayload = (body) => {
 
 exports.prepareMongoAggregateQuery = (body) => {
   let query = []
-
+  if (body.project) query.push({$project: body.project})
   if (body.match) {
     if (body.match.datetime) {
       if (body.match.datetime.$gte) {
-        console.log('body.match.datetime.$gte before', body.match.datetime.$gte)
-        body.match.datetime.$gte = new Date(body.match.datetime.$gte + '')
-        console.log('body.match.datetime.$gte after', body.match.datetime.$gte)
+        body.match.datetime.$gte = new Date(body.match.datetime.$gte)
       }
       if (body.match.datetime.$lt) {
-        console.log('body.match.datetime.$lt before', body.match.datetime.$lt)
-        body.match.datetime.$lt = new Date(body.match.datetime.$lt + '')
-        console.log('body.match.datetime.$lt after', body.match.datetime.$lt)
+        body.match.datetime.$lt = new Date(body.match.datetime.$lt)
       }
     }
     if (body.match.newsSectionId) {
@@ -71,6 +69,6 @@ exports.prepareMongoAggregateQuery = (body) => {
   if (body.skip) query.push({$skip: body.skip})
   if (body.limit) query.push({$limit: body.limit})
   if (body.lookup1) query.push({$lookup: body.lookup1})
-
+  logger.serverLog(TAG, `final query: ${JSON.stringify(query)}`)
   return query
 }
