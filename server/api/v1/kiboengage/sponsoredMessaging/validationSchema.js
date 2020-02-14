@@ -8,7 +8,10 @@ exports.createPayload = {
   '$schema': 'http://json-schema.org/draft-04/schema#',
   'type': 'object',
   'properties': {
-    'adAccountId': {
+    'adName': {
+      'type': 'string'
+    },
+    'status': {
       'type': 'string'
     },
     'userId': {
@@ -22,7 +25,8 @@ exports.createPayload = {
     }
   },
   'required': [
-    'adAccountId',
+    'adName',
+    'status',
     'userId',
     'pageId',
     'companyId'
@@ -40,10 +44,6 @@ exports.queryPayload = {
     'match': {
       'type': 'object',
       'properties': {
-        'userId': {
-          'type': 'string',
-          'required': true
-        },
         'companyId': {
           'type': 'string',
           'required': true

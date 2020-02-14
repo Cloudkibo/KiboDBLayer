@@ -1,4 +1,5 @@
 let mongoose = require('mongoose')
+let timestamps = require('mongoose-timestamp')
 let Schema = mongoose.Schema
 
 let sponsoredMessagesSchema = new Schema({
@@ -16,5 +17,7 @@ let sponsoredMessagesSchema = new Schema({
   clicks: {type: Number, default: 0},
   statsFromUs: Schema.Types.Mixed
 })
+
+sponsoredMessagesSchema.plugin(timestamps)
 
 module.exports = mongoose.model('sponsoredMessages', sponsoredMessagesSchema)
