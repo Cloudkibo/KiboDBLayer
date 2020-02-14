@@ -4,24 +4,33 @@ By separating it from controller, we are cleaning the code.
 Now the middleware will automatically send error response if the payload fails
 */
 // For express json validation
-
 exports.createPayload = {
   '$schema': 'http://json-schema.org/draft-04/schema#',
   'type': 'object',
   'properties': {
-    'autopostingId': {
-      'type': 'string',
-      'required': true
+    'adName': {
+      'type': 'string'
     },
-    'tweet': {
-      'type': 'object',
-      'required': true
+    'status': {
+      'type': 'string'
     },
-    'expiryTime': {
-      'type': 'string',
-      'required': true
+    'userId': {
+      'type': 'string'
+    },
+    'pageId': {
+      'type': 'string'
+    },
+    'companyId': {
+      'type': 'string'
     }
-  }
+  },
+  'required': [
+    'adName',
+    'status',
+    'userId',
+    'pageId',
+    'companyId'
+  ]
 }
 
 exports.queryPayload = {
@@ -29,23 +38,19 @@ exports.queryPayload = {
   'type': 'object',
   'properties': {
     'purpose': {
-      'type': 'string'
+      'type': 'string',
+      'required': true
     },
     'match': {
       'type': 'object',
       'properties': {
-        'autopostingId': {
-          'type': 'string'
-        },
-        'tweet': {
-          'type': 'object'
-        },
-        'expiryTime': {
-          'type': 'string'
+        'companyId': {
+          'type': 'string',
+          'required': true
         }
-      }
-    },
-    'required': true
+      },
+      'required': true
+    }
   }
 }
 
@@ -59,16 +64,27 @@ exports.updatePayload = {
     'match': {
       'type': 'object',
       'properties': {
-        'autopostingId': {
+        'adAccountId': {
           'type': 'string'
         },
-        'tweet': {
-          'type': 'object'
+        'userId': {
+          'type': 'string'
         },
-        'expiryTime': {
+        'pageId': {
+          'type': 'string'
+        },
+        'companyId': {
           'type': 'string'
         }
       }
+    },
+    'updated': {
+      'type': 'object'
     }
-  }
+  },
+  'required': [
+    'purpose',
+    'match',
+    'updated'
+  ]
 }

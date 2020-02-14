@@ -3,23 +3,23 @@ This file will contain the functions for data layer.
 By separating it from controller, we are separating the concerns.
 Thus we can use it from other non express callers like cron etc
 */
-const LogicLayer = require('./page_broadcast.logiclayer')
+const LogicLayer = require('./sponsoredMessaging.logiclayer')
 const MongoInterface = require('./interface_mongo')
 const logger = require('../../../../components/logger')
-const TAG = '/api/v1/kiboengage/page_broadcast/page_broadcast.datalayer.js'
+const TAG = '/api/v1/kiboengage/sponsoredMessaging/sponsoredMessaging.datalayer.js'
 
 const util = require('util')
 
-exports.findAllPageBroadcastObjects = () => {
+exports.findAllObjects = () => {
   return MongoInterface.find()
 }
 
-exports.createOnePageBroadcastObject = (body) => {
+exports.createOneObject = (body) => {
   if (LogicLayer.validateCreatePayload(body)) return MongoInterface.create(body)
   else return new Promise((resolve, reject) => { reject(new Error('Payload is not valid')) })
 }
 
-exports.updatePageBroadcast = (body) => {
+exports.update = (body) => {
   if (body.purpose) {
     let query = body.match
     let updated = body.updated
@@ -41,13 +41,12 @@ exports.updatePageBroadcast = (body) => {
   }
 }
 
-exports.findPageBroadcastUsingQuery = (body) => {
+exports.findUsingQuery = (body) => {
   if (body.purpose) {
     // If purpose found, then proceed
     if (body.purpose === 'aggregate') {
       let aggregateQuery = LogicLayer.prepareMongoAggregateQuery(body)
       // If not validated
-      console.log('aggregateQuery', aggregateQuery)
       logger.serverLog(TAG, `Inside Aggregate: ${util.inspect(aggregateQuery)}`)
       if (typeof aggregateQuery === 'string') return new Promise((resolve, reject) => { reject(new Error(aggregateQuery)) })
       else return MongoInterface.aggregate(aggregateQuery)
@@ -56,11 +55,7 @@ exports.findPageBroadcastUsingQuery = (body) => {
       if (!body.match) return new Promise((resolve, reject) => { reject(new Error('Match Criteria Not Found')) })
       else return MongoInterface.findOne(body.match)
     } else if (body.purpose === 'findAll') {
-      console.log('body.purpose', body.purpose)
-      console.log('body.match', body.match)
       // Reject if match criteria not found
-      console.log('body.purpose', body.purpose)
-      console.log('body.match', body.match)
       if (!body.match) return new Promise((resolve, reject) => { reject(new Error('Match Criteria Not Found')) })
       else return MongoInterface.find(body.match)
     } else {
@@ -72,7 +67,7 @@ exports.findPageBroadcastUsingQuery = (body) => {
   }
 }
 
-exports.deletePageBroadcast = (body) => {
+exports.delete = (body) => {
   if (body.purpose) {
     let query = body.match
     // If purpose found, then proceed
