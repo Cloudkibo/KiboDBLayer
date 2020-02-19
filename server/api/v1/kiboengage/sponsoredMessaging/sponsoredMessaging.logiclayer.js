@@ -35,7 +35,6 @@ exports.prepareMongoAggregateQuery = (body) => {
     if (body.match._id) {
       if (body.match._id.$lt) {
         body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
-        console.log('id converted', JSON.stringibody)
       }
       if (body.match._id.$gt) {
         body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
