@@ -6,7 +6,6 @@ const { sendSuccessResponse, sendErrorResponse } = require('../../global/respons
 const util = require('util')
 
 exports.index = function (req, res) {
-  logger.serverLog(TAG, `Index endpoint is hit:`)
   DataLayer.findAllQueueObjects()
     .then(foundObjects => {
       sendSuccessResponse(res, 200, foundObjects)
@@ -31,7 +30,6 @@ exports.create = function (req, res) {
 }
 
 exports.query = function (req, res) {
-  logger.serverLog(TAG, `Query endpoint is hit:`)
 
   DataLayer.findQueueUsingQuery(req.body)
     .then(foundObjects => {
