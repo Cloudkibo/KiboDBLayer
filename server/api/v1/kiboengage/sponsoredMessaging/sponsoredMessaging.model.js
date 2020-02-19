@@ -5,6 +5,7 @@ let Schema = mongoose.Schema
 let sponsoredMessagesSchema = new Schema({
   payload: Schema.Types.Mixed,
   messageCreativeId: String,
+  currency: String,
   adAccountId: String,
   adSetId: String,
   adId: String,
