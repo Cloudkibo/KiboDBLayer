@@ -68,19 +68,19 @@ exports.findResponseUsingQuery = (body) => {
 }
 
 exports.deleteResponse = (body) => {
-  console.log('body',body)
+  console.log('body', body)
   if (body.purpose) {
     let query = body.match
     // If purpose found, then proceed
     if (body.purpose === 'deleteOne') {
-     console.log('if condition',body.purpose)
- 
+      console.log('if condition', body.purpose)
+
       return MongoInterface.deleteOne(query)
     } else if (body.purpose === 'deleteMany') {
-      console.log('else if condition',body.purpose)
+      console.log('else if condition', body.purpose)
       return MongoInterface.deleteMany(query)
     } else {
-      console.log('else condition',body.purpose)
+      console.log('else condition', body.purpose)
       return new Promise((resolve, reject) => { reject(new Error('Correct Purpose Not Found')) })
     }
   } else {

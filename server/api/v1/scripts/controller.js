@@ -734,7 +734,7 @@ function normalizeForBroadcasts () {
     })
 }
 
-function saveBroadcast(broadcast) {
+function saveBroadcast (broadcast) {
   console.log('called function saveBroadcast')
   BroadcastsModel.update({_id: broadcast._id}, {payload: broadcast.payload}, (err, result) => {
     if (err) {
@@ -770,23 +770,21 @@ exports.normalizeDataForBroadcast = function (req, res) {
                       }).catch(err => {
                         reject('fail')
                         logger.serverLog(TAG, `Filed to fetch broadcasts ${err}`)
-                      })                   
-                    }
-                    else {
+                      })
+                    } else {
                       broadcast.payload[0].componentName = 'links carousel'
                       BroadcastsModel.updateOne({_id: broadcast._id}, {payload: broadcast.payload}).then(updated => {
                         resolve('success')
                       }).catch(err => {
                         reject('fail')
                         logger.serverLog(TAG, `Filed to fetch broadcasts ${err}`)
-                      })   
+                      })
                     }
                   } else {
                     resolve('success')
                   }
-                }
-                else {
-                  resolve('success') 
+                } else {
+                  resolve('success')
                 }
               } else {
                 if (!broadcast.payload[0].componentName) {
@@ -796,7 +794,7 @@ exports.normalizeDataForBroadcast = function (req, res) {
                   }).catch(err => {
                     reject('fail')
                     logger.serverLog(TAG, `Filed to fetch broadcasts ${err}`)
-                  })  
+                  })
                 } else {
                   resolve('success')
                 }
@@ -810,7 +808,7 @@ exports.normalizeDataForBroadcast = function (req, res) {
                 }).catch(err => {
                   reject('fail')
                   logger.serverLog(TAG, `Filed to fetch broadcasts ${err}`)
-                })               
+                })
               } else {
                 resolve('success')
               }
