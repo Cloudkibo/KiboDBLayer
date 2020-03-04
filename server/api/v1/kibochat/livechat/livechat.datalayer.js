@@ -84,6 +84,14 @@ exports.deleteLiveChat = (body) => {
   }
 }
 
+exports.countSearchTerms = (body) => {
+  let countQuery = {...body}
+  if (countQuery.datetime) {
+    delete countQuery.datetime
+  }
+  return MongoInterface.count(countQuery)
+}
+
 exports.searchLiveChat = (body) => {
   return MongoInterface.search(body)
 }
