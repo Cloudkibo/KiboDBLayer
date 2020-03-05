@@ -46,19 +46,28 @@ exports.query = function (req, res) {
 exports.search = function (req, res) {
   logger.serverLog(TAG, `Search endpoint is hit:`)
 
-  DataLayer.searchLiveChat(req.body)
-    .then(foundObjects => {
-      sendSuccessResponse(res, 200, foundObjects)
-    })
+  DataLayer.countSearchTerms(req.body).then((count) => {
+    DataLayer.searchLiveChat(req.body)
+      .then(foundObjects => {
+        let result = {
+          count: count,
+          messages: foundObjects
+        }
+        sendSuccessResponse(res, 200, result)
+      })
+      .catch(err => {
+        logger.serverLog(TAG, `Error found search Controller : ${err}`)
+        sendErrorResponse(res, 500, err.toString())
+      })
+  })
     .catch(err => {
-      logger.serverLog(TAG, `Error found search Controller : ${util.inspect(err)}`)
+      logger.serverLog(TAG, `Error found search Controller : ${err}`)
       sendErrorResponse(res, 500, err.toString())
     })
 }
 
 exports.update = function (req, res) {
   logger.serverLog(TAG, `Update endpoint is hit:`)
-
   DataLayer.updateLiveChat(req.body)
     .then(foundObjects => {
       sendSuccessResponse(res, 200, foundObjects)
