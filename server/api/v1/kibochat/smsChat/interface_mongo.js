@@ -34,3 +34,10 @@ exports.updateMany = (query, updated, options) => {
   return LiveChatModel.updateMany(query, updated, options)
     .exec()
 }
+
+exports.search = (criteria) => {
+  return LiveChatModel.find(criteria)
+    .sort({datetime: -1})
+    .limit(10)
+    .exec()
+}
