@@ -3,7 +3,7 @@ let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 
 let LiveChatSchema = new Schema({
-  format: {type: String, default: 'kibopush'},
+  format: {type: String, default: 'convos'},
   senderNumber: String,
   recipientNumber: String,
   contactId: String,
