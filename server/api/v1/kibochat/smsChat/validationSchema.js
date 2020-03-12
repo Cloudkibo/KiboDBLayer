@@ -1,3 +1,22 @@
+exports.searchPayload = {
+  '$schema': 'http://json-schema.org/draft-04/schema#',
+  'type': 'object',
+  'properties': {
+    'company_id': {
+      'type': 'string',
+      'required': true
+    },
+    '$text': {
+      'type': 'object',
+      'required': true
+    },
+    'subscriber_id': {
+      'type': 'string',
+      'required': true
+    }
+  }
+}
+
 exports.createPayload = {
   '$schema': 'http://json-schema.org/draft-04/schema#',
   'type': 'object',
