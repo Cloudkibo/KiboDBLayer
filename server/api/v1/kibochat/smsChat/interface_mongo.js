@@ -41,3 +41,8 @@ exports.search = (criteria) => {
     .limit(10)
     .exec()
 }
+
+exports.count = (query) => {
+  return LiveChatModel.count(query)
+    .exec()
+}
