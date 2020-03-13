@@ -2,7 +2,7 @@ exports.searchPayload = {
   '$schema': 'http://json-schema.org/draft-04/schema#',
   'type': 'object',
   'properties': {
-    'company_id': {
+    'companyId': {
       'type': 'string',
       'required': true
     },
@@ -10,7 +10,7 @@ exports.searchPayload = {
       'type': 'object',
       'required': true
     },
-    'subscriber_id': {
+    'contactId': {
       'type': 'string',
       'required': true
     }
