@@ -41,3 +41,26 @@ exports.update = function (req, res) {
       sendErrorResponse(res, 500, err.toString())
     })
 }
+
+exports.search = function (req, res) {
+  logger.serverLog(TAG, `Search endpoint is hit:`)
+
+  DataLayer.countSearchTerms(req.body).then((count) => {
+    DataLayer.searchLiveChat(req.body)
+      .then(foundObjects => {
+        let result = {
+          count: count,
+          messages: foundObjects
+        }
+        sendSuccessResponse(res, 200, result)
+      })
+      .catch(err => {
+        logger.serverLog(TAG, `Error found search Controller : ${err}`)
+        sendErrorResponse(res, 500, err.toString())
+      })
+  })
+    .catch(err => {
+      logger.serverLog(TAG, `Error found search Controller : ${err}`)
+      sendErrorResponse(res, 500, err.toString())
+    })
+}

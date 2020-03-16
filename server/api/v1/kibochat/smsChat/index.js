@@ -17,4 +17,8 @@ router.put('/',
   validate({body: validationSchema.updatePayload}),
   controller.update)
 
+router.post('/search',
+  validate({body: validationSchema.searchPayload}),
+  controller.search)
+
 module.exports = router
