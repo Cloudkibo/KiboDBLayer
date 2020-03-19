@@ -39,3 +39,12 @@ exports.search = (criteria) => {
     .sort({score: {$meta: 'textScore'}})
     .exec()
 }
+exports.deleteOne = (query) => {
+  return LiveChatModel.deleteOne(query)
+    .exec()
+}
+
+exports.deleteMany = (query) => {
+  return LiveChatModel.deleteMany(query)
+    .exec()
+}
