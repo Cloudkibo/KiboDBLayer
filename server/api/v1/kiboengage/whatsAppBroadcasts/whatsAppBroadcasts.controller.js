@@ -41,3 +41,15 @@ exports.update = function (req, res) {
       sendErrorResponse(res, 500, err.toString())
     })
 }
+exports.delete = function (req, res) {
+  logger.serverLog(TAG, `Delete endpoint is hit:`)
+
+  DataLayer.deleteBroadcast(req.body)
+    .then(result => {
+      sendSuccessResponse(res, 200, result)
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
+      sendErrorResponse(res, 500, err.toString())
+    })
+}

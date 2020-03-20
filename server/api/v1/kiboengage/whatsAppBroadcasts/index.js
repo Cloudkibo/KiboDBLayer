@@ -17,4 +17,8 @@ router.put('/',
   validate({body: validationSchema.updatePayload}),
   controller.update)
 
+router.delete('/',
+  validate({body: validationSchema.queryPayload}),
+  controller.delete)
+
 module.exports = router
