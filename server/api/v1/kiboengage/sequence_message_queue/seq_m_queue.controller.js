@@ -30,7 +30,6 @@ exports.create = function (req, res) {
 }
 
 exports.query = function (req, res) {
-
   DataLayer.findQueueUsingQuery(req.body)
     .then(foundObjects => {
       sendSuccessResponse(res, 200, foundObjects)

@@ -19,4 +19,8 @@ router.post('/search',
   validate({body: validationSchema.searchPayload}),
   controller.search)
 
+router.delete('/',
+  validate({body: validationSchema.queryPayload}),
+  controller.delete)
+
 module.exports = router

@@ -38,15 +38,38 @@ exports.update = function (req, res) {
       sendErrorResponse(res, 500, err.toString())
     })
 }
+
 exports.search = function (req, res) {
   logger.serverLog(TAG, `Search endpoint is hit:`)
 
-  DataLayer.searchLiveChat(req.body)
-    .then(foundObjects => {
-      sendSuccessResponse(res, 200, foundObjects)
+  DataLayer.countSearchTerms(req.body).then((count) => {
+    DataLayer.searchLiveChat(req.body)
+      .then(foundObjects => {
+        let result = {
+          count: count,
+          messages: foundObjects
+        }
+        sendSuccessResponse(res, 200, result)
+      })
+      .catch(err => {
+        logger.serverLog(TAG, `Error found search Controller : ${err}`)
+        sendErrorResponse(res, 500, err.toString())
+      })
+  })
+    .catch(err => {
+      logger.serverLog(TAG, `Error found search Controller : ${err}`)
+      sendErrorResponse(res, 500, err.toString())
+    })
+}
+exports.delete = function (req, res) {
+  logger.serverLog(TAG, `Delete endpoint is hit:`)
+
+  DataLayer.deleteLiveChat(req.body)
+    .then(result => {
+      sendSuccessResponse(res, 200, result)
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found search Controller : ${util.inspect(err)}`)
+      logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
       sendErrorResponse(res, 500, err.toString())
     })
 }

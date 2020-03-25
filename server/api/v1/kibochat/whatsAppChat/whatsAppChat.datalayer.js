@@ -56,6 +56,31 @@ exports.updateLiveChat = (body) => {
     return new Promise((resolve, reject) => { reject(new Error('Purpose Not Found')) })
   }
 }
+
+exports.countSearchTerms = (body) => {
+  let countQuery = {...body}
+  if (countQuery.datetime) {
+    delete countQuery.datetime
+  }
+  return MongoInterface.count(countQuery)
+}
+
 exports.searchLiveChat = (body) => {
   return MongoInterface.search(body)
+}
+exports.deleteLiveChat = (body) => {
+  if (body.purpose) {
+    let query = body.match
+    // If purpose found, then proceed
+    if (body.purpose === 'deleteOne') {
+      return MongoInterface.deleteOne(query)
+    } else if (body.purpose === 'deleteMany') {
+      return MongoInterface.deleteMany(query)
+    } else {
+      return new Promise((resolve, reject) => { reject(new Error('Correct Purpose Not Found')) })
+    }
+  } else {
+    // If purpose not found, then reject
+    return new Promise((resolve, reject) => { reject(new Error('Purpose Not Found')) })
+  }
 }
