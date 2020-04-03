@@ -14,6 +14,7 @@ let sponsoredMessagesSchema = new Schema({
   status: String,
   scheduleDateTime: Date,
   scheduleTimeZone: String,
+  errorMessage: String,
   statusFbPayload: Schema.Types.Mixed, // to store actual error or rejection messages from facebook team
   companyId: String,
   userId: String,
