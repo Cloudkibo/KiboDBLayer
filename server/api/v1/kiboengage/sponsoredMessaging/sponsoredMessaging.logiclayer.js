@@ -52,8 +52,8 @@ exports.prepareMongoAggregateQuery = (body) => {
   }
 
   if (body.lookup) query.push({$lookup: body.lookup})
-  if (body.skip) query.push({$skip: body.skip})
   if (body.sort) query.push({$sort: body.sort})
+  if (body.skip) query.push({$skip: body.skip})
   if (body.limit) query.push({$limit: body.limit})
   if (body.project) query.push({$project: body.project})
   if (body.projectAgain) query.push({$project: body.projectAgain})
