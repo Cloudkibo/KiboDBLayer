@@ -75,13 +75,7 @@ exports.updatePayload =
         'pageId': {
           'type': 'string'
         },
-        'userId': {
-          'type': 'string'
-        },
         'companyId': {
-          'type': 'string'
-        },
-        'subscriberId': {
           'type': 'string'
         }
       }
