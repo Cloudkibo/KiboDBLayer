@@ -13,6 +13,8 @@ module.exports = function (app) {
   app.use('/api/v1/whatsAppChat', require('./../api/v1/kibochat/whatsAppChat'))
   app.use('/api/v1/intents', require('./../api/v1/kibochat/intents'))
   app.use('/api/v1/chatbots', require('./../api/v1/kibochat/chatbot'))
+  app.use('/api/v1/chatbots_backup', require('./../api/v1/kibochat/chatbot_backup'))
+  app.use('/api/v1/messageBlocks_backup', require('./../api/v1/kibochat/messageBlocks_backup'))
 
   app.use('/api/v1/scripts', require('./../api/v1/scripts'))
 
