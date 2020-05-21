@@ -85,7 +85,7 @@ exports.validateCreateWaitingPayload = (body) => {
 exports.prepareMongoAggregateQuery = (body, requester) => {
   let query = []
 
-  if (requester.waitingSubscribers) {
+  if (requester && requester.waitingSubscribers) {
     query = body.match
     if (query[0].$match) {
       if (query[0].$match.botId) {
