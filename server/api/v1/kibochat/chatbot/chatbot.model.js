@@ -16,7 +16,9 @@ let chatbotSchema = new Schema({
   published: {
     type: Boolean,
     default: false
-  }
+  },
+  fallbackReply: { type: Schema.Types.Mixed },
+  fallbackReplyEnabled: Boolean
 })
 
 module.exports = mongoose.model('chatbots', chatbotSchema)
