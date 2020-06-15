@@ -1,11 +1,11 @@
 let mongoose = require('mongoose')
 let Schema = mongoose.Schema
+let moment = require('moment')
 
 let chatbotSchema = new Schema({
   chatbotId: String,
   companyId: String,
-  userId: String,
-  dateToday: { type: Date, default: Date.now },
+  dateToday: { type: Date, default: moment(new Date()).format('YYYY-MM-DD') },
   triggerWordsMatched: { type: Number, default: 0 },
   urlBtnClickedCount: { type: Number, default: 0 },
   sentCount: { type: Number, default: 0 },

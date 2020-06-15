@@ -22,25 +22,12 @@ exports.validateCreatePayload = (body) => {
 exports.prepareMongoAggregateQuery = (body) => {
   let query = []
   if (body.match) {
-    if (body.match.$and) {
-      if (body.match.$and[1]._id) {
-        if (body.match.$and[1]._id.$lt) {
-          body.match.$and[1]._id.$lt = mongoose.Types.ObjectId(body.match.$and[1]._id.$lt)
-        }
-        if (body.match.$and[1]._id.$gt) {
-          body.match.$and[1]._id.$gt = mongoose.Types.ObjectId(body.match.$and[1]._id.$gt)
-        }
+    if (body.match.dateToday) {
+      if (body.match.dateToday.$lt) {
+        body.match.dateToday.$lt = new Date(body.match.dateToday.$lt)
       }
-    }
-    if (body.match._id) {
-      if (body.match._id.$lt) {
-        body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
-      }
-      if (body.match._id.$gt) {
-        body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
-      }
-      if (body.match._id.$ne) {
-        body.match._id.$ne = mongoose.Types.ObjectId(body.match._id.$ne)
+      if (body.match.dateToday.$gte) {
+        body.match.dateToday.$gte = new Date(body.match.dateToday.$gte)
       }
     }
     query.push({$match: body.match})
