@@ -18,7 +18,17 @@ let chatbotSchema = new Schema({
     default: false
   },
   fallbackReply: { type: Schema.Types.Mixed },
-  fallbackReplyEnabled: Boolean
+  fallbackReplyEnabled: Boolean,
+  stats: {
+    triggerWordsMatched: { // How many times this bot got triggered using trigger words
+      type: Number,
+      default: 0
+    },
+    newSubscribers: { // How many times this bot was started using get started button, i.e. how many new subscribers came to this bot
+      type: Number,
+      default: 0
+    }
+  }
 })
 
 module.exports = mongoose.model('chatbots', chatbotSchema)

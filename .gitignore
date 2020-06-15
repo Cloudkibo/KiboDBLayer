@@ -53,6 +53,9 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
+# ctags file
+tags
+
 # Yarn Integrity file
 .yarn-integrity
 
