@@ -7,7 +7,6 @@ let chatbotSchema = new Schema({
   userId: String,
   datetime: { type: Date, default: Date.now },
   usedBy: { type: Number, default: 0 },
-  triggers: [String],
   startingBlockId: String,
   maxLevels: {
     type: Number,

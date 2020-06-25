@@ -8,6 +8,7 @@ let messageBlocksSchema = new Schema({
   userId: String,
   companyId: String,
   title: String,
+  triggers: [String],
   datetime: { type: Date, default: Date.now }
 })
 
