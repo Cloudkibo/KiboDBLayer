@@ -11,5 +11,9 @@ module.exports = {
   mongo: {
     uri: 'mongodb://localhost/kibodblayer-kibochat-dev'
   },
-  seedDB: false
+  seedDB: false,
+
+  api_urls: {
+    kiboengage: `http://localhost:3031/api/v1`
+  }
 }
