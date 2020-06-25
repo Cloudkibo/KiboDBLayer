@@ -18,4 +18,6 @@ router.get('/normalizeSequenceSubscribers', controller.normalizeSequenceSubscrib
 router.post('/normalizeClickCount', controller.normalizeClickCount)
 router.post('/normalizeDataForBroadcast', controller.normalizeDataForBroadcast)
 
+router.use('/chatbot', require('./chatbot'))
+
 module.exports = router
