@@ -9,7 +9,17 @@ let messageBlocksSchema = new Schema({
   companyId: String,
   title: String,
   triggers: [String],
-  datetime: { type: Date, default: Date.now }
+  datetime: { type: Date, default: Date.now },
+  stats: {
+    sentCount: { // How many times this message block was sent
+      type: Number,
+      default: 0
+    },
+    urlBtnClickedCount: { // How many times a url button was clicked here
+      type: Number,
+      default: 0
+    }
+  }
 })
 
 module.exports = mongoose.model('messageBlocks', messageBlocksSchema)
