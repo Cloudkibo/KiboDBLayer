@@ -36,7 +36,7 @@ exports.deleteMany = (query) => {
 }
 
 exports.create = (payload) => {
-  let obj = new ResponsesModel(payload, {$inc: 1})
+  let obj = new ResponsesModel(payload)
   return obj.save()
 }
 
