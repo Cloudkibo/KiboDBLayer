@@ -63,8 +63,7 @@ exports.queryPayload = {
       'type': 'object',
       'properties': {
         'company_id': {
-          'type': 'string',
-          'required': true
+          'type': 'string'
         }
       },
       'required': true

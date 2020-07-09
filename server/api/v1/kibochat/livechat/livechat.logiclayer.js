@@ -38,6 +38,15 @@ exports.prepareMongoAggregateQuery = (body) => {
     if (Object.keys(body.match).includes('_id') && body.match._id.$lt) {
       body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
     }
+    if (body.match.datetime) {
+      if (body.match.datetime.$gte) {
+        console.log('inside if')
+        body.match.datetime.$gte = new Date(body.match.datetime.$gte)
+      }
+      if (body.match.datetime.$lt) {
+        body.match.datetime.$lt = new Date(body.match.datetime.$lt)
+      }
+    }
     query.push({$match: body.match})
   } else {
     return 'Match Criteria Not Found'
