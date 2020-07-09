@@ -16,6 +16,16 @@ let chatbotSchema = new Schema({
     type: Boolean,
     default: false
   },
+  stats: {
+    triggerWordsMatched: { // How many times this bot got triggered using trigger words
+      type: Number,
+      default: 0
+    },
+    newSubscribers: { // How many times this bot was started using get started button, i.e. how many new subscribers came to this bot
+      type: Number,
+      default: 0
+    }
+  },
   fallbackReply: { type: Schema.Types.Mixed, default: [] },
   fallbackReplyEnabled: { type: Boolean, default: false },
   stats: {
