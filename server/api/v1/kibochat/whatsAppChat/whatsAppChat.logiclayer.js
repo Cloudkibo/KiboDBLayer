@@ -32,6 +32,14 @@ exports.prepareMongoAggregateQuery = (body) => {
     if (Object.keys(body.match).includes('_id') && body.match._id.$lt) {
       body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
     }
+    if (body.match.datetime) {
+      if (body.match.datetime.$gte) {
+        body.match.datetime.$gte = new Date(body.match.datetime.$gte)
+      }
+      if (body.match.datetime.$lt) {
+        body.match.datetime.$lt = new Date(body.match.datetime.$lt)
+      }
+    }
     query.push({$match: body.match})
   } else {
     return 'Match Criteria Not Found'
@@ -39,7 +47,9 @@ exports.prepareMongoAggregateQuery = (body) => {
 
   if (body.group) {
     if (!Object.keys(body.group).includes('_id')) return '_id is missing in Group Criteria'
-    else query.push({$group: body.group})
+    else {
+      query.push({$group: body.group})
+    }
   }
 
   if (body.skip) query.push({$skip: body.skip})
