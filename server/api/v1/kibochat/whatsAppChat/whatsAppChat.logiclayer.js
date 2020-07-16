@@ -47,9 +47,7 @@ exports.prepareMongoAggregateQuery = (body) => {
 
   if (body.group) {
     if (!Object.keys(body.group).includes('_id')) return '_id is missing in Group Criteria'
-    else {
-      query.push({$group: body.group})
-    }
+    else query.push({$group: body.group})
   }
 
   if (body.skip) query.push({$skip: body.skip})
