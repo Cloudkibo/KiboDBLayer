@@ -11,7 +11,8 @@ let broadcastSchema = new Schema({
   companyId: String,
   datetime: { type: Date, default: Date.now },
   sent: {type: Number, default: 0},
-  seen: {type: Number, default: 0}
+  seen: {type: Number, default: 0},
+  delivered: {type: Number, default: 0}
 })
 
 module.exports = mongoose.model('whatsAppBroadcasts', broadcastSchema)
