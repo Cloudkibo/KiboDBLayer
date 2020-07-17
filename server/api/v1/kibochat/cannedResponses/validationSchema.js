@@ -20,7 +20,7 @@ exports.createPayload = {
       'responseMessage'
     ]
   }
-  
+
   exports.queryPayload = {
     '$schema': 'http://json-schema.org/draft-04/schema#',
     'type': 'object',
@@ -35,7 +35,7 @@ exports.createPayload = {
       }
     }
   }
-  
+
   exports.updatePayload =
   {
     '$schema': 'http://json-schema.org/draft-04/schema#',
@@ -68,4 +68,3 @@ exports.createPayload = {
       'updated'
     ]
   }
-  
