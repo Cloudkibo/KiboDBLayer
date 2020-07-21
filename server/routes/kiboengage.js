@@ -28,6 +28,7 @@ module.exports = function (app) {
   app.use('/api/v1/urls', require('./../api/v1/kiboengage/urls'))
   app.use('/api/v1/scripts', require('./../api/v1/scripts'))
   app.use('/api/v1/whatsAppBroadcasts', require('./../api/v1/kiboengage/whatsAppBroadcasts'))
+  app.use('/api/v1/whatsAppBroadcastMessages', require('./../api/v1/kiboengage/whatsAppBroadcastMessages'))
   app.use('/api/v1/autoposting_fb_post', require('./../api/v1/kiboengage/autopostingFacebookPosts'))
   app.use('/api/v1/abandoned_cart', require('./../api/v1/kiboengage/abandoned_cart'))
   app.use('/api/v1/messageStatistics', require('./../api/v1/kiboengage/messageStatistics'))
@@ -37,6 +38,7 @@ module.exports = function (app) {
   app.use('/api/v1/newsSubscriptions', require('./../api/v1/kiboengage/newsSubscriptions'))
   app.use('/api/v1/newsPostSubscribers', require('./../api/v1/kiboengage/newsPostSubscribers'))
   app.use('/api/v1/sponsoredMessaging', require('./../api/v1/kiboengage/sponsoredMessaging'))
+  app.use('/api/v1/queue', require('./../api/v1/kiboengage/queue'))
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))
 
