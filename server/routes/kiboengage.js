@@ -38,6 +38,7 @@ module.exports = function (app) {
   app.use('/api/v1/newsSubscriptions', require('./../api/v1/kiboengage/newsSubscriptions'))
   app.use('/api/v1/newsPostSubscribers', require('./../api/v1/kiboengage/newsPostSubscribers'))
   app.use('/api/v1/sponsoredMessaging', require('./../api/v1/kiboengage/sponsoredMessaging'))
+  app.use('/api/v1/queue', require('./../api/v1/kiboengage/queue'))
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))
 
