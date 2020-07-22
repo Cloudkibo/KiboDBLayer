@@ -46,6 +46,16 @@ exports.prepareMongoAggregateQuery = (body) => {
         }
       }
     }
+    if (body.match.$and && body.match.$and[0]) {
+      if (body.match.$and[0].datetime) {
+        if (body.match.$and[0].datetime.$gte) {
+          body.match.$and[0].datetime.$gte = new Date(body.match.$and[0].datetime.$gte)
+        }
+        if (body.match.$and[0].datetime.$lt) {
+          body.match.$and[0].datetime.$lt = new Date(body.match.$and[0].datetime.$lt)
+        }
+      }
+    }
     if (body.match.title) {
       if (body.match.title.$regex) {
         body.match.title.$regex = new RegExp('.*' + body.match.title.$regex + '.*', 'i')
