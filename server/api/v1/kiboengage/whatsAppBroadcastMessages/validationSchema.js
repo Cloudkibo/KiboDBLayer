@@ -6,7 +6,7 @@ exports.createPayload = {
       'type': 'string'
     },
     'broadcastId': {
-      'type': 'array'
+      'type': 'string'
     },
     'messageId': {
       'type': 'string'

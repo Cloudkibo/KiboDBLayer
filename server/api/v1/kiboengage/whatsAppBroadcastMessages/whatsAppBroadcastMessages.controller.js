@@ -5,6 +5,7 @@ const { sendSuccessResponse, sendErrorResponse } = require('../../global/respons
 const util = require('util')
 
 exports.create = function (req, res) {
+  console.log('in create whatsAppBroadcastMessages', req.body)
   logger.serverLog(TAG, `Create endpoint is hit:`)
 
   DataLayer.createOneBroadcastObject(req.body)
@@ -21,7 +22,6 @@ exports.query = function (req, res) {
 
   DataLayer.findBroadcastUsingQuery(req.body)
     .then(foundObjects => {
-      console.log('foundObjects', foundObjects)
       sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
