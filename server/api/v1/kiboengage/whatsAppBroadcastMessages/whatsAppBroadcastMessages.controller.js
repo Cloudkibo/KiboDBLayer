@@ -5,7 +5,6 @@ const { sendSuccessResponse, sendErrorResponse } = require('../../global/respons
 const util = require('util')
 
 exports.create = function (req, res) {
-  console.log('in create whatsAppBroadcastMessages', req.body)
   logger.serverLog(TAG, `Create endpoint is hit:`)
 
   DataLayer.createOneBroadcastObject(req.body)
