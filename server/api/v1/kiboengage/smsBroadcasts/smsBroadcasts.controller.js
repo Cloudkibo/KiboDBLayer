@@ -21,7 +21,6 @@ exports.query = function (req, res) {
 
   DataLayer.findBroadcastUsingQuery(req.body)
     .then(foundObjects => {
-      console.log('foundObjects', foundObjects)
       sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
