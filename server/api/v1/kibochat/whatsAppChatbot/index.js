@@ -9,7 +9,7 @@ router.post('/',
   validate({ body: validationSchema.createPayload }),
   controller.create)
 
-router.get('/query',
+router.post('/query',
   validate({ body: validationSchema.queryPayload }),
   controller.query)
 

@@ -10,7 +10,7 @@ let WhatsAppChatbotSchema = new Schema({
   triggers: { type: Array, default: [] },
   botLinks: { type: Array, default: [] },
   testSubscribers: { type: Array, default: [] },
-  startingbBlockId: { type: String, default: 'whatsapp_chatbot_main_menu' },
+  startingbBlockId: String,
   maxLevels: { type: Number, default: 3 },
   published: { type: Boolean, default: false },
   stats: new Schema({
