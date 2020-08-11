@@ -17,6 +17,7 @@ module.exports = function (app) {
   app.use('/api/v1/messageBlocks_backup', require('./../api/v1/kibochat/messageBlocks_backup'))
   app.use('/api/v1/chatbot_analytics', require('./../api/v1/kibochat/chatbot_analytics'))
   app.use('/api/v1/cannedResponses', require('./../api/v1/kibochat/cannedResponses'))
+  app.use('/api/v1/whatsAppChatbot', require('./../api/v1/kibochat/whatsAppChatbot'))
 
   app.use('/api/v1/scripts', require('./../api/v1/scripts'))
 
@@ -24,9 +25,9 @@ module.exports = function (app) {
   // app.use('/auth', require('./auth'))
 
   app.route('/:url(api|auth)/*').get((req, res) => {
-    res.status(404).send({url: `${req.originalUrl} not found`})
+    res.status(404).send({ url: `${req.originalUrl} not found` })
   }).post((req, res) => {
-    res.status(404).send({url: `${req.originalUrl} not found`})
+    res.status(404).send({ url: `${req.originalUrl} not found` })
   })
 
   if (config.env === 'production' || config.env === 'staging') {

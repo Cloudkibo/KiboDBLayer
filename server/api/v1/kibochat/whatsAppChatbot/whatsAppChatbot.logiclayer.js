@@ -36,3 +36,20 @@ exports.prepareMongoAggregateQuery = (body) => {
 
   return query
 }
+
+exports.validateCreatePayload = (body) => {
+  let bool = true
+  let arrayOfRequiredFields = [
+    'companyId',
+    'userId'
+  ]
+  let arrayOfKeys = Object.keys(body)
+
+  arrayOfRequiredFields.forEach((field, index) => {
+    if (!arrayOfKeys.includes(field)) {
+      bool = false
+    }
+  })
+
+  return bool
+}
