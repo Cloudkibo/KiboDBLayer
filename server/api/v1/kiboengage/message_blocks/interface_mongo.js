@@ -40,6 +40,10 @@ exports.create = (payload) => {
   return obj.save()
 }
 
+exports.createBulk = (payload) => {
+  return MessageBlocksModel.insertMany(payload)
+}
+
 exports.aggregate = (query) => {
   return MessageBlocksModel.aggregate(query)
     .exec()

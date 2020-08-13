@@ -1,4 +1,3 @@
-exports.createPayload = {}
 
 exports.queryPayload = {
   'type': 'object',

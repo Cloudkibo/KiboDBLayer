@@ -30,6 +30,19 @@ exports.create = function (req, res) {
     })
 }
 
+exports.bulkCreate = function (req, res) {
+  logger.serverLog(TAG, `Bulk Create endpoint is hit:`)
+
+  DataLayer.createBulkMessageBlocks(req.body)
+    .then(createdObject => {
+      sendSuccessResponse(res, 200, createdObject)
+    })
+    .catch(err => {
+      logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
+      sendErrorResponse(res, 500, err.toString())
+    })
+}
+
 exports.query = function (req, res) {
   logger.serverLog(TAG, `Query endpoint is hit:`)
   DataLayer.findMessageBlockUsingQuery(req.body)
