@@ -28,6 +28,7 @@ let chatbotSchema = new Schema({
   },
   fallbackReply: { type: Schema.Types.Mixed, default: [] },
   fallbackReplyEnabled: { type: Boolean, default: false },
+  isYoutubePlayable: {type: Boolean, default: true},
   stats: {
     triggerWordsMatched: { // How many times this bot got triggered using trigger words
       type: Number,
