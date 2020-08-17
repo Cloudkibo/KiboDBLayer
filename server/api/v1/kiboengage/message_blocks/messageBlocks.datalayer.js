@@ -19,6 +19,10 @@ exports.createOneMessageBlockObject = (body) => {
   else return new Promise((resolve, reject) => { reject(new Error('Payload is not valid')) })
 }
 
+exports.createBulkMessageBlocks = (body) => {
+  return MongoInterface.createBulk(body)
+}
+
 exports.updateMessageBlock = (body) => {
   if (body.purpose) {
     let query = body.match

@@ -8,9 +8,13 @@ let WhatsAppChatbotSchema = new Schema({
   datetime: { type: Date, default: Date.now },
   usedBy: { type: Number, default: 0 },
   triggers: { type: Array, default: [] },
-  botLinks: { type: Array, default: [] },
+  botLinks: new Schema({
+    faqs: { type: String, default: '' },
+    paymentMethod: { type: String, default: '' },
+    returnPolicy: { type: String, default: '' }
+  }),
   testSubscribers: { type: Array, default: [] },
-  startingbBlockId: String,
+  startingBlockId: String,
   maxLevels: { type: Number, default: 3 },
   published: { type: Boolean, default: false },
   stats: new Schema({

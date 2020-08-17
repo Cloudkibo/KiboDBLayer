@@ -49,6 +49,55 @@ exports.createPayload = {
   ]
 }
 
+exports.bulkCreatePayload = {
+  'type': 'array',
+  'items': [
+    {
+      'type': 'object',
+      'properties': {
+        'userId': {
+          'type': 'string'
+        },
+        'title': {
+          'type': 'string'
+        },
+        'companyId': {
+          'type': 'string'
+        },
+        'uniqueId': {
+          'type': 'string'
+        },
+        'payload': {
+          'type': 'array'
+        },
+        'module': {
+          'type': 'object',
+          'properties': {
+            'id': {
+              'type': 'string'
+            },
+            'type': {
+              'type': 'string'
+            }
+          },
+          'required': [
+            'id',
+            'type'
+          ]
+        }
+      },
+      'required': [
+        'title',
+        'userId',
+        'companyId',
+        'uniqueId',
+        'payload',
+        'module'
+      ]
+    }
+  ]
+}
+
 exports.queryPayload = {
   '$schema': 'http://json-schema.org/draft-04/schema#',
   'type': 'object',
