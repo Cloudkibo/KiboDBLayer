@@ -27,7 +27,8 @@ let chatbotSchema = new Schema({
     }
   },
   fallbackReply: { type: Schema.Types.Mixed, default: [] },
-  fallbackReplyEnabled: { type: Boolean, default: false }
+  fallbackReplyEnabled: { type: Boolean, default: false },
+  isYoutubePlayable: {type: Boolean, default: true}
 })
 
 module.exports = mongoose.model('chatbots', chatbotSchema)
