@@ -1,51 +1,16 @@
-/*
-This file will contain the functions for data layer.
-By separating it from controller, we are separating the concerns.
-Thus we can use it from other non express callers like cron etc
-*/
-const LogicLayer = require('./messageBlocks.logiclayer')
+const LogicLayer = require('./whatsAppChatbot.logiclayer')
 const MongoInterface = require('./interface_mongo')
 const logger = require('../../../../components/logger')
-const TAG = '/api/v1/kiboengage/message_blocks/MessageBlocks.datalayer.js'
+const TAG = '/api/v1/kibochat/whatsAppChatbot/whatsAppChatbot.datalayer.js'
 
 const util = require('util')
 
-exports.findAllMessageBlocksObjects = () => {
-  return MongoInterface.find()
-}
-
-exports.createOneMessageBlockObject = (body) => {
+exports.createOneWhatsAppChatbotObject = (body) => {
   if (LogicLayer.validateCreatePayload(body)) return MongoInterface.create(body)
   else return new Promise((resolve, reject) => { reject(new Error('Payload is not valid')) })
 }
 
-exports.createBulkMessageBlocks = (body) => {
-  return MongoInterface.createBulk(body)
-}
-
-exports.updateMessageBlock = (body) => {
-  if (body.purpose) {
-    let query = body.match
-    let updated = body.updated
-    let options = {}
-    if (body.upsert) options.upsert = body.upsert
-    if (body.new) options.new = body.new
-    // If purpose found, then proceed
-    if (body.purpose === 'updateOne') {
-      return MongoInterface.findOneAndUpdate(query, updated, options)
-    } else if (body.purpose === 'updateAll') {
-      // Can updated multiple record matching the query
-      return MongoInterface.updateMany(query, updated, options)
-    } else {
-      return new Promise((resolve, reject) => { reject(new Error('Correct Purpose Not Found')) })
-    }
-  } else {
-    // If purpose not found, then reject
-    return new Promise((resolve, reject) => { reject(new Error('Purpose Not Found')) })
-  }
-}
-
-exports.findMessageBlockUsingQuery = (body) => {
+exports.findWhatsAppChatbotUsingQuery = (body) => {
   if (body.purpose) {
     // If purpose found, then proceed
     if (body.purpose === 'aggregate') {
@@ -70,8 +35,29 @@ exports.findMessageBlockUsingQuery = (body) => {
     return new Promise((resolve, reject) => { reject(new Error('Purpose Not Found')) })
   }
 }
+exports.updateWhatsAppChatbot = (body) => {
+  if (body.purpose) {
+    let query = body.match
+    let updated = body.updated
+    let options = {}
+    if (body.upsert) options.upsert = body.upsert
+    if (body.new) options.new = body.new
+    // If purpose found, then proceed
+    if (body.purpose === 'updateOne') {
+      return MongoInterface.findOneAndUpdate(query, updated, options)
+    } else if (body.purpose === 'updateAll') {
+      // Can updated multiple record matching the query
+      return MongoInterface.updateMany(query, updated, options)
+    } else {
+      return new Promise((resolve, reject) => { reject(new Error('Correct Purpose Not Found')) })
+    }
+  } else {
+    // If purpose not found, then reject
+    return new Promise((resolve, reject) => { reject(new Error('Purpose Not Found')) })
+  }
+}
 
-exports.deleteMessageBlock = (body) => {
+exports.deleteWhatsAppChatbot = (body) => {
   if (body.purpose) {
     let query = body.match
     // If purpose found, then proceed
