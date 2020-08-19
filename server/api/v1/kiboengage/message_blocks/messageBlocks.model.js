@@ -20,6 +20,7 @@ let messageBlocksSchema = new Schema({
     }
   },
   triggers: [String]
+
 })
 
 module.exports = mongoose.model('messageBlocks', messageBlocksSchema)

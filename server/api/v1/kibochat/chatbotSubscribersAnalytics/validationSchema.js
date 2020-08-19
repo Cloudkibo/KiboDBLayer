@@ -8,16 +8,24 @@ exports.createPayload = {
   '$schema': 'http://json-schema.org/draft-04/schema#',
   'type': 'object',
   'properties': {
-    'responseCode': {
+    'chatbotId': {
       'type': 'string'
     },
-    'responseMessage': {
+    'companyId': {
+      'type': 'string'
+    },
+    'subscriberId': {
+      'type': 'string'
+    },
+    'messageBlockId': {
       'type': 'string'
     }
   },
   'required': [
-    'responseCode',
-    'responseMessage'
+    'chatbotId',
+    'companyId',
+    'subscriberId',
+    'messageBlockId'
   ]
 }
 
@@ -36,8 +44,7 @@ exports.queryPayload = {
   }
 }
 
-exports.updatePayload =
-{
+exports.updatePayload = {
   '$schema': 'http://json-schema.org/draft-04/schema#',
   'type': 'object',
   'properties': {
@@ -47,13 +54,10 @@ exports.updatePayload =
     'match': {
       'type': 'object',
       'properties': {
-        '_id': {
+        'pageId': {
           'type': 'string'
         },
-        'responseCode': {
-          'type': 'string'
-        },
-        'responseMessage': {
+        'companyId': {
           'type': 'string'
         }
       }
