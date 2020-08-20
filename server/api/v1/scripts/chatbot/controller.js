@@ -38,3 +38,52 @@ exports.normalizeTriggers = function (req, res) {
       return res.status(500).json({status: 'failed', description: 'Failed to fetch chatbot'})
     })
 }
+
+exports.normalizeStartingBlockIds = function (req, res) {
+  ChatbotModel.aggregate([
+    {$skip: req.body.skip},
+    {$limit: req.body.limit}
+  ]).exec()
+    .then(bots => {
+      if (bots.length > 0) {
+        async.each(bots, _updateStartingBlockId, (err) => {
+          if (err) {
+            logger.serverLog(TAG, err, 'error')
+            return res.status(500).json({status: 'failed', description: 'Failed to normalize startingBlockIds'})
+          } else {
+            return res.status(200).json({status: 'success', description: 'StartingBlockIds normalized successfully'})
+          }
+        })
+      } else {
+        return res.status(200).json({status: 'success', description: 'No chatbot found'})
+      }
+    })
+    .catch(err => {
+      logger.serverLog(TAG, err, 'error')
+      return res.status(500).json({status: 'failed', description: 'Failed to fetch chatbot'})
+    })
+}
+
+const _updateStartingBlockId = (bot, cb) => {
+  callApi('messageBlocks/query', 'post', {purpose: 'findAll', match: {'module.type': 'chatbot', 'module.id': bot._id}}, 'kiboengage')
+    .then(messageBlocks => {
+      if (messageBlocks.length > 0) {
+        if (messageBlocks[0]._id !== bot.startingBlockId) {
+          ChatbotModel.update({_id: bot._id}, {startingBlockId: messageBlocks[0]._id}).exec()
+            .then(updated => cb())
+            .catch(err => {
+              logger.serverLog(TAG, err, 'error')
+              cb(err)
+            })
+        } else {
+          cb()
+        }
+      } else {
+        cb()
+      }
+    })
+    .catch(err => {
+      logger.serverLog(TAG, err, 'error')
+      cb(err)
+    })
+}
