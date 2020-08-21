@@ -14,6 +14,7 @@ module.exports = function (app) {
   app.use('/api/v1/intents', require('./../api/v1/kibochat/intents'))
   app.use('/api/v1/chatbots', require('./../api/v1/kibochat/chatbot'))
   app.use('/api/v1/chatbots_backup', require('./../api/v1/kibochat/chatbot_backup'))
+  app.use('/api/v1/whatsapp_bots_analtyics', require('./../api/v1/kibochat/whatsapp_bot_analytics'))
   app.use('/api/v1/messageBlocks_backup', require('./../api/v1/kibochat/messageBlocks_backup'))
   app.use('/api/v1/chatbot_analytics', require('./../api/v1/kibochat/chatbot_analytics'))
   app.use('/api/v1/chatbot_subscribers_analytics', require('./../api/v1/kibochat/chatbotSubscribersAnalytics'))
