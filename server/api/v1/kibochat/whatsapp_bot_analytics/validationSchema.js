@@ -13,6 +13,9 @@ exports.createPayload = {
     },
     'companyId': {
       'type': 'string'
+    },
+    'chatbotId': {
+      'type': 'string'
     }
   },
   'required': [
