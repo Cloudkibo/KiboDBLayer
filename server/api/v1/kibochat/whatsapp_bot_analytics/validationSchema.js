@@ -54,6 +54,9 @@ exports.updatePayload = {
         },
         'companyId': {
           'type': 'string'
+        },
+        'chatbotId': {
+          'type': 'string'
         }
       }
     },
