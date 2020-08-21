@@ -7,7 +7,7 @@ let WhatsAppChatbotSchema = new Schema({
   userId: String,
   datetime: { type: Date, default: Date.now },
   usedBy: { type: Number, default: 0 },
-  triggers: { type: Array, default: [] },
+  triggers: { type: Array, default: ['Hi', 'Hello'] },
   botLinks: new Schema({
     faqs: { type: String, default: '' },
     paymentMethod: { type: String, default: '' },
