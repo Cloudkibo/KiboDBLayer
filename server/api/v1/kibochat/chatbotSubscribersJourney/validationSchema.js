@@ -14,8 +14,8 @@ exports.createPayload = {
     'companyId': {
       'type': 'string'
     },
-    'subscriberId': {
-      'type': 'string'
+    'subscriber': {
+      'type': 'object'
     },
     'messageBlockId': {
       'type': 'string'
@@ -24,7 +24,7 @@ exports.createPayload = {
   'required': [
     'chatbotId',
     'companyId',
-    'subscriberId',
+    'subscriber',
     'messageBlockId'
   ]
 }

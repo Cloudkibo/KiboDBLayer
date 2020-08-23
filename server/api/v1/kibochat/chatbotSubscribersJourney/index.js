@@ -3,7 +3,7 @@ const router = express.Router()
 const validate = require('express-jsonschema').validate
 
 const validationSchema = require('./validationSchema')
-const controller = require('./chatbot_subscribers_analytics.controller')
+const controller = require('./chatbot_subscribers_journey.controller')
 
 router.get('/', controller.index)
 router.post('/',
