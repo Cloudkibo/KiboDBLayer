@@ -19,8 +19,7 @@ let messageBlocksSchema = new Schema({
       default: 0
     }
   },
-  triggers: [String],
-  datetime: { type: Date, default: Date.now }
+  triggers: [String]
 })
 
 module.exports = mongoose.model('messageBlocks', messageBlocksSchema)

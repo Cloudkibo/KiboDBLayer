@@ -1,7 +1,7 @@
 // Web layer of this API node
 const logger = require('../../../../components/logger')
-const DataLayer = require('./chatbot_subscribers_analytics.datalayer')
-const TAG = '/api/v1/kibochat/chatbot_subscribers_analytics/chatbot_subscribers_analytics.controller.js'
+const DataLayer = require('./chatbot_subscribers_journey.datalayer')
+const TAG = '/api/v1/kibochat/chatbot_subscribers_analytics/chatbot_subscribers_journey.controller.js'
 
 const util = require('util')
 

@@ -3,10 +3,10 @@ This file will contain the functions for data layer.
 By separating it from controller, we are separating the concerns.
 Thus we can use it from other non express callers like cron etc
 */
-const LogicLayer = require('./chatbot_subscribers_analytics.logiclayer')
+const LogicLayer = require('./chatbot_subscribers_journey.logiclayer')
 const MongoInterface = require('./interface_mongo')
 const logger = require('../../../../components/logger')
-const TAG = '/api/v1/kibochat/chatbot_subscribers_analytics/chatbot_subscribers_analytics.datalayer.js'
+const TAG = '/api/v1/kibochat/chatbot_subscribers_journey/chatbot_subscribers_journey.datalayer.js'
 
 const util = require('util')
 
