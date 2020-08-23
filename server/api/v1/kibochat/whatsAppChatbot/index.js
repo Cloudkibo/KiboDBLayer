@@ -3,17 +3,10 @@ const router = express.Router()
 const validate = require('express-jsonschema').validate
 
 const validationSchema = require('./validationSchema')
-const controller = require('./messageBlocks.controller')
-
-router.get('/', controller.index)
+const controller = require('./whatsAppChatbot.controller')
 
 router.post('/',
-  validate({ body: validationSchema.createPayload }),
   controller.create)
-
-router.post('/bulkCreate',
-  // validate({ body: validationSchema.bulkCreatePayload }),
-  controller.bulkCreate)
 
 router.post('/query',
   validate({ body: validationSchema.queryPayload }),
