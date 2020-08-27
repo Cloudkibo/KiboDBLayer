@@ -3,27 +3,23 @@ This file will contain the functions for data layer.
 By separating it from controller, we are separating the concerns.
 Thus we can use it from other non express callers like cron etc
 */
-const LogicLayer = require('./messageBlocks.logiclayer')
+const LogicLayer = require('./whatsapp_bot_analytics.logiclayer')
 const MongoInterface = require('./interface_mongo')
 const logger = require('../../../../components/logger')
-const TAG = '/api/v1/kiboengage/message_blocks/MessageBlocks.datalayer.js'
+const TAG = '/api/v1/kibochat/whatsapp_bot_analytics/whatsapp_bot_analytics.datalayer.js'
 
 const util = require('util')
 
-exports.findAllMessageBlocksObjects = () => {
+exports.findAllObjects = () => {
   return MongoInterface.find()
 }
 
-exports.createOneMessageBlockObject = (body) => {
+exports.createOneObject = (body) => {
   if (LogicLayer.validateCreatePayload(body)) return MongoInterface.create(body)
   else return new Promise((resolve, reject) => { reject(new Error('Payload is not valid')) })
 }
 
-exports.createBulkMessageBlocks = (body) => {
-  return MongoInterface.createBulk(body)
-}
-
-exports.updateMessageBlock = (body) => {
+exports.update = (body) => {
   if (body.purpose) {
     let query = body.match
     let updated = body.updated
@@ -45,13 +41,12 @@ exports.updateMessageBlock = (body) => {
   }
 }
 
-exports.findMessageBlockUsingQuery = (body) => {
+exports.findUsingQuery = (body) => {
   if (body.purpose) {
     // If purpose found, then proceed
     if (body.purpose === 'aggregate') {
       let aggregateQuery = LogicLayer.prepareMongoAggregateQuery(body)
       // If not validated
-      logger.serverLog(TAG, `Inside Aggregate: ${util.inspect(aggregateQuery)}`)
       if (typeof aggregateQuery === 'string') return new Promise((resolve, reject) => { reject(new Error(aggregateQuery)) })
       else return MongoInterface.aggregate(aggregateQuery)
     } else if (body.purpose === 'findOne') {
@@ -71,7 +66,7 @@ exports.findMessageBlockUsingQuery = (body) => {
   }
 }
 
-exports.deleteMessageBlock = (body) => {
+exports.delete = (body) => {
   if (body.purpose) {
     let query = body.match
     // If purpose found, then proceed
