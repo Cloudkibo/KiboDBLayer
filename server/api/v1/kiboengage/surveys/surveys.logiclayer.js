@@ -69,6 +69,16 @@ exports.prepareMongoAggregateQuery = (body) => {
           body.match.$and[1]._id.$gt = mongoose.Types.ObjectId(body.match.$and[1]._id.$gt)
         }
       }
+      if (body.match.$and[0]) {
+        if (body.match.$and[0].datetime) {
+          if (body.match.$and[0].datetime.$gte) {
+            body.match.$and[0].datetime.$gte = new Date(body.match.$and[0].datetime.$gte)
+          }
+          if (body.match.$and[0].datetime.$lt) {
+            body.match.$and[0].datetime.$lt = new Date(body.match.$and[0].datetime.$lt)
+          }
+        }
+      }
     }
     if (body.match._id) {
       if (body.match._id.$lt) {
