@@ -5,5 +5,6 @@ const controller = require('./controller')
 
 router.post('/normalizeTriggers', controller.normalizeTriggers)
 router.post('/normalizeStartingBlockIds', controller.normalizeStartingBlockIds)
+router.get('/updateTypeOfChatbotsToManual', controller.updateTypeOfChatbotsToManual)
 
 module.exports = router
