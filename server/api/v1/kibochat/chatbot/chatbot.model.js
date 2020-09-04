@@ -8,6 +8,8 @@ let chatbotSchema = new Schema({
   datetime: { type: Date, default: Date.now },
   usedBy: { type: Number, default: 0 },
   startingBlockId: String,
+  type: String, // values: manual, automated
+  vertical: String, // set only if type is automated, values: banking, commerce etc
   maxLevels: {
     type: Number,
     default: 3

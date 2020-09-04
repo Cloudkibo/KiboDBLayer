@@ -87,3 +87,11 @@ const _updateStartingBlockId = (bot, cb) => {
       cb(err)
     })
 }
+
+exports.updateTypeOfChatbotsToManual = function (req, res) {
+  ChatbotModel.updateMany({}, {type: 'manual'}).exec()
+    .then(updated => res.status(200).json({status: 'success', payload: updated}))
+    .catch(err => {
+      res.status(500).json({status: 'failed', payload: err})
+    })
+}
