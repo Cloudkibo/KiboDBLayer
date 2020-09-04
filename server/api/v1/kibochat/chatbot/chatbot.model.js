@@ -10,6 +10,11 @@ let chatbotSchema = new Schema({
   startingBlockId: String,
   type: String, // values: manual, automated
   vertical: String, // set only if type is automated, values: banking, commerce etc
+  botLinks: {
+    faqs: { type: String, default: '' },
+    paymentMethod: { type: String, default: '' },
+    returnPolicy: { type: String, default: '' }
+  },
   maxLevels: {
     type: Number,
     default: 3
