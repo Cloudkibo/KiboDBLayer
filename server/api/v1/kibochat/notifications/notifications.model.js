@@ -8,7 +8,8 @@ let NotificationsSchema = new Schema({
   seen: {type: Boolean, default: false},
   agentId: String,
   companyId: String,
-  datetime: { type: Date, default: Date.now }
+  datetime: { type: Date, default: Date.now },
+  platform: String
 })
 
 module.exports = mongoose.model('notifications', NotificationsSchema)
