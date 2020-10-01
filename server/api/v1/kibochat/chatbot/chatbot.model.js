@@ -9,7 +9,8 @@ let chatbotSchema = new Schema({
   usedBy: { type: Number, default: 0 },
   startingBlockId: String,
   type: String, // values: manual, automated
-  vertical: String, // set only if type is automated, values: banking, commerce etc
+  vertical: String, // set only if type is automated, values: banking, commerce etc,
+  storeType: String, // set only if type is commerce, values: shopify, bigcommerce etc,
   botLinks: {
     faqs: { type: String, default: '' },
     paymentMethod: { type: String, default: '' },
@@ -35,17 +36,7 @@ let chatbotSchema = new Schema({
   },
   fallbackReply: { type: Schema.Types.Mixed, default: [] },
   fallbackReplyEnabled: { type: Boolean, default: false },
-  isYoutubePlayable: {type: Boolean, default: true},
-  stats: {
-    triggerWordsMatched: { // How many times this bot got triggered using trigger words
-      type: Number,
-      default: 0
-    },
-    newSubscribers: { // How many times this bot was started using get started button, i.e. how many new subscribers came to this bot
-      type: Number,
-      default: 0
-    }
-  }
+  isYoutubePlayable: { type: Boolean, default: true }
 })
 
 module.exports = mongoose.model('chatbots', chatbotSchema)
