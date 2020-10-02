@@ -20,7 +20,8 @@ let WhatsAppChatbotSchema = new Schema({
   stats: {
     triggerWordsMatched: { type: Number, default: 0 },
     newSubscribers: { type: Number, default: 0 }
-  }
+  },
+  storeType: String
 })
 
 module.exports = mongoose.model('whatsapp_chatbot', WhatsAppChatbotSchema)
