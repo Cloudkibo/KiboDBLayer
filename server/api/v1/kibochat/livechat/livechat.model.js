@@ -16,8 +16,10 @@ let LiveChatSchema = new Schema({
   payload: Schema.Types.Mixed, // this where message content will go
   url_meta: Schema.Types.Mixed,
   datetime: { type: Date, default: Date.now },
-  seenDateTime: { type: Date, default: Date.now },
-  seen: {type: Boolean, default: false}
+  seenDateTime: { type: Date },
+  seen: {type: Boolean, default: false},
+  delivered: {type: Boolean, default: false},
+  deliveryDateTime: {type: Date}
 })
 
 module.exports = mongoose.model('facebook_messages', LiveChatSchema)
