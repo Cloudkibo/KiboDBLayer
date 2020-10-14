@@ -39,6 +39,9 @@ let chatbotSchema = new Schema({
   isYoutubePlayable: { type: Boolean, default: true },
   testSession: {
     subscriberId: String
+  },
+  builderPreference: {
+    type: String, default: 'basic'
   }
 })
 
