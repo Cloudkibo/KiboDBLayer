@@ -13,5 +13,7 @@ module.exports = {
 
   api_urls: {
     kiboengage: `${process.env.DB_LAYER_IP_KIBOENGAGE}/api/v1`
-  }
+  },
+
+  papertrail_log_levels: process.env.PAPERTRAIL_LOG_LEVELS
 }

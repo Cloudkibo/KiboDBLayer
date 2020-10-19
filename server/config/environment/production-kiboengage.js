@@ -9,5 +9,6 @@ module.exports = {
   mongo: {
     uri: process.env.MONGO_URI || 'mongodb://localhost/kibodblayer-kiboengage-prod'
   },
-  seedDB: false
+  seedDB: false,
+  papertrail_log_levels: process.env.PAPERTRAIL_LOG_LEVELS
 }
