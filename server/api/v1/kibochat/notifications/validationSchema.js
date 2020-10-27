@@ -32,22 +32,6 @@ exports.queryPayload = {
     'purpose': {
       'type': 'string',
       'required': true
-    },
-    'match': {
-      'type': 'object',
-      'properties': {
-        'message': {
-          'type': 'string'
-        },
-        'agentId': {
-          'type': 'string'
-        },
-        'companyId': {
-          'type': 'string',
-          'required': true
-        }
-      },
-      'required': true
     }
   }
 }
