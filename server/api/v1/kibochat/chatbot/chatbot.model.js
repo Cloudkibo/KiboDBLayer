@@ -38,7 +38,8 @@ let chatbotSchema = new Schema({
   fallbackReplyEnabled: { type: Boolean, default: false },
   isYoutubePlayable: { type: Boolean, default: true },
   testSession: {
-    subscriberId: String
+    subscriberId: String,
+    sessionStartTime: { type: Date, default: Date.now }
   },
   builderPreference: {
     type: String, default: 'basic'

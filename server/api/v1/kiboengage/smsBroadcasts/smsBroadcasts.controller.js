@@ -5,38 +5,35 @@ const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/r
 const util = require('util')
 
 exports.create = function (req, res) {
-  logger.serverLog(TAG, `Create endpoint is hit:`)
-
   DataLayer.createOneBroadcastObject(req.body)
     .then(createdObject => {
       sendSuccessResponse(res, 200, createdObject)
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to create sms broadcast'
+      logger.serverLog(message, `${TAG}: exports.index`, req.body, {}, 'error')
       sendErrorResponse(res, 500, err.toString())
     })
 }
 exports.query = function (req, res) {
-  logger.serverLog(TAG, `Query endpoint is hit:`)
-
   DataLayer.findBroadcastUsingQuery(req.body)
     .then(foundObjects => {
       sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to find sms broadcasts'
+      logger.serverLog(message, `${TAG}: exports.query`, req.body, {}, 'error')
       sendErrorResponse(res, 500, err.toString())
     })
 }
 exports.update = function (req, res) {
-  logger.serverLog(TAG, `Update endpoint is hit:`)
-
   DataLayer.updateBroadcast(req.body)
     .then(foundObjects => {
       sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to update sms broadcast'
+      logger.serverLog(message, `${TAG}: exports.update`, req.body, {}, 'error')
       sendErrorResponse(res, 500, err.toString())
     })
 }
