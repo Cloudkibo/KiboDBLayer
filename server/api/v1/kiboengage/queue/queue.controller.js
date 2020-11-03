@@ -1,7 +1,7 @@
 const logger = require('../../../../components/logger')
 const DataLayer = require('./queue.datalayer')
 const TAG = '/api/v1/kiboengage/queue/queue.controller.js'
-const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
+const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/response')
 const util = require('util')
 
 exports.create = function (req, res) {

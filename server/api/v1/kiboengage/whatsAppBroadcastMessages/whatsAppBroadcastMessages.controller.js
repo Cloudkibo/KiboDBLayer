@@ -1,7 +1,7 @@
 const logger = require('../../../../components/logger')
 const DataLayer = require('./whatsAppBroadcastMessages.datalayer')
 const TAG = '/api/v1/kiboengage/whatsAppBroadcasts/whatsAppBroadcasts.controller.js'
-const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
+const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/response')
 const util = require('util')
 
 exports.create = function (req, res) {

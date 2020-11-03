@@ -11,5 +11,6 @@ module.exports = {
   mongo: {
     uri: 'mongodb://localhost/kibodblayer-kiboengage-dev'
   },
-  seedDB: false
+  seedDB: false,
+  papertrail_log_levels: ''
 }

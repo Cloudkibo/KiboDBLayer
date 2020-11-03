@@ -1,7 +1,7 @@
 const logger = require('../../../../components/logger')
 const DataLayer = require('./whatsAppChat.datalayer')
 const TAG = '/api/v1/kibochat/whatsAppChat/whatsAppChat.controller.js'
-const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
+const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/response')
 const util = require('util')
 
 exports.create = function (req, res) {
