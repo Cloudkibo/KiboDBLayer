@@ -8,7 +8,7 @@ const PollTemplateModel = require('./pollTemplate.model')
 const SurveyQuestionModel = require('./surveyQuestion.model')
 const SurveyTemplateModel = require('./surveyTemplate.model')
 const TAG = '/api/v1/kiboengage/templates/templates.controller.js'
-const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
+const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/response')
 const util = require('util')
 
 // // // // // // // =======================Bot template ENDPOINTS============================ // // // // //

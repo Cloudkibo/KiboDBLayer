@@ -2,7 +2,7 @@
 const logger = require('./../../../../../components/logger')
 const DataLayer = require('./cartinfo.datalayer')
 const TAG = '/api/v1/kiboengage/abandoned_cart/cartinfo/cartinfo.controller.js'
-const { sendSuccessResponse, sendErrorResponse } = require('../../../global/response')
+const { sendSuccessResponse, sendErrorResponse } = require('../../../../../global/response')
 const util = require('util')
 
 exports.index = function (req, res) {
