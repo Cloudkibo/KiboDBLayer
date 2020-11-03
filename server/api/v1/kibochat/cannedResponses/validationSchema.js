@@ -37,34 +37,34 @@ exports.queryPayload = {
 }
 
 exports.updatePayload =
-  {
-    '$schema': 'http://json-schema.org/draft-04/schema#',
-    'type': 'object',
-    'properties': {
-      'purpose': {
-        'type': 'string'
-      },
-      'match': {
-        'type': 'object',
-        'properties': {
-          '_id': {
-            'type': 'string'
-          },
-          'responseCode': {
-            'type': 'string'
-          },
-          'responseMessage': {
-            'type': 'string'
-          }
+{
+  '$schema': 'http://json-schema.org/draft-04/schema#',
+  'type': 'object',
+  'properties': {
+    'purpose': {
+      'type': 'string'
+    },
+    'match': {
+      'type': 'object',
+      'properties': {
+        '_id': {
+          'type': 'string'
+        },
+        'responseCode': {
+          'type': 'string'
+        },
+        'responseMessage': {
+          'type': 'string'
         }
-      },
-      'updated': {
-        'type': 'object'
       }
     },
-    'required': [
-      'purpose',
-      'match',
-      'updated'
-    ]
-  }
+    'updated': {
+      'type': 'object'
+    }
+  },
+  'required': [
+    'purpose',
+    'match',
+    'updated'
+  ]
+}
