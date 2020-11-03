@@ -2,7 +2,7 @@
 const logger = require('../../../../components/logger')
 const DataLayer = require('./messageBlocks.datalayer')
 const TAG = '/api/v1/kiboengage/message_blocks/messageBlocks.controller.js'
-const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
+const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/response')
 const util = require('util')
 
 exports.index = function (req, res) {

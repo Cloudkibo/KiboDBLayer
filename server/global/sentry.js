@@ -5,7 +5,7 @@ exports.sendAlert = function (message, path, data, otherInfo, level) {
     throw new Error(message)
   } catch (e) {
     Raven.context(() => {
-      Raven.captureException(e, {
+      Raven.captureException(message, {
         extra: {path, data, otherInfo},
         level
       })

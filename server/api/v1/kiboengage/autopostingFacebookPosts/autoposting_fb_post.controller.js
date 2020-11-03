@@ -2,7 +2,7 @@
 const logger = require('../../../../components/logger')
 const DataLayer = require('./autoposting_fb_post.datalayer')
 const TAG = '/api/v1/kiboengage/autoposting_messages/autoposting_messages.controller.js'
-const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
+const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/response')
 const util = require('util')
 
 exports.index = function (req, res) {

@@ -2,7 +2,7 @@
 const logger = require('../../../../components/logger')
 const DataLayer = require('./cronStack.datalayer')
 const TAG = '/api/v1/kibochat/cronStack/cronStack.controller.js'
-const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
+const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/response')
 const util = require('util')
 
 exports.index = function (req, res) {

@@ -15,5 +15,6 @@ module.exports = {
 
   api_urls: {
     kiboengage: `http://localhost:3031/api/v1`
-  }
+  },
+  papertrail_log_levels: ''
 }

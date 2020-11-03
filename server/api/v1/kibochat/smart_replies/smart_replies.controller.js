@@ -6,7 +6,7 @@ const AnswerModel = require('./answers.model')
 const UnansweredModel = require('./unanswered.model')
 const WaitingModel = require('./waiting_sub.model')
 const TAG = '/api/v1/kiboengage/page_poll/page_poll.controller.js'
-const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
+const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/response')
 const util = require('util')
 
 // // // // // // // =======================BOT ENDPOINTS============================ // // // // //
