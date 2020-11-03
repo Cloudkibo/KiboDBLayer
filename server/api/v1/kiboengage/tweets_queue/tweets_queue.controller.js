@@ -1,5 +1,5 @@
 const Datalayer = require('./tweets_queue.datalayer')
-const { sendSuccessResponse, sendErrorResponse } = require('../../global/response')
+const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/response')
 
 exports.index = function (req, res) {
   Datalayer.findAllQueueObjects()

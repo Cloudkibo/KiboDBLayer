@@ -6,64 +6,61 @@ const TAG = '/api/v1/kibochat/chatbot_subscribers_analytics/chatbot_subscribers_
 const util = require('util')
 
 exports.index = function (req, res) {
-  logger.serverLog(TAG, `Index endpoint is hit:`)
   DataLayer.findAllObjects()
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to find all chatbot_subscribers_analytics'
+      logger.serverLog(message, `${TAG}: exports.index`, req.body, {}, 'error')
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }
 
 exports.create = function (req, res) {
-  logger.serverLog(TAG, `Create endpoint is hit:`)
-
   DataLayer.createOneObject(req.body)
     .then(createdObject => {
       res.status(200).json({status: 'success', payload: createdObject})
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to create chatbot_subscribers_analytic'
+      logger.serverLog(message, `${TAG}: exports.create`, req.body, {}, 'error')
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }
 
 exports.query = function (req, res) {
-  logger.serverLog(TAG, `Query endpoint is hit:`)
   DataLayer.findUsingQuery(req.body)
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to find all chatbot_subscribers_analytics'
+      logger.serverLog(message, `${TAG}: exports.query`, req.body, {}, 'error')
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }
 
 exports.update = function (req, res) {
-  logger.serverLog(TAG, `Update endpoint is hit:`)
-
   DataLayer.update(req.body)
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to update chatbot_subscribers_analytics'
+      logger.serverLog(message, `${TAG}: exports.update`, req.body, {}, 'error')
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }
 
 exports.delete = function (req, res) {
-  logger.serverLog(TAG, `Delete endpoint is hit:`)
-
   DataLayer.delete(req.body)
     .then(result => {
       res.status(200).json({status: 'success', payload: result})
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to delete chatbot_subscribers_analytics'
+      logger.serverLog(message, `${TAG}: exports.delete`, req.body, {}, 'error')
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }
