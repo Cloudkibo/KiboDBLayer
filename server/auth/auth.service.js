@@ -77,7 +77,6 @@ function setTokenCookie (req, res) {
     })
   }
   const token = signToken(req.user.fbId)
-  logger.serverLog(TAG, `Here is the signed token: ${token}`)
   res.cookie('token', token)
   return res.redirect('/')
 }

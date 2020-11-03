@@ -3,16 +3,15 @@ const logger = require('../../../../components/logger')
 const DataLayer = require('./newsPostSubscribers.datalayer')
 const TAG = '/api/v1/kiboengage/newsPostSubscribers/newsPostSubscribers.controller.js'
 const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/response')
-const util = require('util')
 
 exports.index = function (req, res) {
-  logger.serverLog(TAG, `Index endpoint is hit:`)
   DataLayer.findAllRSSFeedPostSubscribers()
     .then(foundObjects => {
       sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to find all news post subscribers'
+      logger.serverLog(message, `${TAG}: exports.index`, req.body, {}, 'error')
       sendErrorResponse(res, 500, err.toString())
     })
 }
@@ -23,7 +22,8 @@ exports.create = function (req, res) {
       sendSuccessResponse(res, 200, createdObject)
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to create news post subscriber'
+      logger.serverLog(message, `${TAG}: exports.create`, req.body, {}, 'error')
       sendErrorResponse(res, 500, err.toString())
     })
 }
@@ -34,7 +34,8 @@ exports.query = function (req, res) {
       sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to find news post subscribers'
+      logger.serverLog(message, `${TAG}: exports.query`, req.body, {}, 'error')
       sendErrorResponse(res, 500, err.toString())
     })
 }
@@ -45,7 +46,8 @@ exports.update = function (req, res) {
       sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to update news post subscriber'
+      logger.serverLog(message, `${TAG}: exports.update`, req.body, {}, 'error')
       sendErrorResponse(res, 500, err.toString())
     })
 }
@@ -56,7 +58,8 @@ exports.delete = function (req, res) {
       sendSuccessResponse(res, 200, result)
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to delete news post subscriber'
+      logger.serverLog(message, `${TAG}: exports.delete`, req.body, {}, 'error')
       sendErrorResponse(res, 500, err.toString())
     })
 }
