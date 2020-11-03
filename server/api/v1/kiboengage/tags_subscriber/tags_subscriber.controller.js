@@ -3,68 +3,62 @@ const logger = require('../../../../components/logger')
 const DataLayer = require('./tags_subscriber.datalayer')
 const TAG = '/api/v1/kiboengage/tags_subscriber/tags_subscriber.controller.js'
 
-const util = require('util')
-
 exports.index = function (req, res) {
-  logger.serverLog(TAG, `Index endpoint is hit:`)
   DataLayer.findAllTagSubscriberObjects()
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Index Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to find all tag subs'
+      logger.serverLog(message, `${TAG}: exports.index`, req.body, {}, 'error')
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }
 
 exports.create = function (req, res) {
-  logger.serverLog(TAG, `Create endpoint is hit:`)
-
   DataLayer.createOneTagSubscriberObject(req.body)
     .then(createdObject => {
       res.status(200).json({status: 'success', payload: createdObject})
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to create tag sub'
+      logger.serverLog(message, `${TAG}: exports.create`, req.body, {}, 'error')
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }
 
 exports.query = function (req, res) {
-  logger.serverLog(TAG, `Query endpoint is hit:`)
-
   DataLayer.findTagSubscriberUsingQuery(req.body)
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to find tag subs'
+      logger.serverLog(message, `${TAG}: exports.query`, req.body, {}, 'error')
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }
 
 exports.update = function (req, res) {
-  logger.serverLog(TAG, `Update endpoint is hit:`)
-
   DataLayer.updateTagSubscriber(req.body)
     .then(foundObjects => {
       res.status(200).json({status: 'success', payload: foundObjects})
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to update tag sub'
+      logger.serverLog(message, `${TAG}: exports.update`, req.body, {}, 'error')
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }
 
 exports.delete = function (req, res) {
-  logger.serverLog(TAG, `Delete endpoint is hit:`)
-
   DataLayer.deleteTagSubscriber(req.body)
     .then(result => {
       res.status(200).json({status: 'success', payload: result})
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Delete Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to delete tag sub'
+      logger.serverLog(message, `${TAG}: exports.delete`, req.body, {}, 'error')
       res.status(500).json({status: 'failed', payload: err.toString()})
     })
 }

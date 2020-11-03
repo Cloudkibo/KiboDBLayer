@@ -6,7 +6,6 @@ const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/r
 const util = require('util')
 
 exports.index = function (req, res) {
-  logger.serverLog(TAG, `Index endpoint is hit:`)
   DataLayer.findAllAutopostingSubscriberMessagesObjects()
     .then(foundObjects => {
       sendSuccessResponse(res, 200, foundObjects)
@@ -18,8 +17,6 @@ exports.index = function (req, res) {
 }
 
 exports.create = function (req, res) {
-  logger.serverLog(TAG, `Create endpoint is hit:`)
-
   DataLayer.createOneAutopostingSubscriberMessageObject(req.body)
     .then(createdObject => {
       sendSuccessResponse(res, 200, createdObject)
@@ -31,8 +28,6 @@ exports.create = function (req, res) {
 }
 
 exports.query = function (req, res) {
-  logger.serverLog(TAG, `Query endpoint is hit:`)
-
   DataLayer.findAutopostingSubscriberMessagesUsingQuery(req.body)
     .then(foundObjects => {
       sendSuccessResponse(res, 200, foundObjects)
@@ -44,8 +39,6 @@ exports.query = function (req, res) {
 }
 
 exports.update = function (req, res) {
-  logger.serverLog(TAG, `Update endpoint is hit:`)
-
   DataLayer.updateAutopostingSubscriberMessages(req.body)
     .then(foundObjects => {
       sendSuccessResponse(res, 200, foundObjects)
@@ -57,8 +50,6 @@ exports.update = function (req, res) {
 }
 
 exports.delete = function (req, res) {
-  logger.serverLog(TAG, `Delete endpoint is hit:`)
-
   DataLayer.deleteAutopostingSubscriberMessages(req.body)
     .then(result => {
       sendSuccessResponse(res, 200, result)
