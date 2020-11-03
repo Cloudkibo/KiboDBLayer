@@ -3,7 +3,7 @@ const logger = require('../../../../components/logger')
 const DataLayer = require('./cannedResponses.datalayer')
 const TAG = '/api/v1/kibochat/cannedResponses/cannedResponses.controller.js'
 const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/response')
-const util = require('util')
+// const util = require('util')
 
 exports.index = function (req, res) {
   DataLayer.findAllResponseObjects()
