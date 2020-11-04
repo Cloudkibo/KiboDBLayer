@@ -21,9 +21,12 @@ exports.query = function (req, res) {
 
   DataLayer.findBroadcastUsingQuery(req.body)
     .then(foundObjects => {
+      console.log('found objects in', foundObjects.length)
+      console.log('found objects', foundObjects)
       sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
+      console.log(`Error found Query Controller : ${util.inspect(err)}`)
       logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
       sendErrorResponse(res, 500, err.toString())
     })
