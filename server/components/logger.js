@@ -16,7 +16,9 @@ exports.serverLog = function (message, path, data, otherInfo, level = 'info') {
     debug(data)
     console.log(`${namespace} - ${data}`)
   } else {
-    papertrail.sendLog(message, path, data, otherInfo, level)
+    if (config.env === 'production') {
+      papertrail.sendLog(message, path, data, otherInfo, level)
+    }
     if (level === 'error') {
       sentry.sendAlert(message, path, data, otherInfo, level)
     }

@@ -5,46 +5,41 @@ const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/r
 const util = require('util')
 
 exports.create = function (req, res) {
-  console.log('Create endpoint is hit:', req.body)
-
   DataLayer.createOneLiveChatObject(req.body)
     .then(createdObject => {
       sendSuccessResponse(res, 200, createdObject)
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found create Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to create sms chat'
+      logger.serverLog(message, `${TAG}: exports.create`, req.body, {}, 'error')
       sendErrorResponse(res, 500, err.toString())
     })
 }
 
 exports.query = function (req, res) {
-  logger.serverLog(TAG, `Query endpoint is hit:`)
-
   DataLayer.findLiveChatUsingQuery(req.body)
     .then(foundObjects => {
       sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Query Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to find all smsChat'
+      logger.serverLog(message, `${TAG}: exports.query`, req.body, {}, 'error')
       sendErrorResponse(res, 500, err.toString())
     })
 }
 exports.update = function (req, res) {
-  logger.serverLog(TAG, `Update endpoint is hit:`)
-
   DataLayer.updateLiveChat(req.body)
     .then(foundObjects => {
       sendSuccessResponse(res, 200, foundObjects)
     })
     .catch(err => {
-      logger.serverLog(TAG, `Error found Update Controller : ${util.inspect(err)}`)
+      const message = err || 'Failed to update smsChat'
+      logger.serverLog(message, `${TAG}: exports.update`, req.body, {}, 'error')
       sendErrorResponse(res, 500, err.toString())
     })
 }
 
 exports.search = function (req, res) {
-  logger.serverLog(TAG, `Search endpoint is hit:`)
-
   DataLayer.countSearchTerms(req.body).then((count) => {
     DataLayer.searchLiveChat(req.body)
       .then(foundObjects => {
@@ -55,12 +50,14 @@ exports.search = function (req, res) {
         sendSuccessResponse(res, 200, result)
       })
       .catch(err => {
-        logger.serverLog(TAG, `Error found search Controller : ${err}`)
+        const message = err || 'Failed to search smsChat'
+        logger.serverLog(message, `${TAG}: exports.search`, req.body, {}, 'error')
         sendErrorResponse(res, 500, err.toString())
       })
   })
     .catch(err => {
-      logger.serverLog(TAG, `Error found search Controller : ${err}`)
+      const message = err || 'Failed to count search terms'
+      logger.serverLog(message, `${TAG}: exports.search`, req.body, {}, 'error')
       sendErrorResponse(res, 500, err.toString())
     })
 }

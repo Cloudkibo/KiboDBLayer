@@ -45,7 +45,6 @@ exports.findRSSSubscriptionsUsingQuery = (body) => {
     if (body.purpose === 'aggregate') {
       let aggregateQuery = LogicLayer.prepareMongoAggregateQuery(body)
       // If not validated
-      logger.serverLog(TAG, `Inside Aggregate: ${JSON.stringify(aggregateQuery)}`)
       if (typeof aggregateQuery === 'string') return new Promise((resolve, reject) => { reject(new Error(aggregateQuery)) })
       else return MongoInterface.aggregate(aggregateQuery)
     } else if (body.purpose === 'findOne') {
