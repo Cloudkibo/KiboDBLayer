@@ -2,17 +2,18 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development' // production
 
 const express = require('express')
 const mongoose = require('mongoose')
+const Sentry = require('@sentry/node')
 const config = require('./config/environment/index')
 
 const app = express()
 
 if (config.env === 'production' || config.env === 'staging') {
-  const Raven = require('raven')
-  Raven.config('https://6c7958e0570f455381d6f17122fbd117:d2041f4406ff4b3cb51290d9b8661a7d@sentry.io/292307', {
+  Sentry.init({
+    dsn: 'https://6c7958e0570f455381d6f17122fbd117@o132281.ingest.sentry.io/292307',
+    release: 'KiboDbLayer@1.0.0',
     environment: config.env,
-    parseUser: ['name', 'email', 'domain', 'role', 'emailVerified']
-  }).install()
-  app.use(Raven.requestHandler())
+    serverName: 'KiboDbLayer'
+  })
 }
 
 mongoose.connect(config.mongo.uri, config.mongo.options)
