@@ -1,7 +1,7 @@
 // Will only contain routes for KiboEngage
 
 const config = require('../config/environment/index')
-const Raven = require('raven')
+const Sentry = require('@sentry/node')
 
 module.exports = function (app) {
   // API middlewares go here
@@ -49,9 +49,9 @@ module.exports = function (app) {
   })
 
   if (config.env === 'production' || config.env === 'staging') {
-    app.use(Raven.errorHandler())
+    app.use(Sentry.Handlers.requestHandler())
+    app.use(Sentry.Handlers.errorHandler())
   }
-
   // app.route('/*').get((req, res) => {
   //   res.redirect('/')
   // }).post((req, res) => {

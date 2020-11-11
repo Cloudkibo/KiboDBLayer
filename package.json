@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/Cloudkibo/KiboDBLayer/blob/master/README.md",
   "dependencies": {
+    "@sentry/node": "^5.27.3",
     "async": "^2.6.2",
     "axios": "^0.18.0",
     "bluebird": "^3.5.2",
