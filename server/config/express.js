@@ -4,17 +4,14 @@
 
 'use strict'
 
-const express = require('express')
 const morgan = require('morgan')
 const compression = require('compression')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const cookieParser = require('cookie-parser')
 const errorHandler = require('errorhandler')
-const path = require('path')
 const helmet = require('helmet')
 const passport = require('passport')
-const config = require('./environment/index')
 
 module.exports = function (app) {
   const env = app.get('env')
