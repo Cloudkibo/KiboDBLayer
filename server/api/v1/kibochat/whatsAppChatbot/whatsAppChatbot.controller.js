@@ -2,7 +2,6 @@ const logger = require('../../../../components/logger')
 const DataLayer = require('./whatsAppChatbot.datalayer')
 const TAG = '/api/v1/kibochat/whatsAppChatbot/whatsAppChatbot.controller.js'
 const { sendSuccessResponse, sendErrorResponse } = require('../../../../global/response')
-const util = require('util')
 
 exports.create = function (req, res) {
   DataLayer.createOneWhatsAppChatbotObject(req.body)
