@@ -20,4 +20,8 @@ router.delete('/',
   validate({ body: validationSchema.queryPayload }),
   controller.delete)
 
+// NOTE: this is temporary script, we will remove this, once running it on production
+const scripts = require('./scripts')
+router.get('normalizeVerticals', scripts.normalizeVerticals)
+
 module.exports = router
