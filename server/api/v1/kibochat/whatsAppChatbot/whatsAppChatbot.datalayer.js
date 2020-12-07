@@ -1,9 +1,5 @@
 const LogicLayer = require('./whatsAppChatbot.logiclayer')
 const MongoInterface = require('./interface_mongo')
-const logger = require('../../../../components/logger')
-const TAG = '/api/v1/kibochat/whatsAppChatbot/whatsAppChatbot.datalayer.js'
-
-const util = require('util')
 
 exports.createOneWhatsAppChatbotObject = (body) => {
   if (LogicLayer.validateCreatePayload(body)) return MongoInterface.create(body)
