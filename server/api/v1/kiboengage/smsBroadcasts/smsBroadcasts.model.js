@@ -11,7 +11,9 @@ let broadcastSchema = new Schema({
   companyId: String,
   datetime: { type: Date, default: Date.now },
   sent: {type: Number, default: 0},
-  phoneNumber: {type: String}
+  delivered: {type: Number, default: 0},
+  phoneNumber: {type: String},
+  followUp: Boolean
 })
 
 module.exports = mongoose.model('smsBroadcasts', broadcastSchema)
