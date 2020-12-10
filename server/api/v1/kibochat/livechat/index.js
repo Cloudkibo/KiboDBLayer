@@ -23,5 +23,6 @@ router.delete('/',
 router.post('/search',
   validate({body: validationSchema.searchPayload}),
   controller.search)
+router.post('/aggregate', controller.aggregate)
 
 module.exports = router

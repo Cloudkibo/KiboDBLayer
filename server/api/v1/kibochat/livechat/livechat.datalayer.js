@@ -94,3 +94,9 @@ exports.countSearchTerms = (body) => {
 exports.searchLiveChat = (body) => {
   return MongoInterface.search(body)
 }
+
+exports.findUsingAggregate = (body) => {
+  const aggregateQuery = LogicLayer.validateAndConvert(body)
+  if (typeof aggregateQuery === 'string') return new Promise((resolve, reject) => { reject(new Error(aggregateQuery)) })
+  else return MongoInterface.aggregate(aggregateQuery)
+}
