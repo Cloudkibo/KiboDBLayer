@@ -23,7 +23,6 @@ module.exports = function (app) {
   app.use('/api/v1/cannedResponses', require('./../api/v1/kibochat/cannedResponses'))
   app.use('/api/v1/whatsAppChatbot', require('./../api/v1/kibochat/whatsAppChatbot'))
   app.use('/api/v1/cronStack', require('./../api/v1/kibochat/cronStack'))
-
   app.use('/api/v1/scripts', require('./../api/v1/scripts'))
 
   // auth middleware go here if you authenticate on same server

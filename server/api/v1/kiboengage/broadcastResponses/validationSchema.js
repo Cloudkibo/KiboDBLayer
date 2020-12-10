@@ -1,23 +1,29 @@
-/*
-This file will contain the validation schemas.
-By separating it from controller, we are cleaning the code.
-Now the middleware will automatically send error response if the payload fails
-*/
-// For express json validation
 exports.createPayload = {
   '$schema': 'http://json-schema.org/draft-04/schema#',
   'type': 'object',
   'properties': {
-    'responseCode': {
+    'companyId': {
       'type': 'string'
     },
-    'responseMessage': {
+    'broadcastId': {
       'type': 'string'
+    },
+    'customerId': {
+      'type': 'string'
+    },
+    'platform': {
+      'type': 'string'
+    },
+    'response': {
+      'type': 'object'
     }
   },
   'required': [
-    'responseCode',
-    'responseMessage'
+    'platform',
+    'response',
+    'customerId',
+    'broadcastId',
+    'companyId'
   ]
 }
 
@@ -45,18 +51,7 @@ exports.updatePayload =
       'type': 'string'
     },
     'match': {
-      'type': 'object',
-      'properties': {
-        '_id': {
-          'type': 'string'
-        },
-        'responseCode': {
-          'type': 'string'
-        },
-        'responseMessage': {
-          'type': 'string'
-        }
-      }
+      'type': 'object'
     },
     'updated': {
       'type': 'object'
