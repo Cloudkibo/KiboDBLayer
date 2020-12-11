@@ -43,6 +43,18 @@ exports.prepareMongoAggregateQuery = (body) => {
         body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
       }
     }
+    if (body.match['response.text'].$in) {
+      body.match['response.text'].$in.forEach((value, index) => {
+        body.match['response.text'].$in[index] = new RegExp(value, 'i')
+        console.log('response.text', body.match['response.text'].$in[index])
+      })
+    }
+    if (body.match['response.text'].$nin) {
+      body.match['response.text'].$nin.forEach((value, index) => {
+        body.match['response.text'].$nin[index] = new RegExp(value, 'i')
+        console.log('response.text', body.match['response.text'].$nin[index])
+      })
+    }
     query.push({$match: body.match})
   } else {
     return 'Match Criteria Not Found'
