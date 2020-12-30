@@ -19,15 +19,16 @@ exports.createPayload = {
     },
     'intervalUnit': {
       'type': 'string'
+    },
+    'promptCriteria': {
+      type: 'string'
     }
   },
   'required': [
     'companyId',
     'platform',
     'type',
-    'enabled',
-    'interval',
-    'intervalUnit'
+    'enabled'
   ]
 }
 
