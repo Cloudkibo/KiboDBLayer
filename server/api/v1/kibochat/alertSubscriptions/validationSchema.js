@@ -12,10 +12,10 @@ exports.createPayload = {
       'type': 'string'
     },
     'channelId': {
-      'type': 'boolean'
+      'type': 'string'
     },
     'userName': {
-      'type': 'number'
+      'type': 'string'
     },
     'profilePic': {
       'type': 'string'
@@ -26,8 +26,7 @@ exports.createPayload = {
     'platform',
     'alertChannel',
     'channelId',
-    'userName',
-    'profilePic'
+    'userName'
   ]
 }
 
