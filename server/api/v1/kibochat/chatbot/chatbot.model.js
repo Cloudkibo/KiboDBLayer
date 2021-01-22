@@ -46,7 +46,7 @@ let chatbotSchema = new Schema({
   },
   numberOfProducts: {
     type: Number,
-    default: 10
+    default: 9
   }
 })
 
