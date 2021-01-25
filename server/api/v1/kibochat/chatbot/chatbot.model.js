@@ -43,6 +43,10 @@ let chatbotSchema = new Schema({
   },
   builderPreference: {
     type: String, default: 'basic'
+  },
+  numberOfProducts: {
+    type: Number,
+    default: 9
   }
 })
 
