@@ -14,7 +14,8 @@ let chatbotSchema = new Schema({
   botLinks: {
     faqs: { type: String, default: '' },
     paymentMethod: { type: String, default: '' },
-    returnPolicy: { type: String, default: '' }
+    returnPolicy: { type: String, default: '' },
+    catalogUrl: { type: String, default: '' }
   },
   maxLevels: {
     type: Number,
