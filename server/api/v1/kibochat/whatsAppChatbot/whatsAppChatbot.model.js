@@ -11,7 +11,8 @@ let WhatsAppChatbotSchema = new Schema({
   botLinks: {
     faqs: { type: String, default: '' },
     paymentMethod: { type: String, default: '' },
-    returnPolicy: { type: String, default: '' }
+    returnPolicy: { type: String, default: '' },
+    catalogUrl: { type: String, default: '' }
   },
   testSubscribers: { type: Array, default: [] },
   startingBlockId: String,
