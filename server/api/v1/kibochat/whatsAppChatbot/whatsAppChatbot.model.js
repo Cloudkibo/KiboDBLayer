@@ -28,7 +28,8 @@ let WhatsAppChatbotSchema = new Schema({
   numberOfProducts: {
     type: Number,
     default: 9
-  }
+  },
+  faqs: Array
 })
 
 module.exports = mongoose.model('whatsapp_chatbot', WhatsAppChatbotSchema)
