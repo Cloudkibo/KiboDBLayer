@@ -14,8 +14,7 @@ let chatbotSchema = new Schema({
   botLinks: {
     faqs: { type: String, default: '' },
     paymentMethod: { type: String, default: '' },
-    returnPolicy: { type: String, default: '' },
-    catalogUrl: { type: String, default: '' }
+    returnPolicy: { type: String, default: '' }
   },
   maxLevels: {
     type: Number,
@@ -55,7 +54,11 @@ let chatbotSchema = new Schema({
   returnOrder: {type: Boolean, default: true},
   cancelOrder: {type: Boolean, default: true},
   businessId: String,
-  catalogId: String
+  catalogId: String,
+  catalog: {
+    name: { type: String },
+    url: { type: String }
+  }
 })
 
 module.exports = mongoose.model('chatbots', chatbotSchema)
