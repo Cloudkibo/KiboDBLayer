@@ -55,7 +55,8 @@ let chatbotSchema = new Schema({
   returnOrder: {type: Boolean, default: true},
   cancelOrder: {type: Boolean, default: true},
   businessId: String,
-  catalogId: String
+  catalogId: String,
+  storeName: String
 })
 
 module.exports = mongoose.model('chatbots', chatbotSchema)
