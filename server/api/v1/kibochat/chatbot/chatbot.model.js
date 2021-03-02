@@ -58,7 +58,8 @@ let chatbotSchema = new Schema({
   catalog: {
     name: { type: String },
     url: { type: String }
-  }
+  },
+  storeName: String
 })
 
 module.exports = mongoose.model('chatbots', chatbotSchema)
