@@ -9,18 +9,18 @@ let SuperNumberPreferences = new Schema({
   abandonedCart: {
     language: {type: String, default: 'english'},
     supportNumber: { type: String },
-    enabled: {type: Boolean}
+    enabled: {type: Boolean, default: false}
   },
   orderCRM: {
     language: {type: String, default: 'english'},
     supportNumber: { type: String },
-    shipmentEnabled: {type: Boolean},
-    confirmationEnabled: {type: Boolean}
+    shipmentEnabled: {type: Boolean, default: false},
+    confirmationEnabled: {type: Boolean, default: false}
   },
   cashOnDelivery: {
     language: {type: String, default: 'english'},
     supportNumber: { type: String },
-    enabled: {type: Boolean},
+    enabled: {type: Boolean, default: false},
     cod_tags: { type: Schema.Types.Mixed,
       default: {
         confirmed_tag: 'CODConfirmed-KiboPush',
