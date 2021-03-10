@@ -87,3 +87,15 @@ exports.delete = function (req, res) {
       sendErrorResponse(res, 500, err.toString())
     })
 }
+
+exports.aggregate = function (req, res) {
+  DataLayer.findUsingAggregate(req.body)
+    .then(result => {
+      sendSuccessResponse(res, 200, result)
+    })
+    .catch(err => {
+      const message = err || 'Failed to aggregate livechat record'
+      logger.serverLog(message, `${TAG}: exports.aggregate`, req.body, {}, 'error')
+      sendErrorResponse(res, 500, err)
+    })
+}

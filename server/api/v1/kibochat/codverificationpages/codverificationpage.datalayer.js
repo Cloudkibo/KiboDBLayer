@@ -3,23 +3,19 @@ This file will contain the functions for data layer.
 By separating it from controller, we are separating the concerns.
 Thus we can use it from other non express callers like cron etc
 */
-const LogicLayer = require('./livechat.logiclayer')
+const LogicLayer = require('./codverificationpage.logiclayer')
 const MongoInterface = require('./interface_mongo')
-const logger = require('../../../../components/logger')
-const TAG = '/api/v1/kibochat/livechat/livechat.datalayer.js'
 
-const util = require('util')
-
-exports.findAllLiveChatObjects = () => {
+exports.findAllCodPageObjects = () => {
   return MongoInterface.find()
 }
 
-exports.createOneLiveChatObject = (body) => {
+exports.createOneCodPageObject = (body) => {
   if (LogicLayer.validateCreatePayload(body)) return MongoInterface.create(body)
   else return new Promise((resolve, reject) => { reject(new Error('Payload is not valid')) })
 }
 
-exports.updateLiveChat = (body) => {
+exports.updateCodPages = (body) => {
   if (body.purpose) {
     let query = body.match
     let updated = body.updated
@@ -41,7 +37,7 @@ exports.updateLiveChat = (body) => {
   }
 }
 
-exports.findLiveChatUsingQuery = (body) => {
+exports.findCodPageUsingQuery = (body) => {
   if (body.purpose) {
     // If purpose found, then proceed
     if (body.purpose === 'aggregate') {
@@ -66,7 +62,7 @@ exports.findLiveChatUsingQuery = (body) => {
   }
 }
 
-exports.deleteLiveChat = (body) => {
+exports.deleteCodPages = (body) => {
   if (body.purpose) {
     let query = body.match
     // If purpose found, then proceed
@@ -81,22 +77,4 @@ exports.deleteLiveChat = (body) => {
     // If purpose not found, then reject
     return new Promise((resolve, reject) => { reject(new Error('Purpose Not Found')) })
   }
-}
-
-exports.countSearchTerms = (body) => {
-  let countQuery = {...body}
-  if (countQuery.datetime) {
-    delete countQuery.datetime
-  }
-  return MongoInterface.count(countQuery)
-}
-
-exports.searchLiveChat = (body) => {
-  return MongoInterface.search(body)
-}
-
-exports.findUsingAggregate = (body) => {
-  const aggregateQuery = LogicLayer.validateAndConvert(body)
-  if (typeof aggregateQuery === 'string') return new Promise((resolve, reject) => { reject(new Error(aggregateQuery)) })
-  else return MongoInterface.aggregate(aggregateQuery)
 }

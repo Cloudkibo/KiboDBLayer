@@ -7,13 +7,7 @@ const mongoose = require('mongoose')
 
 exports.validateCreatePayload = (body) => {
   let bool = true
-  let arrayOfRequiredFields = [
-    'senderNumber',
-    'recipientNumber',
-    'contactId',
-    'companyId',
-    'payload'
-  ]
+  let arrayOfRequiredFields = ['companyId']
   let arrayOfKeys = Object.keys(body)
 
   arrayOfRequiredFields.forEach((field, index) => {
@@ -29,26 +23,12 @@ exports.prepareMongoAggregateQuery = (body) => {
   let query = []
 
   if (body.match) {
-    if (Object.keys(body.match).includes('_id')) {
-      if (body.match._id.$lt) {
-        body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
-      }
-      if (body.match._id.$gt) {
-        body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
-      }
-    }
-    if (body.match.datetime) {
-      if (body.match.datetime.$gte) {
-        body.match.datetime.$gte = new Date(body.match.datetime.$gte)
-      }
-      if (body.match.datetime.$lt) {
-        body.match.datetime.$lt = new Date(body.match.datetime.$lt)
-      }
-    }
-    query.push({$match: body.match})
-  } else {
-    return 'Match Criteria Not Found'
-  }
+    if (body.match.datetime && body.match.datetime.$gte && body.match.datetime.$lt) {
+      body.match.datetime.$gte = new Date(body.match.datetime.$gte)
+      body.match.datetime.$lt = new Date(body.match.datetime.$lt)
+      query.push({$match: body.match})
+    } else query.push({$match: body.match})
+  } else return 'Match Criteria Not Found'
 
   if (body.group) {
     if (!Object.keys(body.group).includes('_id')) return '_id is missing in Group Criteria'
