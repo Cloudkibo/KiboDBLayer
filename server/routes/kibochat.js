@@ -22,6 +22,7 @@ module.exports = function (app) {
   app.use('/api/v1/chatbot_subscribers_journey', require('./../api/v1/kibochat/chatbotSubscribersJourney'))
   app.use('/api/v1/cannedResponses', require('./../api/v1/kibochat/cannedResponses'))
   app.use('/api/v1/superNumberPreferences', require('./../api/v1/kibochat/superNumberPreferences'))
+  app.use('/api/v1/superNumberAnalytics', require('./../api/v1/kibochat/superNumberAnalytics'))
   app.use('/api/v1/whatsAppChatbot', require('./../api/v1/kibochat/whatsAppChatbot'))
   app.use('/api/v1/cronStack', require('./../api/v1/kibochat/cronStack'))
   app.use('/api/v1/scripts', require('./../api/v1/scripts'))
