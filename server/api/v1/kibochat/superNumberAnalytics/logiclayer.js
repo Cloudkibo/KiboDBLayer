@@ -1,6 +1,8 @@
 exports.prepareMongoAggregateQuery = (body) => {
   let query = []
-
+  if (body.project) {
+    query.push({$project: body.project})
+  }
   if (body.match) {
     if (body.match.datetime && body.match.datetime.$gte && body.match.datetime.$lt) {
       body.match.datetime.$gte = new Date(body.match.datetime.$gte)

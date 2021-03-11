@@ -16,7 +16,6 @@ exports.index = function (req, res) {
 }
 
 exports.create = function (req, res) {
-  console.log('in create')
   DataLayer.createOne(req.body)
     .then(createdObject => {
       sendSuccessResponse(res, 200, createdObject)
