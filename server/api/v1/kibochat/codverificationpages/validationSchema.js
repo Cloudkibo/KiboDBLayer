@@ -12,16 +12,16 @@ exports.createPayload = {
       'type': 'string'
     },
     'contactId': {
-      'type': 'object'
+      'type': 'string'
     },
     'order': {
-      'type': 'object'
+      'type': 'string'
     },
     'storeName': {
-      'type': 'object'
+      'type': 'string'
     },
     'storeType': {
-      'type': 'object'
+      'type': 'string'
     }
   },
   'required': [
