@@ -11,7 +11,7 @@ exports.index = function (req, res) {
     .catch(err => {
       const message = err || 'Failed to find all analytics'
       logger.serverLog(message, `${TAG}: exports.index`, req.body, {}, 'error')
-      sendErrorResponse(res, 500, err.toString())
+      sendErrorResponse(res, 500, err)
     })
 }
 
@@ -23,7 +23,7 @@ exports.create = function (req, res) {
     .catch(err => {
       const message = err || 'Failed to create analytics'
       logger.serverLog(message, `${TAG}: exports.create`, req.body, {}, 'error')
-      sendErrorResponse(res, 500, err.toString())
+      sendErrorResponse(res, 500, err)
     })
 }
 
@@ -35,7 +35,7 @@ exports.query = function (req, res) {
     .catch(err => {
       const message = err || 'Failed to find analytics'
       logger.serverLog(message, `${TAG}: exports.query`, req.body, {}, 'error')
-      sendErrorResponse(res, 500, err.toString())
+      sendErrorResponse(res, 500, err)
     })
 }
 
@@ -47,7 +47,7 @@ exports.update = function (req, res) {
     .catch(err => {
       const message = err || 'Failed to update analytics'
       logger.serverLog(message, `${TAG}: exports.update`, req.body, {}, 'error')
-      sendErrorResponse(res, 500, err.toString())
+      sendErrorResponse(res, 500, err)
     })
 }
 
@@ -59,6 +59,6 @@ exports.delete = function (req, res) {
     .catch(err => {
       const message = err || 'Failed to delete analytics'
       logger.serverLog(message, `${TAG}: exports.delete`, req.body, {}, 'error')
-      sendErrorResponse(res, 500, err.toString())
+      sendErrorResponse(res, 500, err)
     })
 }
