@@ -12,7 +12,7 @@ let SuperNumberMessageLogs = new Schema({
   customerNumber: String,
   id: String,
   url: String,
-  amount: Number,
+  amount: String,
   currency: String,
   status: String
 })
