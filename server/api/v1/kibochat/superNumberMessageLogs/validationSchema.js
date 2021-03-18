@@ -24,7 +24,7 @@ exports.createPayload = {
       'type': 'string'
     },
     'amount': {
-      'type': 'number'
+      'type': 'string'
     },
     'currency': {
       'type': 'string'
