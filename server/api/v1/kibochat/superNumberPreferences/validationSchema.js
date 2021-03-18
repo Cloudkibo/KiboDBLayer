@@ -19,6 +19,9 @@ exports.createPayload = {
     },
     'cashOnDelivery': {
       'type': 'object'
+    },
+    'optin_widget': {
+      'type': 'object'
     }
   },
   'required': [
