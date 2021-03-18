@@ -28,6 +28,17 @@ let SuperNumberPreferences = new Schema({
         no_response_tag: 'CODNoResponse-KiboPush'
       }
     }
+  },
+  optin_widget: {
+    language: {type: String, default: 'english'},
+    enabled: {type: Boolean, default: true},
+    settings: {
+      addToCartClicked: {type: Boolean, default: false},
+      buyNowClicked: {type: Boolean, default: true},
+      landingOnCartPage: {type: Boolean, default: false},
+      checkoutClicked: {type: Boolean, default: true},
+      thankYouPage: {type: Boolean, default: true}
+    }
   }
 })
 
