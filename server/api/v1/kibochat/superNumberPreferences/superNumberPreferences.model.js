@@ -39,6 +39,35 @@ let SuperNumberPreferences = new Schema({
       checkoutClicked: {type: Boolean, default: true},
       thankYouPage: {type: Boolean, default: true}
     }
+  },
+  share_button: {
+    enabled: {type: Boolean, default: false},
+    btnDesign: {
+      backgroundColorStyle: { type: String }, // values single or gradient
+      backgroundColor1: { type: String }, // hex color code
+      backgroundColor2: { type: String }, // only set when backgroundColorStyle is gradient
+      iconColor: { type: String }, // hex color code
+      btnTextColor: { type: String } // hex color code
+    },
+    textMessage: {
+      shareBtnText: { type: String, default: 'Share' }, // by default should be text from super lemon
+      shareMessage: { type: String }
+    },
+    displayPosition: {
+      display: { type: String, default: 'both' }, // values: [mobile, desktop, both] // by default both
+      mobilePosition: { type: String, default: 'right' }, // values: [left, right] // default right
+      desktopPosition: { type: String, default: 'right' } // values: [left, right] // default right
+    },
+    displayPages: {
+      homePage: {type: Boolean, default: true},
+      collectionsPage: {type: Boolean, default: true},
+      productPages: {type: Boolean, default: true},
+      cartPage: {type: Boolean, default: true},
+      thankyouPage: {type: Boolean, default: false},
+      blogPostPages: {type: Boolean, default: true},
+      accountPages: {type: Boolean, default: false},
+      urlsEndinginPages: {type: Boolean, default: false}
+    }
   }
 })
 
