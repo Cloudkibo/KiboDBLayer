@@ -22,6 +22,9 @@ exports.createPayload = {
     },
     'optin_widget': {
       'type': 'object'
+    },
+    'share_button': {
+      'type': 'object'
     }
   },
   'required': [
