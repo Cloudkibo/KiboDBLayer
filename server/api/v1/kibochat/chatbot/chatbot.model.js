@@ -59,7 +59,8 @@ let chatbotSchema = new Schema({
     name: { type: String },
     url: { type: String }
   },
-  storeName: String
+  storeName: String,
+  dialogFlowAgentId: { type: String }
 })
 
 module.exports = mongoose.model('chatbots', chatbotSchema)
