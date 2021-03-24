@@ -73,6 +73,36 @@ let SuperNumberPreferences = new Schema({
     enabled: {type: Boolean, default: true},
     agentsLimit: {type: Number, default: 6},
     agents: { type: Array, default: [] },
+    onOffHours: {
+      monday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      },
+      tuesday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      },
+      wednesday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      },
+      thursday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      },
+      friday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      },
+      saturday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      },
+      sunday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      }
+    },
     btnDesign: {
       backgroundColorStyle: { type: String, default: 'single' }, // values single or gradient
       backgroundColor1: { type: String, default: '#5CB85C' }, // hex color code
