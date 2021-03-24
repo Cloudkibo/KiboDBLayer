@@ -25,6 +25,9 @@ exports.createPayload = {
     },
     'share_button': {
       'type': 'object'
+    },
+    'chat_widget': {
+      'type': 'object'
     }
   },
   'required': [
