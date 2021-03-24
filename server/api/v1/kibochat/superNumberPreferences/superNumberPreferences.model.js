@@ -76,31 +76,31 @@ let SuperNumberPreferences = new Schema({
     onOffHours: {
       monday: {
         startTime: { type: String, default: '00:00' },
-        endTime: { type: String, default: '12:00' }
+        endTime: { type: String, default: '23:59' }
       },
       tuesday: {
         startTime: { type: String, default: '00:00' },
-        endTime: { type: String, default: '12:00' }
+        endTime: { type: String, default: '23:59' }
       },
       wednesday: {
         startTime: { type: String, default: '00:00' },
-        endTime: { type: String, default: '12:00' }
+        endTime: { type: String, default: '23:59' }
       },
       thursday: {
         startTime: { type: String, default: '00:00' },
-        endTime: { type: String, default: '12:00' }
+        endTime: { type: String, default: '23:59' }
       },
       friday: {
         startTime: { type: String, default: '00:00' },
-        endTime: { type: String, default: '12:00' }
+        endTime: { type: String, default: '23:59' }
       },
       saturday: {
         startTime: { type: String, default: '00:00' },
-        endTime: { type: String, default: '12:00' }
+        endTime: { type: String, default: '23:59' }
       },
       sunday: {
         startTime: { type: String, default: '00:00' },
-        endTime: { type: String, default: '12:00' }
+        endTime: { type: String, default: '23:59' }
       }
     },
     btnDesign: {
