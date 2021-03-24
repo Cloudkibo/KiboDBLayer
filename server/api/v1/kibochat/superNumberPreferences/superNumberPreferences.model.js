@@ -43,15 +43,15 @@ let SuperNumberPreferences = new Schema({
   share_button: {
     enabled: {type: Boolean, default: false},
     btnDesign: {
-      backgroundColorStyle: { type: String }, // values single or gradient
-      backgroundColor1: { type: String }, // hex color code
-      backgroundColor2: { type: String }, // only set when backgroundColorStyle is gradient
-      iconColor: { type: String }, // hex color code
-      btnTextColor: { type: String } // hex color code
+      backgroundColorStyle: { type: String, default: 'single' }, // values single or gradient
+      backgroundColor1: { type: String, default: '#5CB85C' }, // hex color code
+      backgroundColor2: { type: String, default: '#2e5303' }, // only set when backgroundColorStyle is gradient
+      iconColor: { type: String, default: '#ffffff' }, // hex color code
+      btnTextColor: { type: String, default: '#ffffff' } // hex color code
     },
     textMessage: {
-      shareBtnText: { type: String, default: 'Share' }, // by default should be text from super lemon
-      shareMessage: { type: String }
+      btnText: { type: String, default: 'Share' }, // by default should be text from super lemon
+      message: { type: String, default: "Check this out, it's so cool" }
     },
     displayPosition: {
       display: { type: String, default: 'both' }, // values: [mobile, desktop, both] // by default both
@@ -72,17 +72,47 @@ let SuperNumberPreferences = new Schema({
   chat_widget: {
     enabled: {type: Boolean, default: true},
     agentsLimit: {type: Number, default: 6},
-    agents: { type: Array },
+    agents: { type: Array, default: [] },
+    onOffHours: {
+      monday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      },
+      tuesday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      },
+      wednesday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      },
+      thursday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      },
+      friday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      },
+      saturday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      },
+      sunday: {
+        startTime: { type: String, default: '00:00' },
+        endTime: { type: String, default: '23:59' }
+      }
+    },
     btnDesign: {
-      backgroundColorStyle: {type: String},
-      backgroundColor1: {type: String}, // hex color code
-      backgroundColor2: {type: String}, // only set when backgroundColorStyle is gradient
-      iconColor: {type: String}, // hex color code
-      btnTextColor: {type: String} // hex color code
+      backgroundColorStyle: { type: String, default: 'single' }, // values single or gradient
+      backgroundColor1: { type: String, default: '#5CB85C' }, // hex color code
+      backgroundColor2: { type: String, default: '#2e5303' }, // only set when backgroundColorStyle is gradient
+      iconColor: { type: String, default: '#ffffff' }, // hex color code
+      btnTextColor: { type: String, default: '#ffffff' } // hex color code
     },
     textMessage: {
-      shareBtnText: {type: String, default: 'Chat with us'},
-      shareMessage: {type: String, default: `I'm interested in this product and I have a few questions. Can you help?`},
+      btnText: {type: String, default: 'Chat with us'},
+      message: {type: String, default: `I'm interested in this product and I have a few questions. Can you help?`},
       includePageURL: {type: Boolean, default: true}
     },
     callOutCard: {
@@ -91,16 +121,16 @@ let SuperNumberPreferences = new Schema({
       cardDelay: {type: Number, default: 5}
     },
     greetingsWidget: {
-      backgroundColorStyle: {type: String},
-      backgroundColor1: {type: String}, // hex color code
-      backgroundColor2: {type: String}, // only set when backgroundColorStyle is gradient
-      headingColor: {type: String}, // hex color code
-      descriptionColor: {type: String} // hex color code
+      backgroundColorStyle: {type: String, default: 'single'},
+      backgroundColor1: {type: String, default: '#5CB85C'}, // hex color code
+      backgroundColor2: {type: String, default: '#2e5303'}, // only set when backgroundColorStyle is gradient
+      headingColor: {type: String, default: '#ffffff'}, // hex color code
+      descriptionColor: {type: String, default: '#ffffff'}, // hex color code
+      titleText: {type: String, default: 'Hi there ?'},
+      helpText: {type: String, default: 'We are here to help. Chat with us on WhatsApp for any queries.'},
+      offlineStoreMsg: {type: String, default: 'Hi, our working hours are <start time> to <end time>, request you to reach us at the same time. Apologies for the inconvenience.'},
+      randomAgentsOrder: {type: Boolean, default: true}
     },
-    titleText: {type: String, default: 'Hi there ?'},
-    helpText: {type: String, default: 'We are here to help. Chat with us on WhatsApp for any queries.'},
-    offlineStoreMsg: {type: String, default: '“Hi, our working hours are <start time> to <end time>, request you to reach us at the same time. Apologies for the inconvenience.'},
-    randomAgentsOrder: {type: Boolean, default: true},
     displayPosition: {
       display: {type: String, default: 'both'},
       mobilePosition: {type: String, default: 'right'},
