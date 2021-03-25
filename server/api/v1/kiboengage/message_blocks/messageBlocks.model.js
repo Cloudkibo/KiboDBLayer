@@ -19,7 +19,8 @@ let messageBlocksSchema = new Schema({
       default: 0
     }
   },
-  triggers: [String]
+  triggers: [String],
+  dialogFlowIntentId: String
 })
 
 module.exports = mongoose.model('messageBlocks', messageBlocksSchema)
