@@ -117,7 +117,7 @@ let SuperNumberPreferences = new Schema({
     },
     callOutCard: {
       enabled: {type: Boolean, default: true},
-      cardText: {type: String},
+      cardText: {type: String, default: 'Hi there! How can we help you? Tap here to chat with us.'},
       cardDelay: {type: Number, default: 5}
     },
     greetingsWidget: {
