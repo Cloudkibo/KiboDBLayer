@@ -128,6 +128,7 @@ let SuperNumberPreferences = new Schema({
       descriptionColor: {type: String, default: '#ffffff'}, // hex color code
       titleText: {type: String, default: 'Hi there ?'},
       helpText: {type: String, default: 'We are here to help. Chat with us on WhatsApp for any queries.'},
+      offlineAgentMsg: {type: String, default: 'None of our agents are available to chat at this time. We are sorry for the inconvenience. Please try again later'},
       offlineStoreMsg: {type: String, default: 'Hi, our working hours are <start time> to <end time>, request you to reach us at the same time. Apologies for the inconvenience.'},
       randomAgentsOrder: {type: Boolean, default: true}
     },
