@@ -24,6 +24,7 @@ module.exports = function (app) {
   app.use('/api/v1/superNumberPreferences', require('./../api/v1/kibochat/superNumberPreferences'))
   app.use('/api/v1/superNumberAnalytics', require('./../api/v1/kibochat/superNumberAnalytics'))
   app.use('/api/v1/superNumberMessageLogs', require('./../api/v1/kibochat/superNumberMessageLogs'))
+  app.use('/api/v1/superNumberWidgetAnalytics', require('./../api/v1/kibochat/superNumberWidgetAnalytics'))
   app.use('/api/v1/codverificationpages', require('./../api/v1/kibochat/codverificationpages'))
   app.use('/api/v1/whatsAppChatbot', require('./../api/v1/kibochat/whatsAppChatbot'))
   app.use('/api/v1/cronStack', require('./../api/v1/kibochat/cronStack'))
