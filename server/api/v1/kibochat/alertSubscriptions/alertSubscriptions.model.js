@@ -9,6 +9,7 @@ let alertSubscriptions = new Schema({
   channelId: String, // userId, PSID, number, email ID
   userName: String,
   profilePic: String,
+  pageId: String,
   datetime: { type: Date, default: Date.now }
 })
 
