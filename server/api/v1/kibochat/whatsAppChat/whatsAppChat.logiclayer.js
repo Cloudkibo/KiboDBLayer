@@ -29,8 +29,13 @@ exports.prepareMongoAggregateQuery = (body) => {
   let query = []
 
   if (body.match) {
-    if (Object.keys(body.match).includes('_id') && body.match._id.$lt) {
-      body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
+    if (Object.keys(body.match).includes('_id')) {
+      if (body.match._id.$lt) {
+        body.match._id.$lt = mongoose.Types.ObjectId(body.match._id.$lt)
+      }
+      if (body.match._id.$gt) {
+        body.match._id.$gt = mongoose.Types.ObjectId(body.match._id.$gt)
+      }
     }
     if (body.match.datetime) {
       if (body.match.datetime.$gte) {
