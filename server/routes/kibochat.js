@@ -29,6 +29,7 @@ module.exports = function (app) {
   app.use('/api/v1/whatsAppChatbot', require('./../api/v1/kibochat/whatsAppChatbot'))
   app.use('/api/v1/cronStack', require('./../api/v1/kibochat/cronStack'))
   app.use('/api/v1/scripts', require('./../api/v1/scripts'))
+  app.use('/api/v1/smsChatbots', require('./../api/v1/kibochat/smsChatbots'))
 
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))
