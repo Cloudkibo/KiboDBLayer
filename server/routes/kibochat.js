@@ -21,11 +21,18 @@ module.exports = function (app) {
   app.use('/api/v1/chatbot_analytics', require('./../api/v1/kibochat/chatbot_analytics'))
   app.use('/api/v1/chatbot_subscribers_journey', require('./../api/v1/kibochat/chatbotSubscribersJourney'))
   app.use('/api/v1/cannedResponses', require('./../api/v1/kibochat/cannedResponses'))
+  app.use('/api/v1/superNumberPreferences', require('./../api/v1/kibochat/superNumberPreferences'))
+  app.use('/api/v1/superNumberAnalytics', require('./../api/v1/kibochat/superNumberAnalytics'))
+  app.use('/api/v1/superNumberMessageLogs', require('./../api/v1/kibochat/superNumberMessageLogs'))
+  app.use('/api/v1/superNumberWidgetAnalytics', require('./../api/v1/kibochat/superNumberWidgetAnalytics'))
+  app.use('/api/v1/codverificationpages', require('./../api/v1/kibochat/codverificationpages'))
   app.use('/api/v1/whatsAppChatbot', require('./../api/v1/kibochat/whatsAppChatbot'))
   app.use('/api/v1/cronStack', require('./../api/v1/kibochat/cronStack'))
   app.use('/api/v1/scripts', require('./../api/v1/scripts'))
   app.use('/api/v1/alerts/subscriptions', require('./../api/v1/kibochat/alertSubscriptions'))
   app.use('/api/v1/alerts', require('./../api/v1/kibochat/messageAlerts'))
+  app.use('/api/v1/smsChatbots', require('./../api/v1/kibochat/smsChatbots'))
+
   // auth middleware go here if you authenticate on same server
   // app.use('/auth', require('./auth'))
 

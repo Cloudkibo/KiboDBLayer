@@ -43,7 +43,24 @@ let chatbotSchema = new Schema({
   },
   builderPreference: {
     type: String, default: 'basic'
-  }
+  },
+  numberOfProducts: {
+    type: Number,
+    default: 9
+  },
+  faqs: Array,
+  returnOrderMessage: {type: String, default: 'Dear Valuable Customer,\n\nThank you for contacting us. We have received the ‘Return’ request of your order #{{orderId}}. You are requested to please allow us some time, one of our representative will contact you for further details and confirmation'},
+  cancelOrderMessage: {type: String, default: 'Dear Valuable Customer,\n\nThank you for contacting us. We have received the cancellation ‘Request’ of your order #{{orderId}}. One of our representatives will contact you shortly for further details and confirmation'},
+  returnOrder: {type: Boolean, default: true},
+  cancelOrder: {type: Boolean, default: true},
+  businessId: String,
+  catalogId: String,
+  catalog: {
+    name: { type: String },
+    url: { type: String }
+  },
+  storeName: String,
+  dialogFlowAgentId: { type: String }
 })
 
 module.exports = mongoose.model('chatbots', chatbotSchema)
