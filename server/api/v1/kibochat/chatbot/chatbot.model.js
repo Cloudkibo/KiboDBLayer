@@ -60,7 +60,26 @@ let chatbotSchema = new Schema({
     url: { type: String }
   },
   storeName: String,
-  dialogFlowAgentId: { type: String }
+  dialogFlowAgentId: { type: String },
+  enabledFeatures: {
+    commerceBotFeatures: {
+      preSales: {
+        discoverProducts: {type: Boolean, default: true},
+        browseCategories: {type: Boolean, default: true},
+        searchProducts: {type: Boolean, default: true},
+        manageShoppingCart: {type: Boolean, default: true},
+        createOrder: {type: Boolean, default: true}
+      },
+      postSales: {
+        checkOrderStatus: {type: Boolean, default: true}
+      },
+      generalFeatures: {
+        faqs: {type: Boolean, default: true},
+        catalogPdf: {type: Boolean, default: true},
+        talkToAgent: {type: Boolean, default: true}
+      }
+    }
+  }
 })
 
 module.exports = mongoose.model('chatbots', chatbotSchema)
